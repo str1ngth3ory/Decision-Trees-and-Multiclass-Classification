@@ -19,7 +19,7 @@ class DecisionNode():
         or pass the decision down to the node's
         left/right child (depending on decision
         function)."""
-        if self.class_label:
+        if self.class_label is not None:
             return self.class_label
         elif self.decision_function(feature):
             return self.left.decide(feature)
