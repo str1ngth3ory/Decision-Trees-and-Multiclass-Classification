@@ -99,7 +99,7 @@ def load_csv(data_file_path, class_index=-1):
     contents = handle.read()
     handle.close()
     rows = contents.split('\n')
-    out = [  [float(i) for i in r.split(',')] for r in rows if r ]
+    out = np.array([[float(i) for i in r.split(',')] for r in rows if r ])
     classes= map(int,  out[:, class_index])
     features = out[:, :class_index]
     return features, classes
