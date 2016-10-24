@@ -46,7 +46,7 @@ Finally, commit the new updates to your branch and continue developing:
 `git commit -am "<funny message vilifying TAs for the update>"`
 
 # Submit your code
-A friendly reminder: please ensure that your submission is in `probability_solution.py`. The script described in the following section automatically sends that file to the servers for processing.
+A friendly reminder: please ensure that your submission is in `decision_trees.py`. The script described in the following section automatically sends that file to the servers for processing.
 
 To submit your code and have it evaluated for a grade, use `python submit.py assignment_4`.  The last submission before the deadline will be used to determine your grade.
 
