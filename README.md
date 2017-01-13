@@ -4,7 +4,7 @@ Clone this repository recursively:
 
 (If your version of git does not support recurse clone, then clone without the option and run `git submodule init` and `git submodule update`).
 
-If you run across certificate authentication issues during the clone, set the git SSL Verify option to false: `git config --global http.sslVerify false`.
+If you run across any certificate authentication issues during the clone, set the git SSL Verify option to false: `git config --global http.sslVerify false`.
 
 ## Python Dependencies
 
