@@ -162,34 +162,53 @@ class ChallengeClassifier():
         # classify each feature in features as either 0 or 1.
         raise NotImplemented()
 
-class Vectorization
+class Vectorization():
+    
+    def load_csv(self,data_file_path, class_index):
+        handle = open(data_file_path, 'r')
+        contents = handle.read()
+        handle.close()
+        rows = contents.split('\n')
+        out = np.array([[float(i) for i in r.split(',')] for r in rows if r])
+
+        if(class_index == -1):
+            classes= map(int,  out[:,class_index])
+            features = out[:,:class_index]
+            return features, classes
+        elif(class_index == 0):
+            classes= map(int,  out[:, class_index])
+            features = out[:, 1:]
+            return features, classes
+        else:
+            return out
 
     # Vectorization #1: Loops!
     # This function takes one matrix, multiplies by itself and then adds to itself.
     # Output: return a numpy array
-    def non_vectorized_loops(data):
+    # 1 point
+    def non_vectorized_loops(self, data):
         non_vectorized = np.zeros(data.shape)
         for row in range(data.shape[0]):
             for col in range(data.shape[1]):
                 non_vectorized[row][col] = data[row][col] * data[row][col] + data[row][col]
         return non_vectorized
 
-    def vectorized_loops(data):
+    def vectorized_loops(self, data):
         # TODO vectorize the code from above
-        # Bonnie time to beat: 
+        # Bonnie time to beat: 0.00015 seconds
         raise NotImplemented()
         
-    def vectorize_1():
+    def vectorize_1(self):
         data = self.load_csv('vectorize.csv', 1)
         start_time = time.clock()
-        real_answer = non_vectorized_loops(data)
+        real_answer = self.non_vectorized_loops(data)
         end_time = time.clock()
-        print 'Non-vectorized code took %d time', (end-start)
+        print 'Non-vectorized code took %s seconds' % str(end_time-start_time)
 
         start_time = time.clock()
-        my_answer vectorized_loops(data)
+        my_answer = self.vectorized_loops(data)
         end_time = time.clock()
-        print 'Vectorized code took %d time', (end-start)
+        print 'Vectorized code took %s seconds' % str(end_time-start_time)
         
         assert np.array_equal(real_answer, my_answer), "TEST FAILED"
     
@@ -197,7 +216,8 @@ class Vectorization
     # This function searches through the first 100 rows, looking for the row with the max sum 
     # (ie, add all the values in that row together)
     # Output: return the max sum as well as the row number for the max sum
-    def non_vectorized_slice(data):
+    # 3 points
+    def non_vectorized_slice(self, data):
         max_sum = 0
         max_sum_index = 0
         for row in range(100):
@@ -211,22 +231,22 @@ class Vectorization
 
         return max_sum, max_sum_index
 
-    def vectorized_slice(data):
+    def vectorized_slice(self, data):
         # TODO vectorize the code from above
-        # Bonnie time to beat: 
+        # Bonnie time to beat: 0.00018 seconds
         raise NotImplemented()
         
-    def vectorize_2():
+    def vectorize_2(self):
         data = self.load_csv('vectorize.csv', 1)
         start_time = time.clock()
-        real_sum, real_sum_index = non_vectorized_slice(data)
+        real_sum, real_sum_index = self.non_vectorized_slice(data)
         end_time = time.clock()
-        print 'Non-vectorized code took %d time', (end-start)
+        print 'Non-vectorized code took %s seconds' % str(end_time-start_time)
 
         start_time = time.clock()
-        my_sum, my_sum_index = vectorized_slice(data)
+        my_sum, my_sum_index = self.vectorized_slice(data)
         end_time = time.clock()
-        print 'Vectorized code took %d time', (end-start)
+        print 'Vectorized code took %s seconds' % str(end_time-start_time)
 
         assert (real_sum==my_sum),"TEST FAILED"
         assert (real_sum_index==my_sum_index), "TEST FAILED"
@@ -235,7 +255,8 @@ class Vectorization
     # This function flattens down data into a 1d array, creates a dictionary of how often a number appears in the data
     # and displays that value
     # Output: list of tuples [(1203,3)] = 1203 appeared 3 times in data
-    def non_vectorized_flatten(data):
+    # 3 points
+    def non_vectorized_flatten(self, data):
         unique_dict = {}
         flattened = np.hstack(data)
         for item in range(len(flattened)):
@@ -247,23 +268,21 @@ class Vectorization
 
         return unique_dict.items()
 
-    def vectorized_flatten(data):
+    def vectorized_flatten(self, data):
         # TODO vectorize the code from above
-        # Bonnie time to beat: 
+        # Bonnie time to beat: 1.00105 seconds
         raise NotImplemented()
 
-    def vectorize_3():
+    def vectorize_3(self):
         data = self.load_csv('vectorize.csv', 1)
         start_time = time.clock()
-        answer_unique = non_vectorized_flatten(data)
+        answer_unique = self.non_vectorized_flatten(data)
         end_time = time.clock()
-        print 'Non-vectorized code took %d time', (end-start)
+        print 'Non-vectorized code took %s seconds'% str(end_time-start_time)
 
         start_time = time.clock()
-        my_unique = vectorized_slice(data)
+        my_unique = self.vectorized_flatten(data)
         end_time = time.clock()
-        print 'Vectorized code took %d time', (end-start)
+        print 'Vectorized code took %s seconds'% str(end_time-start_time)
 
         assert np.array_equal(answer_unique, my_unique), "TEST FAILED"
-
-
