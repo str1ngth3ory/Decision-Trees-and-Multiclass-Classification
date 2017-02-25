@@ -11921,14 +11921,30 @@ Students should develop and intuition for how and why accuracy differs for train
 </tbody>
 </table>
 <p>Hints: 
-To get started, it might help to draw out the tree by hand with each attribute representing a node.</p>
+To get started, it might help to <b>draw out the tree by hand</b> with each attribute representing a node.</p>
 <p>To create the decision function to pass to your <code>DecisionNode</code>, you can create a lambda expression as follows:</p>
 
 <pre><code>func = lambda feature : feature[2] == 0
 
 </code></pre>
 <p>in which we would choose the left node if the third attribute is 0.</p>
-<p>The tree nodes should be less than 10 nodes including the leaf (not the number of instances, but the actual nodes in the tree).</p>
+<p>For example, if your tree looked like this: if A1=0 then class = 1; else class = 0</p>
+
+<pre><code>   A1
+ /   \
+1      0
+
+</code></pre>
+<p>You would write your code like this:</p>
+
+<pre><code>decision_tree_root= DecisionNode(None, None, lambda a1: a1 == 0)
+decision_tree_root.left = DecisionNode(None, None, None, 1)
+decision_tree_root.right = DecisionNode(None, None, None, 0)
+return decision_tree_root
+
+
+</code></pre>
+<p>Requirements: The tree nodes should be less than 10 nodes including the leaf (not the number of instances, but the actual nodes in the tree).</p>
 
 </div>
 </div>
@@ -11994,8 +12010,9 @@ To get started, it might help to draw out the tree by hand with each attribute r
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-1b:-Precision,-Recall,-Accuracy-and-Confusion-Matrix">Part 1b: Precision, Recall, Accuracy and Confusion Matrix<a class="anchor-link" href="#Part-1b:-Precision,-Recall,-Accuracy-and-Confusion-Matrix">&#182;</a></h2><p>12 pts.</p>
-<p>Now that we have a decision tree, we're going to need some way to evaluate its performance. In most cases we'd reserve a portion of the training data for evaluation, or use <a href="https://en.wikipedia.org/wiki/Cross-validation_(statistics">cross-validation</a>). For now let's just see how your tree does on the provided examples. In the stubbed out code below, fill out the methods to compute accuracy, precision and recall for your classifier output. <code>classifier_output</code> is just the list of labels that your classifier outputs, corresponding to the same examples as <code>true_labels</code>. You can refer to Wikipedia for calculating the true/false positive/negative.</p>
+<p>Now that we have a decision tree, we're going to need some way to evaluate its performance. In most cases we'd reserve a portion of the training data for evaluation, or use cross-validation. For now let's just see how your tree does on the provided examples. In the stubbed out code below, fill out the methods to compute the confusion matrix, accuracy, precision and recall for your classifier output. <code>classifier_output</code> is just the list of labels that your classifier outputs, corresponding to the same examples as <code>true_labels</code>. You can refer to Wikipedia for calculating the true/false positive/negative.</p>
 <p>You should get 1.0 (float) for precision, recall and accuracy.</p>
+<p>You can create a simple example for the confusion matrix for testing purposes and count by hand.</p>
 
 </div>
 </div>
@@ -12042,7 +12059,7 @@ To get started, it might help to draw out the tree by hand with each attribute r
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-2a:-Decision-Tree-Learning">Part 2a: Decision Tree Learning<a class="anchor-link" href="#Part-2a:-Decision-Tree-Learning">&#182;</a></h2><p>6 pts.</p>
-<p>Similar to 1b, we have a few more tools we can use to test our performance. Your goal is to implement information gain and entropy.</p>
+<p>You will need to implement <code>entropy()</code> and <code>information_gain()</code> in order to do so (hints <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory">here</a>) and <a href="https://en.wikipedia.org/wiki/Information_gain_in_decision_trees">here</a>). Test cases have been provided.</p>
 
 </div>
 </div>
@@ -12115,9 +12132,9 @@ To get started, it might help to draw out the tree by hand with each attribute r
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Part-2a:-Decision-Tree-Learning">Part 2a: Decision Tree Learning<a class="anchor-link" href="#Part-2a:-Decision-Tree-Learning">&#182;</a></h2><p>20 pts.</p>
-<p>File to use: part23_data.csv</p>
-<p>As the size of our training set grows, it rapidly becomes impractical to build these trees by hand. We need a procedure to automagically construct these trees.</p>
+<h2 id="Part-2b:-Decision-Tree-Learning">Part 2b: Decision Tree Learning<a class="anchor-link" href="#Part-2b:-Decision-Tree-Learning">&#182;</a></h2><p>20 pts.</p>
+<ul><li>File to use: part23_data.csv</li>
+<li>Grading: average test accuracy over 10 rounds should be >= 60%</li></ul><p>As the size of our training set grows, it rapidly becomes impractical to build these trees by hand. We need a procedure to automagically construct these trees.</p>
 <p>For starters, let's consider the following algorithm (a variation of <a href="https://en.wikipedia.org/wiki/C4.5_algorithm">C4.5</a>) for the construction of a decision tree from a given set of examples:</p>
 
 <pre><code>1) Check for base cases: 
@@ -12133,15 +12150,22 @@ To get started, it might help to draw out the tree by hand with each attribute r
 5) Recur on the sublists obtained by splitting on alpha_best, and add those nodes as children of node
 
 </code></pre>
-<p>First, in the <code>DecisionTree.__build_tree__()</code> method implement the above algorithm. You will need to implement <code>entropy()</code> and <code>information_gain()</code> in order to do so (hints <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory">here</a>) and <a href="https://en.wikipedia.org/wiki/Information_gain_in_decision_trees">here</a>).</p>
+<p>First, in the <code>DecisionTree.__build_tree__()</code> method implement the above algorithm.</p>
 <p>Next, in <code>DecisionTree.classify()</code> below, write a function to produce classifications for a list of features once your decision tree has been built.</p>
 <p>Some other helpful notes:</p>
 
 <pre><code>1) Your features and classify should be in numpy arrays where if the dataset was (m x n) then the features is (m x n-1) and classify is (m x 1).
 
-2) You need at least an average accuracy of 60% to get full credit for this part.
+2) These features are continuous features and you will need to split based on a threshold.
 
-3) These features are continuous features and you will need to split based on a threshold.</code></pre>
+</code></pre>
+<p>How grading works:</p>
+
+<pre><code>1) We load part23_data.csv and create our cross-validation training and test set with a k=10 folds. 
+
+2) We classify the training data onto the three then fit the testing data onto the tree. 
+
+3) We check the accuracy of your results versus the true results and we return the average of this over 10 iterations.</code></pre>
 
 </div>
 </div>
@@ -12192,11 +12216,12 @@ To get started, it might help to draw out the tree by hand with each attribute r
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Part-2b:-Validation">Part 2b: Validation<a class="anchor-link" href="#Part-2b:-Validation">&#182;</a></h2><p>10 pts.</p>
-<p>For this part of the assignment we're going to use a relatively simple dataset (banknote authentication, found in <code>part_2_data.csv</code>). In the section below there are methods to load the data in a consistent format.</p>
-<p>In general, reserving part of your data as a test set can lead to unpredictable performance- a serendipitous choice of your train or test split could give you a very inaccurate idea of how your classifier performs. That's where k-fold cross validation comes in.</p>
+<h2 id="Part-2c:-Validation">Part 2c: Validation<a class="anchor-link" href="#Part-2c:-Validation">&#182;</a></h2><p>10 pts.</p>
+<ul><li>File to use: part23_data.csv</li>
+
+<li>Grading: average test accuracy over 10 rounds should be >= 60%</li></ul><p>In general, reserving part of your data as a test set can lead to unpredictable performance- a serendipitous choice of your train or test split could give you a very inaccurate idea of how your classifier performs. That's where k-fold cross validation comes in.</p>
 <p>In <code>generate_k_folds()</code>, we'll split the dataset at random into k equal subsections. Then iterating on each of our k samples, we'll reserve that sample for testing and use the other k-1 for training. Averaging the results of each fold should give us a more consistent idea of how the classifier is doing across the data as a whole.</p>
-<p>You should get at least an average accuracy of 60% for ten_folds to get full credit.</p>
+<p>How grading works: The same as 2b however, we use your generate_k_folds instead of ours.</p>
 
 </div>
 </div>
@@ -12212,16 +12237,19 @@ To get started, it might help to draw out the tree by hand with each attribute r
     <span class="n">handle</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="n">rows</span> <span class="o">=</span> <span class="n">contents</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rows</span> <span class="k">if</span> <span class="n">r</span><span class="p">])</span>
-
+    
     <span class="k">if</span><span class="p">(</span><span class="n">class_index</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># this is used for part23_data</span>
         <span class="n">classes</span><span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span>  <span class="n">out</span><span class="p">[:,</span><span class="n">class_index</span><span class="p">])</span>
         <span class="n">features</span> <span class="o">=</span> <span class="n">out</span><span class="p">[:,:</span><span class="n">class_index</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">features</span><span class="p">,</span> <span class="n">classes</span>
-    <span class="k">elif</span><span class="p">(</span><span class="n">class_index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="k">else</span><span class="p">(</span><span class="n">class_index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="c1"># this is used for challenge_train</span>
         <span class="n">classes</span><span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span>  <span class="n">out</span><span class="p">[:,</span> <span class="n">class_index</span><span class="p">])</span>
         <span class="n">features</span> <span class="o">=</span> <span class="n">out</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
         <span class="k">return</span> <span class="n">features</span><span class="p">,</span> <span class="n">classes</span>
     <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># this is used for vectorize</span>
         <span class="k">return</span> <span class="n">out</span>
 
 <span class="k">def</span> <span class="nf">generate_k_folds</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
@@ -12263,8 +12291,9 @@ To get started, it might help to draw out the tree by hand with each attribute r
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-3:-Random-Forests">Part 3: Random Forests<a class="anchor-link" href="#Part-3:-Random-Forests">&#182;</a></h2><p>30 pts.</p>
-<p>File to use: part23_data.csv</p>
-<p>The decision boundaries drawn by decision trees are very sharp, and fitting a decision tree of unbounded depth to a list of training examples almost inevitably leads to overfitting. In an attempt to decrease the variance of our classifier we're going to use a technique called 'Bootstrap Aggregating' (often abbreviated 'bagging').</p>
+<ul><li>File to use: part23_data.csv</li>
+
+<li>Grading: average test accuracy over 10 rounds should be >= 75%</li></ul><p>The decision boundaries drawn by decision trees are very sharp, and fitting a decision tree of unbounded depth to a list of training examples almost inevitably leads to overfitting. In an attempt to decrease the variance of our classifier we're going to use a technique called 'Bootstrap Aggregating' (often abbreviated 'bagging').</p>
 <p>A Random Forest is a collection of decision trees, build as follows:</p>
 
 <pre><code>1) For every tree we're going to build:
@@ -12279,7 +12308,8 @@ To get started, it might help to draw out the tree by hand with each attribute r
 <p>Classification for a random forest is then done by taking a majority vote of the classifications yielded by each tree in the forest after it classifies an example.</p>
 <p>Fill in <code>RandomForest.fit()</code> to fit the decision tree as we describe above, and fill in <code>RandomForest.classify()</code> to classify a given list of examples.</p>
 <p>Your features and classify should be in numpy arrays where if the dataset was (m x n) then the features is (m x n-1) and classify is (n x 1).</p>
-<p>You need at least an average accuracy of 75% to get full credit for this part. To test, we will be using a forest with 5 trees, with a depth limit of 5, example subsample rate of 0.5 and attribute subsample rate of 0.5</p>
+<p>To test, we will be using a forest with 5 trees, with a depth limit of 5, example subsample rate of 0.5 and attribute subsample rate of 0.5</p>
+<p>How grading works: similar to 2b but with the call to Random Forest.</p>
 
 </div>
 </div>
@@ -12328,8 +12358,9 @@ To get started, it might help to draw out the tree by hand with each attribute r
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-4:-Challenge-Classifier">Part 4: Challenge Classifier<a class="anchor-link" href="#Part-4:-Challenge-Classifier">&#182;</a></h2><p>10 points.</p>
-<p>File to use: challenge_data.pickle</p>
-<p>You've been provided with a sample of data from a research dataset in 'challenge_train.csv'. It is serialized as a tuple of (features, classes) and you will need to create a tree structure. I have reserved a part of the dataset for testing called challenge_test.csv (which you do not have access to).</p>
+<ul><li>File to use: challenge_train.csv</li>
+
+<li>Grading: average training accuracy over 10 rounds should be >= 80% and average testing accuracy over 10 rounds should be >= 80%</li></ul><p>You've been provided with a sample of data from a research dataset in 'challenge_train.csv'. It is a csv with the first colum as the classes and the rest of the columns as the features and you will need to create a tree structure. I have reserved a part of the dataset for testing called challenge_test.csv (which you do not have access to).</p>
 <p>To get full points for this part of the assignment, you'll need to get at least an average accuracy of 80% on the training data you have (challenge_train.csv), and at least an average accuracy of 60% on the holdout/test set (challenge_test.csv).</p>
 <p>We will also be having a competition using your challenge classifier. The classifier that performs most accurately on the holdout/test set wins (so optimize for accuracy). You will not be provided with the holdout set. Ties will be broken by submission time.</p>
 <ul>
@@ -12382,7 +12413,7 @@ To get started, it might help to draw out the tree by hand with each attribute r
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
