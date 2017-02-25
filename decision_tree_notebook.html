@@ -11791,6 +11791,25 @@ Students should develop and intuition for how and why accuracy differs for train
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Datasets">Datasets<a class="anchor-link" href="#Datasets">&#182;</a></h2><p>We have provided you with two datasets:</p>
+
+<pre><code>part23_data.csv: 4 features, 1372 data points, binary classification (last column) 
+
+challenge_train.csv: 30 features, 5000 datapoints, binary classification (first column)
+
+challenge_test.csv: not provided, similar to challenge_train but with more datapoints
+
+</code></pre>
+<h2 id="Imports">Imports<a class="anchor-link" href="#Imports">&#182;</a></h2><p>We are only allowing three imports: numpy, collections.Counter and time. We will be checking to see if any other libraries are used. You are not allowed to use any outside libraries especially for part 4 (challenge).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>For this assignment we're going to need an explicit way to make structured decisions. The following is <code>DecisionNode</code>,  representing a decision node as some atomic choice in a binary decision graph. It can represent a class label (i.e. a final decision) or a binary decision to guide the us through a flow-chart to arrive at a decision. Note that in this representation 'True' values for a decision take us to the left. This is arbitrary but matters for what comes next.</p>
 
 </div>
@@ -12361,8 +12380,9 @@ return decision_tree_root
 <h2 id="Part-4:-Challenge-Classifier">Part 4: Challenge Classifier<a class="anchor-link" href="#Part-4:-Challenge-Classifier">&#182;</a></h2><p>10 points.</p>
 <ul><li>File to use: challenge_train.csv</li>
 
-<li>Grading: average training accuracy over 10 rounds should be >= 80% and average testing accuracy over 10 rounds should be >= 80%</li></ul><p>You've been provided with a sample of data from a research dataset in 'challenge_train.csv'. It is a csv with the first colum as the classes and the rest of the columns as the features and you will need to create a tree structure. I have reserved a part of the dataset for testing called challenge_test.csv (which you do not have access to).</p>
-<p>To get full points for this part of the assignment, you'll need to get at least an average accuracy of 80% on the training data you have (challenge_train.csv), and at least an average accuracy of 60% on the holdout/test set (challenge_test.csv).</p>
+<li>Grading: average training accuracy over 10 rounds should be >= 80% and average testing accuracy over 10 rounds should be >= 80%</li></ul><p>You should be implementing some sort of a <b>tree structure</b>, students in the past have been able to call their RandomForest with different parameters. We also encourage things like boosting.</p>
+<p>You've been provided with a sample of data from a research dataset in 'challenge_train.csv' while we have reserved a part of the dataset for testing called challenge_test.csv (which you do not have access to).</p>
+<p>To get full points for this part of the assignment, you'll need to get at least an average accuracy of 80% on the training data you have (challenge_train.csv), and at least an average accuracy of 60% on the holdout/test set (challenge_test.csv). We do provide how long it takes for your training and testing to run.</p>
 <p>We will also be having a competition using your challenge classifier. The classifier that performs most accurately on the holdout/test set wins (so optimize for accuracy). You will not be provided with the holdout set. Ties will be broken by submission time.</p>
 <ul>
     <li>First place:  3 bonus points on your final grade </li>
