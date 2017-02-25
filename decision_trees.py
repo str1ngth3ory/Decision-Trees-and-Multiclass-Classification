@@ -38,6 +38,7 @@ def build_decision_tree():
 
 def confusion_matrix(classifier_output, true_labels):
     #TODO output should be [[true_positive, false_negative], [false_positive, true_negative]]
+    #TODO output is a list
     raise NotImplemented()
 
 def precision(classifier_output, true_labels):
