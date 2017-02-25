@@ -147,6 +147,24 @@ class ChallengeClassifier():
 
 class Vectorization():
 
+    def load_csv(self,data_file_path, class_index):
+        handle = open(data_file_path, 'r')
+        contents = handle.read()
+        handle.close()
+        rows = contents.split('\n')
+        out = np.array([[float(i) for i in r.split(',')] for r in rows if r])
+
+        if(class_index == -1):
+            classes= map(int,  out[:,class_index])
+            features = out[:,:class_index]
+            return features, classes
+        elif(class_index == 0):
+            classes= map(int,  out[:, class_index])
+            features = out[:, 1:]
+            return features, classes
+        else:
+            return out
+
     # Vectorization #1: Loops!
     # This function takes one matrix, multiplies by itself and then adds to itself.
     # Output: return a numpy array
