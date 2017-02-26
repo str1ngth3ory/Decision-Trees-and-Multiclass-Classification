@@ -178,19 +178,19 @@ class Vectorization():
 
     def vectorized_loops(self, data):
         # TODO vectorize the code from above
-        # Bonnie time to beat: 0.00015 seconds
+        # Bonnie time to beat: 0.09 seconds
         raise NotImplemented()
         
     def vectorize_1(self):
         data = self.load_csv('vectorize.csv', 1)
-        start_time = time.clock()
+        start_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
         real_answer = self.non_vectorized_loops(data)
-        end_time = time.clock()
+        end_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
         print 'Non-vectorized code took %s seconds' % str(end_time-start_time)
 
-        start_time = time.clock()
+        start_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
         my_answer = self.vectorized_loops(data)
-        end_time = time.clock()
+        end_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
         print 'Vectorized code took %s seconds' % str(end_time-start_time)
         
         assert np.array_equal(real_answer, my_answer), "TEST FAILED"
@@ -216,19 +216,19 @@ class Vectorization():
 
     def vectorized_slice(self, data):
         # TODO vectorize the code from above
-        # Bonnie time to beat: 0.00018 seconds
+        # Bonnie time to beat: 0.07 seconds
         raise NotImplemented()
         
     def vectorize_2(self):
         data = self.load_csv('vectorize.csv', 1)
-        start_time = time.clock()
+        start_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
         real_sum, real_sum_index = self.non_vectorized_slice(data)
-        end_time = time.clock()
+        end_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
         print 'Non-vectorized code took %s seconds' % str(end_time-start_time)
 
-        start_time = time.clock()
+        start_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
         my_sum, my_sum_index = self.vectorized_slice(data)
-        end_time = time.clock()
+        end_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
         print 'Vectorized code took %s seconds' % str(end_time-start_time)
 
         assert (real_sum==my_sum),"TEST FAILED"
@@ -253,19 +253,19 @@ class Vectorization():
 
     def vectorized_flatten(self, data):
         # TODO vectorize the code from above
-        # Bonnie time to beat: 1.00105 seconds
+        # Bonnie time to beat: 15 seconds
         raise NotImplemented()
 
     def vectorize_3(self):
         data = self.load_csv('vectorize.csv', 1)
-        start_time = time.clock()
+        start_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
         answer_unique = self.non_vectorized_flatten(data)
-        end_time = time.clock()
+        end_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
         print 'Non-vectorized code took %s seconds'% str(end_time-start_time)
 
-        start_time = time.clock()
+        start_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
         my_unique = self.vectorized_flatten(data)
-        end_time = time.clock()
+        end_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
         print 'Vectorized code took %s seconds'% str(end_time-start_time)
 
         assert np.array_equal(answer_unique, my_unique), "TEST FAILED"

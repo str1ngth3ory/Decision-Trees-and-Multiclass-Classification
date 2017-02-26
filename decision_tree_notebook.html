@@ -12439,6 +12439,7 @@ return decision_tree_root
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">resource</span>
 
 <span class="k">class</span> <span class="nc">Vectorization</span><span class="p">():</span>
     
@@ -12473,19 +12474,19 @@ return decision_tree_root
 
     <span class="k">def</span> <span class="nf">vectorized_loops</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="c1"># TODO vectorize the code from above</span>
-        <span class="c1"># Bonnie time to beat: 0.00015 seconds</span>
+        <span class="c1"># Bonnie time to beat: 0.09 seconds</span>
         <span class="k">raise</span> <span class="bp">NotImplemented</span><span class="p">()</span>
         
     <span class="k">def</span> <span class="nf">vectorize_1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_csv</span><span class="p">(</span><span class="s1">&#39;vectorize.csv&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">getrusage</span><span class="p">(</span><span class="n">resource</span><span class="o">.</span><span class="n">RUSAGE_SELF</span><span class="p">)</span><span class="o">.</span><span class="n">ru_utime</span> <span class="o">*</span> <span class="mi">1000</span>
         <span class="n">real_answer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">non_vectorized_loops</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">getrusage</span><span class="p">(</span><span class="n">resource</span><span class="o">.</span><span class="n">RUSAGE_SELF</span><span class="p">)</span><span class="o">.</span><span class="n">ru_utime</span> <span class="o">*</span> <span class="mi">1000</span>
         <span class="k">print</span> <span class="s1">&#39;Non-vectorized code took </span><span class="si">%s</span><span class="s1"> seconds&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">end_time</span><span class="o">-</span><span class="n">start_time</span><span class="p">)</span>
 
-        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">getrusage</span><span class="p">(</span><span class="n">resource</span><span class="o">.</span><span class="n">RUSAGE_SELF</span><span class="p">)</span><span class="o">.</span><span class="n">ru_utime</span> <span class="o">*</span> <span class="mi">1000</span>
         <span class="n">my_answer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vectorized_loops</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">getrusage</span><span class="p">(</span><span class="n">resource</span><span class="o">.</span><span class="n">RUSAGE_SELF</span><span class="p">)</span><span class="o">.</span><span class="n">ru_utime</span> <span class="o">*</span> <span class="mi">1000</span>
         <span class="k">print</span> <span class="s1">&#39;Vectorized code took </span><span class="si">%s</span><span class="s1"> seconds&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">end_time</span><span class="o">-</span><span class="n">start_time</span><span class="p">)</span>
         
         <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">real_answer</span><span class="p">,</span> <span class="n">my_answer</span><span class="p">),</span> <span class="s2">&quot;TEST FAILED&quot;</span>
@@ -12511,19 +12512,19 @@ return decision_tree_root
 
     <span class="k">def</span> <span class="nf">vectorized_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="c1"># TODO vectorize the code from above</span>
-        <span class="c1"># Bonnie time to beat: 0.00018 seconds</span>
+        <span class="c1"># Bonnie time to beat: 0.07 seconds</span>
         <span class="k">raise</span> <span class="bp">NotImplemented</span><span class="p">()</span>
         
     <span class="k">def</span> <span class="nf">vectorize_2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_csv</span><span class="p">(</span><span class="s1">&#39;vectorize.csv&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">getrusage</span><span class="p">(</span><span class="n">resource</span><span class="o">.</span><span class="n">RUSAGE_SELF</span><span class="p">)</span><span class="o">.</span><span class="n">ru_utime</span> <span class="o">*</span> <span class="mi">1000</span>
         <span class="n">real_sum</span><span class="p">,</span> <span class="n">real_sum_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">non_vectorized_slice</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">getrusage</span><span class="p">(</span><span class="n">resource</span><span class="o">.</span><span class="n">RUSAGE_SELF</span><span class="p">)</span><span class="o">.</span><span class="n">ru_utime</span> <span class="o">*</span> <span class="mi">1000</span>
         <span class="k">print</span> <span class="s1">&#39;Non-vectorized code took </span><span class="si">%s</span><span class="s1"> seconds&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">end_time</span><span class="o">-</span><span class="n">start_time</span><span class="p">)</span>
 
-        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">getrusage</span><span class="p">(</span><span class="n">resource</span><span class="o">.</span><span class="n">RUSAGE_SELF</span><span class="p">)</span><span class="o">.</span><span class="n">ru_utime</span> <span class="o">*</span> <span class="mi">1000</span>
         <span class="n">my_sum</span><span class="p">,</span> <span class="n">my_sum_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vectorized_slice</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">getrusage</span><span class="p">(</span><span class="n">resource</span><span class="o">.</span><span class="n">RUSAGE_SELF</span><span class="p">)</span><span class="o">.</span><span class="n">ru_utime</span> <span class="o">*</span> <span class="mi">1000</span>
         <span class="k">print</span> <span class="s1">&#39;Vectorized code took </span><span class="si">%s</span><span class="s1"> seconds&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">end_time</span><span class="o">-</span><span class="n">start_time</span><span class="p">)</span>
 
         <span class="k">assert</span> <span class="p">(</span><span class="n">real_sum</span><span class="o">==</span><span class="n">my_sum</span><span class="p">),</span><span class="s2">&quot;TEST FAILED&quot;</span>
@@ -12548,19 +12549,19 @@ return decision_tree_root
 
     <span class="k">def</span> <span class="nf">vectorized_flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="c1"># TODO vectorize the code from above</span>
-        <span class="c1"># Bonnie time to beat: 1.00105 seconds</span>
+        <span class="c1"># Bonnie time to beat: 15 seconds</span>
         <span class="k">raise</span> <span class="bp">NotImplemented</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">vectorize_3</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_csv</span><span class="p">(</span><span class="s1">&#39;vectorize.csv&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">getrusage</span><span class="p">(</span><span class="n">resource</span><span class="o">.</span><span class="n">RUSAGE_SELF</span><span class="p">)</span><span class="o">.</span><span class="n">ru_utime</span> <span class="o">*</span> <span class="mi">1000</span>
         <span class="n">answer_unique</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">non_vectorized_flatten</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">getrusage</span><span class="p">(</span><span class="n">resource</span><span class="o">.</span><span class="n">RUSAGE_SELF</span><span class="p">)</span><span class="o">.</span><span class="n">ru_utime</span> <span class="o">*</span> <span class="mi">1000</span>
         <span class="k">print</span> <span class="s1">&#39;Non-vectorized code took </span><span class="si">%s</span><span class="s1"> seconds&#39;</span><span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">end_time</span><span class="o">-</span><span class="n">start_time</span><span class="p">)</span>
 
-        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">getrusage</span><span class="p">(</span><span class="n">resource</span><span class="o">.</span><span class="n">RUSAGE_SELF</span><span class="p">)</span><span class="o">.</span><span class="n">ru_utime</span> <span class="o">*</span> <span class="mi">1000</span>
         <span class="n">my_unique</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vectorized_flatten</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">getrusage</span><span class="p">(</span><span class="n">resource</span><span class="o">.</span><span class="n">RUSAGE_SELF</span><span class="p">)</span><span class="o">.</span><span class="n">ru_utime</span> <span class="o">*</span> <span class="mi">1000</span>
         <span class="k">print</span> <span class="s1">&#39;Vectorized code took </span><span class="si">%s</span><span class="s1"> seconds&#39;</span><span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">end_time</span><span class="o">-</span><span class="n">start_time</span><span class="p">)</span>
 
         <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">answer_unique</span><span class="p">,</span> <span class="n">my_unique</span><span class="p">),</span> <span class="s2">&quot;TEST FAILED&quot;</span>
