@@ -1,6 +1,7 @@
 import numpy as np
 from collections import Counter
 import time
+import resource
 
 class DecisionNode():
     """Class to represent a single node in
