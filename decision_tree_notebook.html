@@ -12436,11 +12436,12 @@ return decision_tree_root
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">resource</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="k">class</span> <span class="nc">Vectorization</span><span class="p">():</span>
     
@@ -12532,8 +12533,8 @@ return decision_tree_root
         <span class="k">assert</span> <span class="p">(</span><span class="n">real_sum_index</span><span class="o">==</span><span class="n">my_sum_index</span><span class="p">),</span> <span class="s2">&quot;TEST FAILED&quot;</span>
         
     <span class="c1"># Vectorization #3: Flattening and dictionaries </span>
-    <span class="c1"># This function flattens down data into a 1d array, creates a dictionary of how often a number appears in the data</span>
-    <span class="c1"># and displays that value</span>
+    <span class="c1"># This function flattens down data into a 1d array, creates a dictionary of how often a  </span>
+    <span class="c1"># positive number appears in the data and displays that value</span>
     <span class="c1"># Output: list of tuples [(1203,3)] = 1203 appeared 3 times in data</span>
     <span class="c1"># 3 points</span>
     <span class="k">def</span> <span class="nf">non_vectorized_flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
@@ -12580,9 +12581,9 @@ return decision_tree_root
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">vectorize</span> <span class="o">=</span> <span class="n">Vectorization</span><span class="p">()</span>
 
-<span class="n">vectorize</span><span class="o">.</span><span class="n">vectorize_1</span><span class="p">()</span>
+<span class="c1">vectorize.vectorize_1()</span>
 <span class="n">vectorize</span><span class="o">.</span><span class="n">vectorize_2</span><span class="p">()</span>
-<span class="n">vectorize</span><span class="o">.</span><span class="n">vectorize_3</span><span class="p">()</span>
+<span class="c1">vectorize.vectorize_3()</span>
 </pre></div>
 
 </div>

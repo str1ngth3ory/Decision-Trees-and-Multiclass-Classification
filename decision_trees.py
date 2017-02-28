@@ -236,8 +236,8 @@ class Vectorization():
         assert (real_sum_index==my_sum_index), "TEST FAILED"
         
     # Vectorization #3: Flattening and dictionaries 
-    # This function flattens down data into a 1d array, creates a dictionary of how often a number appears in the data
-    # and displays that value
+    # This function flattens down data into a 1d array, creates a dictionary of how often a
+    # positive number appears in the data and displays that value
     # Output: list of tuples [(1203,3)] = 1203 appeared 3 times in data
     # 3 points
     def non_vectorized_flatten(self, data):
