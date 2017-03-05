@@ -12154,7 +12154,7 @@ return decision_tree_root
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-2b:-Decision-Tree-Learning">Part 2b: Decision Tree Learning<a class="anchor-link" href="#Part-2b:-Decision-Tree-Learning">&#182;</a></h2><p>20 pts.</p>
 <ul><li>File to use: part23_data.csv</li>
-<li>Grading: average test accuracy over 10 rounds should be >= 60%</li></ul><p>As the size of our training set grows, it rapidly becomes impractical to build these trees by hand. We need a procedure to automagically construct these trees.</p>
+<li>Grading: average test accuracy over 10 rounds should be >= 70%</li></ul><p>As the size of our training set grows, it rapidly becomes impractical to build these trees by hand. We need a procedure to automagically construct these trees.</p>
 <p>For starters, let's consider the following algorithm (a variation of <a href="https://en.wikipedia.org/wiki/C4.5_algorithm">C4.5</a>) for the construction of a decision tree from a given set of examples:</p>
 
 <pre><code>1) Check for base cases: 
@@ -12239,7 +12239,7 @@ return decision_tree_root
 <h2 id="Part-2c:-Validation">Part 2c: Validation<a class="anchor-link" href="#Part-2c:-Validation">&#182;</a></h2><p>10 pts.</p>
 <ul><li>File to use: part23_data.csv</li>
 
-<li>Grading: average test accuracy over 10 rounds should be >= 60%</li></ul><p>In general, reserving part of your data as a test set can lead to unpredictable performance- a serendipitous choice of your train or test split could give you a very inaccurate idea of how your classifier performs. That's where k-fold cross validation comes in.</p>
+<li>Grading: average test accuracy over 10 rounds should be >= 70%</li></ul><p>In general, reserving part of your data as a test set can lead to unpredictable performance- a serendipitous choice of your train or test split could give you a very inaccurate idea of how your classifier performs. That's where k-fold cross validation comes in.</p>
 <p>In <code>generate_k_folds()</code>, we'll split the dataset at random into k equal subsections. Then iterating on each of our k samples, we'll reserve that sample for testing and use the other k-1 for training. Averaging the results of each fold should give us a more consistent idea of how the classifier is doing across the data as a whole.</p>
 <p>How grading works: The same as 2b however, we use your generate_k_folds instead of ours.</p>
 
@@ -12380,15 +12380,10 @@ return decision_tree_root
 <h2 id="Part-4:-Challenge-Classifier">Part 4: Challenge Classifier<a class="anchor-link" href="#Part-4:-Challenge-Classifier">&#182;</a></h2><p>10 points.</p>
 <ul><li>File to use: challenge_train.csv</li>
 
-<li>Grading: average training accuracy over 10 rounds should be >= 80% and average testing accuracy over 10 rounds should be >= 80%</li></ul><p>You should be implementing some sort of a <b>tree structure</b>, students in the past have been able to call their RandomForest with different parameters. We also encourage things like boosting.</p>
+<li>Grading: average training accuracy over 10 runs should be >= 80% and average ru accuracy over 10 runs should be >= 70%</li></ul><p>You should be implementing some sort of a <b>tree structure</b>, students in the past have been able to call their RandomForest with different parameters. We also encourage things like boosting.</p>
 <p>You've been provided with a sample of data from a research dataset in 'challenge_train.csv' while we have reserved a part of the dataset for testing called challenge_test.csv (which you do not have access to).</p>
-<p>To get full points for this part of the assignment, you'll need to get at least an average accuracy of 80% on the training data you have (challenge_train.csv), and at least an average accuracy of 60% on the holdout/test set (challenge_test.csv). We do provide how long it takes for your training and testing to run.</p>
-<p>We will also be having a competition using your challenge classifier. The classifier that performs most accurately on the holdout/test set wins (so optimize for accuracy). You will not be provided with the holdout set. Ties will be broken by submission time.</p>
-<ul>
-    <li>First place:  3 bonus points on your final grade </li>
-    <li>Second place: 2 bonus points on your final grade </li>
-    <li>Third place:  1 bonus point on your final grade </li>
-</ul>
+<p>To get full points for this part of the assignment, you'll need to get at least an average accuracy of 80% on the training data you have (challenge_train.csv), and at least an average accuracy of 70% on the holdout/test set (challenge_test.csv). We do provide how long it takes for your training and testing to run.</p>
+
 </div>
 </div>
 </div>
@@ -12590,6 +12585,22 @@ return decision_tree_root
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Bonus">Bonus<a class="anchor-link" href="#Bonus">&#182;</a></h2><p>Note: this part will be changing. Official annoucements for this bonus will be made through Piazza</p>
+<p>We will be having a competition using your challenge classifier and a dataset of our choice. We will provide you with a portion of the dataset as well as the testing data (but without the labels) and you will upload your solution as a csv to Kaggle. Kaggle will evaluate your scores and the classifier with the highest accuracy will win the competiton. Any ties will be broken by the submission time.</p>
+<p>We are still figuring out all the details for this bonus so hopefully it will be out by the time the midterm period is over. We will keep the competition available for at least a few weeks.</p>
+<ul>
+    <li>First place:  3 bonus points on your final grade </li>
+    <li>Second place: 2 bonus points on your final grade </li>
+    <li>Third place:  1 bonus point on your final grade </li>
+</ul>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
