@@ -21,7 +21,7 @@ Machine learning offers a number of methods for classifying data into discrete c
 
 
 ### Due Date
-This assignment is due in Bonnie on July 13rd by 11:59PM UTC-12 (Anywhere on Earth). The deliverables for the assignment are:
+This assignment is due on Bonnie and T-Square on October 29th, 2017 by 11:59PM UTC-12 (Anywhere on Earth). The deliverables for the assignment are:
 
 * All functions completed in **_decision_trees_submission.py_**
 
@@ -39,18 +39,19 @@ You will only have to edit and submit **_decision_trees_submission.py_**, but th
 4. **_vectorize.csv_**: data used during the vectorization warmup for Assignment 5
 
 ## Submission
-All submissions will be via Bonnie.  The Last Submission will be used for the Assignment grade.
+All submissions will be via Bonnie. Please also submit your **_decision_trees_submission.py_** to T-square. 
+**Important:** The Last Submission will be used for the Assignment grade.
 
-enter `python submit.py` to send your submission file.  It is recommended to run this command from a shell/command prompt as issues have been known while running inside select IDEs.
+You can enter `python submit.py` to send your submission file.  It is recommended to run this command from a shell/command prompt as issues have been known while running inside select IDEs.
 
 ### Imports
-**NOTE:** We are only allowing four imports: __ future__.division, numpy, collections.Counter and time. We will be checking to see if any other libraries are used. You are not allowed to use any outside libraries especially for part 4 (challenge)
+**NOTE:** We are only allowing four imports: __ future__.division, numpy, collections.Counter and time. We will be checking to see if any other libraries are used. You are not allowed to use any outside libraries especially for part 4 (challenge). Please remember that you should not change any function headers.
 
 ## The Assignment
 Classification is used widely in machine learning to figure out how to sort new data that comes through.  You will build, train and test decision tree models to perform basic classification tasks. Students should understand how decision trees and random forests work. This will help you develop an intuition for how and why accuracy differs for training and testing data based on different parameters.
 
 ### Introduction
-For this assignment we're going to need an explicit way to make structured decisions. The `DecisionNode` class will used to represent a decision node as some atomic choice in a binary decision graph. It can represent a class label (i.e. a final decision) or a binary decision to guide the us through a flow-chart to arrive at a decision. Note that in this representation 'True' values for a decision take us to the left. This choice is arbitrary, but this is used in the hint below.
+For this assignment we're going to need an explicit way to make structured decisions. The `DecisionNode` class will be used to represent a decision node as some atomic choice in a binary decision graph. It can represent a class label (i.e. a final decision) or a binary decision to guide us through a flow-chart to arrive at a decision. Note that in this representation 'True' values for a decision take us to the left. This choice is arbitrary, but this is used in the hint below.
 
 ---
 
@@ -129,7 +130,7 @@ If you want to calculate the example set above by hand, run the following code.
 ### Part 2a: Decision Tree Learning
 _[6 pts]_
 
-The first step in order learn how best to create a decision tree, we need to know how well we are splitting the data. This is usually done by measuring the entropy of each split and using it to calculate information gain, but we'd like you to use GINI impurity instead of entropy for this assignment. We can do this by calculating the  `gini_impurity` and `gini_gain()` on the various splits (hints: [gini impurity](https://en.wikipedia.org/wiki/Decision_tree_learning#Gini_impurity) and [information gain](https://en.wikipedia.org/wiki/Information_gain_in_decision_trees)).
+The first step in order to learn how best to create a decision tree, we need to know how well we are splitting the data. This is usually done by measuring the entropy of each split and using it to calculate information gain, but we'd like you to use GINI impurity instead of entropy for this assignment. We can do this by calculating the  `gini_impurity` and `gini_gain()` on the various splits (hints: [gini impurity](https://en.wikipedia.org/wiki/Decision_tree_learning#Gini_impurity) and [information gain](https://en.wikipedia.org/wiki/Information_gain_in_decision_trees)).
 
 <p>
 
@@ -160,7 +161,7 @@ First, in the `DecisionTree.__build_tree__()` method implement the above algorit
 Next, in `DecisionTree.classify()`, write a function to produce classifications for a list of features once your decision tree has been built.
 
 Some other helpful notes:
-1. Your features and classify should be in numpy arrays where if the dataset was (_m_ x _n_) then the features is (_m_ x _n-1_) and classify is (_m_ x _1_)
+1. Your features and classify should be in numpy arrays where if the dataset is (_m_ x _n_) then the features is (_m_ x _n-1_) and classify is (_m_ x _1_)
 2. These features are continuous features and you will need to split based on a threshold.
 
 How grading works:
@@ -210,7 +211,7 @@ Classification for a random forest is then done by taking a majority vote of the
 
 Fill in `RandomForest.fit()` to fit the decision tree as we describe above, and fill in `RandomForest.classify()` to classify a given list of examples.
 
-Your features and classify should be in numpy arrays where if the dataset was (_m_ x _n_) then the features is (_m_ x _n-1_) and classify is (_n_ x _1_).
+Your features and classify should be in numpy arrays where if the dataset is (_m_ x _n_) then the features is (_m_ x _n-1_) and classify is (_n_ x _1_).
 
 To test, we will be using a forest with 5 trees, with a depth limit of 5, example subsample rate of 0.5 and attribute subsample rate of 0.5
 
@@ -227,7 +228,7 @@ How grading works:
 _[10 pts]_
 
 * File to use: **_challenge_train.csv_**
-* Grading: average training accuracy over 10 runs should be >= 80% and average ru accuracy over 10 runs should be >= 70%
+* Grading: average training accuracy over 10 runs should be >= 80% and average testing accuracy over 10 runs should be >= 70%
 
 The Challenge Classifier should be implemented using some sort of a **tree structure**.  Students in the past have been able to call their `RandomForest` with different parameters. We also encourage things like boosting.
 
@@ -243,7 +244,7 @@ To get full points for this part of the assignment, you'll need to get at least 
 ---
 
 ### Part 5: Vectorization!
-_[7 pts]_
+_[6 pts]_
 
 * File to use: **_vectorize.csv_**
 
@@ -262,6 +263,8 @@ How grading works:
 3. `vectorized_flatten()`
 
 ---
+### Part 6: Return Your name!
+_[1 pts]_
 
 ### Bonus
 
