@@ -266,6 +266,7 @@ How grading works:
 ### Part 6: Return Your name!
 _[1 pts]_
 
+---
 ### Bonus
 
 **Note:** This part will be ever changing. Official announcements for this bonus will be made through Piazza.
