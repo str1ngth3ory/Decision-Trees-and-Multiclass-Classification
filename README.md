@@ -278,4 +278,4 @@ We are still figuring out all the details for this bonus so hopefully it will be
 Awards:
 1. First place: 3 bonus points on your final grade.
 2. Second place: 2 bonus points on your final grade.
-3. Second place: 2 bonus points on your final grade.
+3. Third place: 1 bonus point on your final grade.
