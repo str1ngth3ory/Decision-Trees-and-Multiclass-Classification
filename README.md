@@ -20,8 +20,19 @@ Machine learning offers a number of methods for classifying data into discrete c
 <img src="./files/dt.png" alt="Decision Trees" width="700" height="350"/>
 
 
-### Due Date
-This assignment is due on Bonnie and T-Square on October 29th, 2017 by 11:59PM UTC-12 (Anywhere on Earth). The deliverables for the assignment are:
+## Submission and Due Date
+
+All submissions will be via Bonnie. Please also submit your **_decision_trees_submission.py_** to T-square. 
+**The Last Submission will be used for the Assignment grade.**
+
+You can enter `python submit.py` on your console to send your submission file. It is recommended to run this command from a shell/command prompt as issues have been known while running inside select IDEs.
+
+**Important**: 
+Submissions to Bonnie are rate limited for this assignment. **You can submit to Bonnie for evaluation once every 60 minutes during the duration of the assignment**. Please use your submissions wisely and submit after you have tested your code locally.
+
+We are not responsible for a final submission that gets a lower score than a previous submission. We will only use your LAST submission before the deadline for grading.
+
+**This assignment is due on both Bonnie and T-Square by March 18th, 2018 11:59PM UTC-12 (Anywhere on Earth).** The submission on T-Square is a backup just in case, and the submission to Bonnie will be officially used for grading. The deliverables for the assignment are:
 
 * All functions completed in **_decision_trees_submission.py_**
 
@@ -32,17 +43,21 @@ You will only have to edit and submit **_decision_trees_submission.py_**, but th
 2. **_decision_trees_submission_tests.py_**: Sample tests to validate your trees, learning, and vectorization locally.
 3. **_Vagrantfile_**: Vagrant file to start a virtual linux machine.
 
+### Resources
+
+Udacity Videos:
+[Lecture 7 on Machine Learning](https://classroom.udacity.com/courses/ud954/lessons/6808838653/concepts/67917548570923)  
+
 ### The Datasets
 1. **_part23_data.csv_**: 4 features, 1372 data points, binary classification (last column)
-2. **_challenge_train.csv_**: 30 features, 6636 datapoints, binary classification (first column)
-3. **_challenge_test.csv_**: not provided, similar to challenge_train but with 40% of the datapoints
+
+Kaggle Challenge Files:
+2. **_challenge_train.csv_**:  30 features, 6636 datapoints, binary classification (first column)
+3. **_challenge_test.csv_**: (will not be provided, but will be similarly structured as challenge_train with 40% of the datapoints)
+
+Assignment 5 warmup
 4. **_vectorize.csv_**: data used during the vectorization warmup for Assignment 5
 
-## Submission
-All submissions will be via Bonnie. Please also submit your **_decision_trees_submission.py_** to T-square. 
-**Important:** The Last Submission will be used for the Assignment grade.
-
-You can enter `python submit.py` to send your submission file.  It is recommended to run this command from a shell/command prompt as issues have been known while running inside select IDEs.
 
 ### Imports
 **NOTE:** We are only allowing four imports: __ future__.division, numpy, collections.Counter and time. We will be checking to see if any other libraries are used. You are not allowed to use any outside libraries especially for part 4 (challenge). Please remember that you should not change any function headers.
@@ -51,7 +66,9 @@ You can enter `python submit.py` to send your submission file.  It is recommende
 Classification is used widely in machine learning to figure out how to sort new data that comes through.  You will build, train and test decision tree models to perform basic classification tasks. Students should understand how decision trees and random forests work. This will help you develop an intuition for how and why accuracy differs for training and testing data based on different parameters.
 
 ### Introduction
-For this assignment we're going to need an explicit way to make structured decisions. The `DecisionNode` class will be used to represent a decision node as some atomic choice in a binary decision graph. It can represent a class label (i.e. a final decision) or a binary decision to guide us through a flow-chart to arrive at a decision. Note that in this representation 'True' values for a decision take us to the left. This choice is arbitrary, but this is used in the hint below.
+For this assignment we're going to need an explicit way to make structured decisions. The `DecisionNode` class will be used to represent a decision node as some atomic choice in a binary decision graph. We would only use this implementation of the Decision Tree for this assignment and any other implementations will be checked against and denied credit. 
+
+An object from the 'DecisionNode' can represent a class label (i.e. a final decision) or a binary decision to guide us through a flow-chart to arrive at a decision. Note that in this representation 'True' values for a decision take us to the left. This choice is arbitrary, but this is used in the hint below.
 
 ---
 
@@ -265,6 +282,7 @@ How grading works:
 ---
 ### Part 6: Return Your name!
 _[1 pts]_
+Return your name from the function `return_your_name()`
 
 ---
 ### Bonus
@@ -275,7 +293,12 @@ We will be having a competition using your challenge classifier and a dataset of
 
 We are still figuring out all the details for this bonus so hopefully it will be out by the time the midterm period is over. We will keep the competition available for at least a few weeks.
 
-Awards:
-1. First place: 3 bonus points on your final grade.
-2. Second place: 2 bonus points on your final grade.
-3. Third place: 1 bonus point on your final grade.
+##### Bonus Points Metric
+All bonus points will be added to your assignment 4 grades.
+
+1. First place:  15 bonus points
+2. Second place:    12 bonus points
+3. Third place:     10 bonus points
+4. Everyone else who achieves an accuracy of more than 70%: 7 bonus points
+
+    
