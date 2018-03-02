@@ -28,7 +28,7 @@ All submissions will be via Bonnie. Please also submit your **_decision_trees_su
 You can enter `python submit.py` on your console to send your submission file. It is recommended to run this command from a shell/command prompt as issues have been known while running inside select IDEs.
 
 **Important**: 
-Submissions to Bonnie are rate limited for this assignment. **You can submit to Bonnie for evaluation once every 60 minutes during the duration of the assignment**. Please use your submissions wisely and submit after you have tested your code locally.
+Submissions to Bonnie are rate limited for this assignment. **You can submit to Bonnie for evaluation once every 60 minutes during the duration of the assignment**. Please use your submissions wisely and submit after you have tested your code locally. As per every assignment, you can find the output of all of your submissions on bonnie.udacity.com.
 
 We are not responsible for a final submission that gets a lower score than a previous submission. We will only use your LAST submission before the deadline for grading.
 
