@@ -299,6 +299,6 @@ All bonus points will be added to your assignment 4 grades.
 1. First place:  15 bonus points
 2. Second place:    12 bonus points
 3. Third place:     10 bonus points
-4. Everyone else who achieves an accuracy of more than 70%: 7 bonus points
+4. Everyone else who achieves an accuracy of more than 61%: 7 bonus points
 
     
