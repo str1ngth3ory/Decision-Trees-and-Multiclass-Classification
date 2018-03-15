@@ -51,12 +51,13 @@ Udacity Videos:
 ### The Datasets
 1. **_part23_data.csv_**: 4 features, 1372 data points, binary classification (last column)
 
-Kaggle Challenge Files:
 2. **_challenge_train.csv_**:  30 features, 6636 datapoints, binary classification (first column)
 3. **_challenge_test.csv_**: (will not be provided, but will be similarly structured as challenge_train with 40% of the datapoints)
 
 Assignment 5 warmup
 4. **_vectorize.csv_**: data used during the vectorization warmup for Assignment 5
+
+Kaggle Challenge Files are provided on the [Kaggle Competition page](https://www.kaggle.com/c/omscs6601ai-sp18-assign4) itself.
 
 
 ### Imports
