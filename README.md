@@ -22,7 +22,7 @@ Machine learning offers a number of methods for classifying data into discrete c
 
 ## Submission and Due Date
 
-All submissions will be via Bonnie. Please also submit your **_decision_trees_submission.py_** to T-square. 
+All submissions will be via Bonnie. Please also submit your **_decision_trees_submission.py_** to Canvas. 
 **The Last Submission will be used for the Assignment grade.**
 
 You can enter `python submit.py` on your console to send your submission file. It is recommended to run this command from a shell/command prompt as issues have been known while running inside select IDEs.
@@ -32,7 +32,7 @@ Submissions to Bonnie are rate limited for this assignment. **You can submit to 
 
 We are not responsible for a final submission that gets a lower score than a previous submission. We will only use your LAST submission before the deadline for grading.
 
-**This assignment is due on both Bonnie and T-Square by March 18th, 2018 11:59PM UTC-12 (Anywhere on Earth).** The submission on T-Square is a backup just in case, and the submission to Bonnie will be officially used for grading. The deliverables for the assignment are:
+**This assignment is due on both Bonnie and Canvas by October 29th, 2018 11:59PM UTC-12 (Anywhere on Earth).** The submission on Canvas is a backup just in case, and the submission to Bonnie will be officially used for grading. The deliverables for the assignment are:
 
 * All functions completed in **_decision_trees_submission.py_**
 
@@ -56,8 +56,6 @@ Udacity Videos:
 
 Assignment 5 warmup
 4. **_vectorize.csv_**: data used during the vectorization warmup for Assignment 5
-
-Kaggle Challenge Files are provided on the [Kaggle Competition page](https://www.kaggle.com/c/omscs6601ai-sp18-assign4) itself.
 
 
 ### Imports
