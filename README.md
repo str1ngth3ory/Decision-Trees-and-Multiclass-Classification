@@ -5,11 +5,11 @@ Clone this repository:
 
 `git clone https://github.gatech.edu/omscs6601/assignment_4.git`
 
-The submission scripts depend on the presence of 3 python packages - `requests`, `future`, and `nelson`. Install them using the command below:
+The submission scripts depend on the presence of 4 python packages - `requests`, `future`, `numpy` and `nelson`. Install them using the command below:
 
 `pip install -r requirements.txt`
 
-Python 2.7 is recommended and has been tested.
+Python 3.7 is recommended and has been tested.
 
 Read [setup.md](./setup.md) for more information on how to effectively manage your git repository and troubleshooting information.
 
@@ -22,17 +22,17 @@ Machine learning offers a number of methods for classifying data into discrete c
 
 ## Submission and Due Date
 
-All submissions will be via Bonnie. Please also submit your **_decision_trees_submission.py_** to Canvas. 
+All submissions will be via Bonnie. Please also submit your **_decision_trees_submission.py_** to Canvas.
 **The Last Submission will be used for the Assignment grade.**
 
 You can enter `python submit.py` on your console to send your submission file. It is recommended to run this command from a shell/command prompt as issues have been known while running inside select IDEs.
 
-**Important**: 
+**Important**:
 Submissions to Bonnie are rate limited for this assignment. **You can submit to Bonnie for evaluation once every 60 minutes during the duration of the assignment**. Please use your submissions wisely and submit after you have tested your code locally. As per every assignment, you can find the output of all of your submissions on bonnie.udacity.com.
 
 We are not responsible for a final submission that gets a lower score than a previous submission. We will only use your LAST submission before the deadline for grading.
 
-**This assignment is due on both Bonnie and Canvas by October 29th, 2018 11:59PM UTC-12 (Anywhere on Earth).** The submission on Canvas is a backup just in case, and the submission to Bonnie will be officially used for grading. The deliverables for the assignment are:
+**This assignment is due on both Bonnie and Canvas by March 17th, 2019 11:59PM UTC-12 (Anywhere on Earth).** The submission on Canvas is a backup just in case, and the submission to Bonnie will be officially used for grading. The deliverables for the assignment are:
 
 * All functions completed in **_decision_trees_submission.py_**
 
@@ -41,7 +41,6 @@ We are not responsible for a final submission that gets a lower score than a pre
 You will only have to edit and submit **_decision_trees_submission.py_**, but there are a number of notable other files:
 1. **_decision_trees_submission.py_**: Where you will build your decision tree, confusion matrix, performance metrics, forests, and do the vectorization warm up.
 2. **_decision_trees_submission_tests.py_**: Sample tests to validate your trees, learning, and vectorization locally.
-3. **_Vagrantfile_**: Vagrant file to start a virtual linux machine.
 
 ### Resources
 
@@ -65,7 +64,7 @@ Assignment 5 warmup
 Classification is used widely in machine learning to figure out how to sort new data that comes through.  You will build, train and test decision tree models to perform basic classification tasks. Students should understand how decision trees and random forests work. This will help you develop an intuition for how and why accuracy differs for training and testing data based on different parameters.
 
 ### Introduction
-For this assignment we're going to need an explicit way to make structured decisions. The `DecisionNode` class will be used to represent a decision node as some atomic choice in a binary decision graph. We would only use this implementation of the Decision Tree for this assignment and any other implementations will be checked against and denied credit. 
+For this assignment we're going to need an explicit way to make structured decisions. The `DecisionNode` class will be used to represent a decision node as some atomic choice in a binary decision graph. We would only use this implementation of the Decision Tree for this assignment and any other implementations will be checked against and denied credit.
 
 An object from the 'DecisionNode' can represent a class label (i.e. a final decision) or a binary decision to guide us through a flow-chart to arrive at a decision. Note that in this representation 'True' values for a decision take us to the left. This choice is arbitrary, but this is used in the hint below.
 
@@ -264,7 +263,9 @@ _[6 pts]_
 
 * File to use: **_vectorize.csv_**
 
-Assignment 5 has a vectorization requirement so that it can run under the time limit. This small section will hopefully introduce you to vectorization and some of the cool tricks you can use in python. We encourage you to use any numpy function out there (on good faith) to do the following functions.
+Vectorization is a process that provides enormous performance increases when processing large amounts of data. Whether one is training a deep neural network on millions of images, building random forests over a large dataset, or utilizing other algorithms, machine learning makes _extensive_ use of vectorization. In python, the **numpy** package provides a programmer with the ability to use python-wrapped, low-level optimizations written in C, however, the technique may feel strange at first and requires some practice to use comfortably.
+
+Assignment 5 has a vectorization requirement so that it can run within a reasonable time limit. This small section will hopefully introduce you to vectorization and some of the cool tricks you can use in python. We encourage you to use any numpy function out there (on good faith) to do the following functions.
 
 For the three functions that we have, we are testing your code based on how fast it runs. It will need to beat the non-vectorized code to get full points.
 
@@ -298,6 +299,5 @@ All bonus points will be added to your assignment 4 grades.
 1. First place:  15 bonus points
 2. Second place:    12 bonus points
 3. Third place:     10 bonus points
-4. Everyone else who achieves an accuracy of more than 61%: 7 bonus points
-
-    
+4. Everyone else who achieves an accuracy of more than a
+   threshold to be determined when the challenge is finalized: 7 bonus points

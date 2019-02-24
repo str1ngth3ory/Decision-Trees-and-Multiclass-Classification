@@ -189,7 +189,7 @@ class DecisionTreePart2Tests(unittest.TestCase):
 
         gini_gain = dt.gini_gain([1, 1, 1, 0, 0, 0],
                                  [[1, 1, 0], [1, 0, 0]])
-        
+
         assert 0.056 == round(gini_gain, 3)
 
     def test_gini_gain_restaurant_patrons(self):
@@ -229,7 +229,7 @@ class DecisionTreePart2Tests(unittest.TestCase):
         tree.fit(self.train_features, self.train_classes)
         output = tree.classify(self.train_features)
 
-        assert cmp(output, self.train_classes) == 0
+        assert (output == self.train_classes).all()
 
     def test_k_folds_test_set_count(self):
         """Test k folds returns the correct test set size.

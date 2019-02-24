@@ -64,13 +64,12 @@ def load_csv(data_file_path, class_index=-1):
     rows = contents.split('\n')
     out = np.array([[float(i) for i in r.split(',')] for r in rows if r])
 
-    if class_index == -1:
-        classes = map(int, out[:, class_index])
-        features = out[:, :class_index]
+    if(class_index == -1):
+        classes= out[:,class_index]
+        features = out[:,:class_index]
         return features, classes
-
-    elif class_index == 0:
-        classes = map(int, out[:, class_index])
+    elif(class_index == 0):
+        classes= out[:, class_index]
         features = out[:, 1:]
         return features, classes
 
@@ -492,7 +491,7 @@ class Vectorization:
 
         # TODO: finish this.
         raise NotImplemented()
-        
+
 def return_your_name():
     # return your name
     # TODO: finish this

@@ -22,14 +22,14 @@ HONOR_PLEDGE = \
 
 def require_pledges():
     print(LATE_POLICY)
-    ans = raw_input("Please type 'yes' to agree and continue>")
+    ans = input("Please type 'yes' to agree and continue>")
 
     if ans != "yes":
         raise RuntimeError("Late policy not accepted.")
 
     print
     print(HONOR_PLEDGE)
-    ans = raw_input("Please type 'yes' to agree and continue>")
+    ans = input("Please type 'yes' to agree and continue>")
     if ans != "yes":
         raise RuntimeError("Honor pledge not accepted")
     print

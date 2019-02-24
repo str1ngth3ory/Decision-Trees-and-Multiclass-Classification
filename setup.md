@@ -6,7 +6,7 @@ If you run across certificate authentication issues during the clone, set the gi
 
 ## Python Dependencies
 
-The submission scripts depend on the presence of 3 python packages - `requests`, `future`, and `nelson`. If you are missing any of these packages, install them from the online Python registries. The easiest way to do this is through pip:
+The submission scripts depend on the presence of 4 python packages - `requests`, `numpy`, `future`, and `nelson`. If you are missing any of these packages, install them from the online Python registries. The easiest way to do this is through pip:
 
 `pip install -r requirements.txt`
 
@@ -42,16 +42,6 @@ The files in conflict are the ones that are "Not staged for commit". Open these 
 Finally, commit the new updates to your branch and continue developing:
 
 `git commit -am "<funny message vilifying TAs for the update>"`
-
-## Using Vagrant
-You have the option of using vagrant to make sure that your local code runs in the same environment as the servers on Bonnie (make sure you have [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/wiki/Downloads) installed).  To use this option run the following commands in the root directory of your assignment:
-
-```
-vagrant up --provider virtualbox
-vagrant ssh
-```
-
-Your code lives in the `/vagrant` folder within this virtual machine. Changes made to files in your assignment folder will automatically be reflected within the machine.
 
 # Submit your code
 A friendly reminder: please ensure that your submission is in `decision_trees_submission.py`. The script described in the following section automatically sends that file to the servers for processing.
