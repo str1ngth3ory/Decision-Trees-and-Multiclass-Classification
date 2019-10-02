@@ -359,5 +359,23 @@ class VectorizationWarmUpTests(unittest.TestCase):
 
         assert (end_time - start_time) <= 15.0
 
+class NameTests(unittest.TestCase):
+    def setUp(self):
+        """Set up test data.
+        """
+        self.to_compare = "George P. Burdell"
+
+
+    def test_name(self):
+        """Test if vectorized arithmetic.
+
+        Asserts:
+            vectorized arithmetic matches looped version.
+        """
+
+        self.name = dt.return_your_name()
+        assert self.name != None
+        assert self.name != self.to_compare
+
 if __name__ == '__main__':
     unittest.main()

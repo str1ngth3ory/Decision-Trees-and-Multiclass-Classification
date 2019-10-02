@@ -24,34 +24,28 @@ Machine learning offers a number of methods for classifying data into discrete c
 
 ## Submission and Due Date
 
-All submissions will be via Bonnie. Please also submit your **_decision_trees_submission.py_** to Canvas.
-**The Last Submission will be used for the Assignment grade.**
+The deliverable for the assignment is a **_decision_trees_submission.py_** upload to Gradescope.
 
-You can enter `python submit.py` on your console to send your submission file. It is recommended to run this command from a shell/command prompt as issues have been known while running inside select IDEs.
+* All functions to be completed in **_decision_trees_submission.py_**
 
 **Important**:
-Submissions to Bonnie are rate limited for this assignment. **You can submit to Bonnie for evaluation once every 60 minutes during the duration of the assignment**. Please use your submissions wisely and submit after you have tested your code locally. As per every assignment, you can find the output of all of your submissions on bonnie.udacity.com.
+Submissions to Gradescope are rate limited for this assignment. **You can submit two submissions every 30 minutes during the duration of the assignment**.
 
-We are not responsible for a final submission that gets a lower score than a previous submission. We will only use your LAST submission before the deadline for grading.
-
-**This assignment is due on both Bonnie and Canvas by March 17th, 2019 11:59PM UTC-12 (Anywhere on Earth).** The submission on Canvas is a backup just in case, and the submission to Bonnie will be officially used for grading. The deliverables for the assignment are:
-
-* All functions completed in **_decision_trees_submission.py_**
+In your Gradescope submission history, you can mark a certain submission as 'Active'. Please ensure this is your best submission.
 
 ### The Files
 
 You will only have to edit and submit **_decision_trees_submission.py_**, but there are a number of notable other files:
 1. **_decision_trees_submission.py_**: Where you will build your decision tree, confusion matrix, performance metrics, forests, and do the vectorization warm up.
 2. **_decision_trees_submission_tests.py_**: Sample tests to validate your trees, learning, and vectorization locally.
+3. **_unit_testing.ipynb_**: Helper Notebook to run through tests sequentially along with the readme
 
 ### Resources
-
 Udacity Videos:
 [Lecture 7 on Machine Learning](https://classroom.udacity.com/courses/ud954/lessons/6808838653/concepts/67917548570923)  
 
 ### The Datasets
 1. **_part23_data.csv_**: 4 features, 1372 data points, binary classification (last column)
-
 2. **_challenge_train.csv_**:  30 features, 6636 datapoints, binary classification (first column)
 3. **_challenge_test.csv_**: (will not be provided, but will be similarly structured as challenge_train with 40% of the datapoints)
 
@@ -147,7 +141,7 @@ If you want to calculate the example set above by hand, run the following code.
 ### Part 2a: Decision Tree Learning
 _[6 pts]_
 
-The first step in order to learn how best to create a decision tree, we need to know how well we are splitting the data. This is usually done by measuring the entropy of each split and using it to calculate information gain, but we'd like you to use GINI impurity instead of entropy for this assignment. We can do this by calculating the  `gini_impurity` and `gini_gain()` on the various splits (hints: [gini impurity](https://en.wikipedia.org/wiki/Decision_tree_learning#Gini_impurity) and [information gain](https://en.wikipedia.org/wiki/Information_gain_in_decision_trees)).
+The first step in order to learn how best to create a decision tree, we need to know how well we are splitting the data. This is usually done by measuring the entropy of each split and using it to calculate information gain, but we'd like you to use GINI impurity instead of entropy for this assignment. We can do this by calculating the  `gini_impurity` and `gini_gain()` on the various splits (hints: [gini impurity](https://en.wikipedia.org/wiki/Decision_tree_learning#Gini_impurity) and [information gain](https://en.wikipedia.org/wiki/Information_gain_in_decision_trees)). The Gini Gain follows a similar approach to information gain, replacing entropy with Gini Impurity.
 
 <p>
 
@@ -179,12 +173,12 @@ Next, in `DecisionTree.classify()`, write a function to produce classifications 
 
 Some other helpful notes:
 1. Your features and classify should be in numpy arrays where if the dataset is (_m_ x _n_) then the features is (_m_ x _n-1_) and classify is (_m_ x _1_)
-2. These features are continuous features and you will need to split based on a threshold.
+2. These features are continuous features and you will need to split based on a threshold. Consider different options for what this threshold might be.
 
 How grading works:
 1. We load **_part23_data.csv_** and create our cross-validation training and test set with a `k=10` folds.  We use our own `generate_k_folds()` method.
-2. We classify the training data onto the three then fit the testing data onto the tree.
-3. We check the accuracy of your results versus the true results and we return the average of this over 10 iterations.
+2. We fit the (folded) training data onto the tree then classify the (folded) testing data with the tree.
+3. We check the accuracy of your results versus the true results and we return the average of this over k=10 iterations.
 
 #### Functions to complete in the `DecisionTree` class:
 1. `__build_tree__()`
@@ -251,7 +245,7 @@ The Challenge Classifier should be implemented using some sort of a **tree struc
 
 You've been provided with a sample of data from a research dataset in **_challenge_train.csv_** while we have reserved a part of the dataset for testing called **_challenge_test.csv_** (which you do not have access to).
 
-To get full points for this part of the assignment, you'll need to get at least an average accuracy of 80% on the training data you have (**_challenge_train.csv_**), and at least an average accuracy of 70% on the holdout/test set (**_challenge_test.csv_**). We do provide how long it takes for your training and testing to run.
+To get full points for this part of the assignment, you'll need to get at least an average accuracy of 80% on the training data you have (**_challenge_train.csv_**), and at least an average accuracy of 70% on the holdout/test set (**_challenge_test.csv_**).
 
 #### Functions to complete in the `ChallengeClassifier` class:
 1. `__init__()`
@@ -291,9 +285,9 @@ Return your name from the function `return_your_name()`
 
 **Note:** This part will be ever changing. Official announcements for this bonus will be made through Piazza.
 
-We will be having a competition using your challenge classifier and a dataset of our choice. We will provide you with a portion of the dataset as well as the testing data (but without the labels) and you will upload your solution as a csv to Kaggle. Kaggle will evaluate your scores and the classifier with the highest accuracy will win the competiton. Any ties will be broken by the submission time.
+We will be having a competition using your challenge classifier and a dataset of our choice. We will provide you with a portion of the dataset as well as the testing data (but without the labels) and you will upload your solution as a csv to Kaggle. Kaggle will evaluate your scores and the classifier with the highest accuracy will win the competition. Any ties will be broken by the submission time.
 
-We are still figuring out all the details for this bonus so hopefully it will be out by the time the midterm period is over. We will keep the competition available for at least a few weeks.
+We are still figuring out all the details for this bonus. Expect the competition to be open for at least a week after the assignment ends.
 
 ##### Bonus Points Metric
 All bonus points will be added to your assignment 4 grades.

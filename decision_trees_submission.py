@@ -10,10 +10,8 @@ class DecisionNode:
 
     def __init__(self, left, right, decision_function, class_label=None):
         """Create a decision function to select between left and right nodes.
-
         Note: In this representation 'True' values for a decision take us to
         the left. This is arbitrary but is important for this assignment.
-
         Args:
             left (DecisionNode): left child node.
             right (DecisionNode): right child node.
@@ -28,10 +26,8 @@ class DecisionNode:
 
     def decide(self, feature):
         """Get a child node based on the decision function.
-
         Args:
             feature (list(int)): vector for feature.
-
         Return:
             Class label if a leaf node, otherwise a child node.
         """
@@ -48,11 +44,9 @@ class DecisionNode:
 
 def load_csv(data_file_path, class_index=-1):
     """Load csv data in a numpy array.
-
     Args:
         data_file_path (str): path to data file.
         class_index (int): slice output by index.
-
     Returns:
         features, classes as numpy arrays if class_index is specified,
             otherwise all as nump array.
@@ -78,10 +72,8 @@ def load_csv(data_file_path, class_index=-1):
 
 
 def build_decision_tree():
-    """Create a decision tree capable of handling the provided data.
-
+    """Create a decision tree capable of handling the sample data.
     Tree is built fully starting from the root.
-
     Returns:
         The root node of the decision tree.
     """
@@ -96,15 +88,12 @@ def build_decision_tree():
 
 def confusion_matrix(classifier_output, true_labels):
     """Create a confusion matrix to measure classifier performance.
-
     Output will in the format:
         [[true_positive, false_negative],
          [false_positive, true_negative]]
-
     Args:
         classifier_output (list(int)): output from classifier.
         true_labels: (list(int): correct classified labels.
-
     Returns:
         A two dimensional array representing the confusion matrix.
     """
@@ -115,14 +104,11 @@ def confusion_matrix(classifier_output, true_labels):
 
 def precision(classifier_output, true_labels):
     """Get the precision of a classifier compared to the correct values.
-
     Precision is measured as:
         true_positive/ (true_positive + false_positive)
-
     Args:
         classifier_output (list(int)): output from classifier.
         true_labels: (list(int): correct classified labels.
-
     Returns:
         The precision of the classifier output.
     """
@@ -133,14 +119,11 @@ def precision(classifier_output, true_labels):
 
 def recall(classifier_output, true_labels):
     """Get the recall of a classifier compared to the correct values.
-
     Recall is measured as:
         true_positive/ (true_positive + false_negative)
-
     Args:
         classifier_output (list(int)): output from classifier.
         true_labels: (list(int): correct classified labels.
-
     Returns:
         The recall of the classifier output.
     """
@@ -151,14 +134,11 @@ def recall(classifier_output, true_labels):
 
 def accuracy(classifier_output, true_labels):
     """Get the accuracy of a classifier compared to the correct values.
-
     Accuracy is measured as:
         correct_classifications / total_number_examples
-
     Args:
         classifier_output (list(int)): output from classifier.
         true_labels: (list(int): correct classified labels.
-
     Returns:
         The accuracy of the classifier output.
     """
@@ -175,10 +155,8 @@ def gini_impurity(class_vector):
     of the labels in the class_vector.
     It reaches its minimum at zero when all elements of class_vector
     belong to the same class.
-
     Args:
         class_vector (list(int)): Vector of classes given as 0 or 1.
-
     Returns:
         Floating point number representing the gini impurity.
     """
@@ -202,9 +180,7 @@ class DecisionTree:
 
     def __init__(self, depth_limit=float('inf')):
         """Create a decision tree with a set depth limit.
-
         Starts with an empty root.
-
         Args:
             depth_limit (float): The maximum depth to build the tree.
         """
@@ -214,22 +190,19 @@ class DecisionTree:
 
     def fit(self, features, classes):
         """Build the tree from root using __build_tree__().
-
         Args:
-            features (list(list(int)): List of features.
-            classes (list(int)): Available classes.
+            features (m x n): Array of features.
+            classes (m x 1): Array of Classes.
         """
 
         self.root = self.__build_tree__(features, classes)
 
     def __build_tree__(self, features, classes, depth=0):
         """Build tree that automatically finds the decision functions.
-
         Args:
-            features (list(list(int)): List of features.
-            classes (list(int)): Available classes.
+            features (m x n): Array of features.
+            classes (m x 1): Array of Classes.
             depth (int): max depth of tree.  Default is 0.
-
         Returns:
             Root node of decision tree.
         """
@@ -239,10 +212,8 @@ class DecisionTree:
 
     def classify(self, features):
         """Use the fitted tree to classify a list of example features.
-
         Args:
-            features (list(list(int)): List of features.
-
+            features (m x n): Array of features.
         Return:
             A list of class labels.
         """
@@ -256,16 +227,12 @@ class DecisionTree:
 
 def generate_k_folds(dataset, k):
     """Split dataset into folds.
-
     Randomly split data into k equal subsets.
-
     Fold is a tuple (training_set, test_set).
     Set is a tuple (examples, classes).
-
     Args:
         dataset: dataset to be split.
         k (int): number of subsections to create.
-
     Returns:
         List of folds.
     """
@@ -280,7 +247,6 @@ class RandomForest:
     def __init__(self, num_trees, depth_limit, example_subsample_rate,
                  attr_subsample_rate):
         """Create a random forest.
-
          Args:
              num_trees (int): fixed number of trees.
              depth_limit (int): max depth limit of tree.
@@ -296,9 +262,8 @@ class RandomForest:
 
     def fit(self, features, classes):
         """Build a random forest of decision trees using Bootstrap Aggregation.
-
-            features (list(list(int)): List of features.
-            classes (list(int)): Available classes.
+            features (m x n): Array of features.
+            classes (m x 1): Array of Classes.
         """
 
         # TODO: finish this.
@@ -306,9 +271,8 @@ class RandomForest:
 
     def classify(self, features):
         """Classify a list of features based on the trained random forest.
-
         Args:
-            features (list(list(int)): List of features.
+            features (m x n): Array of features.
         """
 
         # TODO: finish this.
@@ -320,7 +284,6 @@ class ChallengeClassifier:
 
     def __init__(self):
         """Create challenge classifier.
-
         Initialize whatever parameters you may need here.
         This method will be called without parameters, therefore provide
         defaults.
@@ -331,12 +294,10 @@ class ChallengeClassifier:
 
     def fit(self, features, classes):
         """Build the underlying tree(s).
-
             Fit your model to the provided features.
-
         Args:
-            features (list(list(int)): List of features.
-            classes (list(int)): Available classes.
+            features (m x n): Array of features.
+            classes (m x 1): Array of Classes.
         """
 
         # TODO: finish this.
@@ -344,12 +305,9 @@ class ChallengeClassifier:
 
     def classify(self, features):
         """Classify a list of features.
-
         Classify each feature in features as either 0 or 1.
-
         Args:
-            features (list(list(int)): List of features.
-
+            features (m x n): Array of features.
         Returns:
             A list of class labels.
         """
@@ -366,13 +324,10 @@ class Vectorization:
 
     def non_vectorized_loops(self, data):
         """Element wise array arithmetic with loops.
-
         This function takes one matrix, multiplies by itself and then adds to
         itself.
-
         Args:
             data: data to be added to array.
-
         Returns:
             Numpy array of data.
         """
@@ -386,15 +341,11 @@ class Vectorization:
 
     def vectorized_loops(self, data):
         """Element wise array arithmetic using vectorization.
-
         This function takes one matrix, multiplies by itself and then adds to
         itself.
-
-        Bonnie time to beat: 0.09 seconds.
-
+        Gradescope time to beat: 0.09 seconds.
         Args:
             data: data to be sliced and summed.
-
         Returns:
             Numpy array of data.
         """
@@ -404,13 +355,10 @@ class Vectorization:
 
     def non_vectorized_slice(self, data):
         """Find row with max sum using loops.
-
         This function searches through the first 100 rows, looking for the row
         with the max sum. (ie, add all the values in that row together).
-
         Args:
             data: data to be added to array.
-
         Returns:
             Tuple (Max row sum, index of row with max sum)
         """
@@ -430,15 +378,11 @@ class Vectorization:
 
     def vectorized_slice(self, data):
         """Find row with max sum using vectorization.
-
         This function searches through the first 100 rows, looking for the row
         with the max sum. (ie, add all the values in that row together).
-
-        Bonnie time to beat: 0.07 seconds
-
+        Gradescope time to beat: 0.07 seconds
         Args:
             data: data to be sliced and summed.
-
         Returns:
             Tuple (Max row sum, index of row with max sum)
         """
@@ -448,15 +392,11 @@ class Vectorization:
 
     def non_vectorized_flatten(self, data):
         """Display occurrences of positive numbers using loops.
-
          Flattens down data into a 1d array, then creates a dictionary of how
          often a positive number appears in the data and displays that value.
-
          ie, [(1203,3)] = integer 1203 appeared 3 times in data.
-
          Args:
             data: data to be added to array.
-
         Returns:
             List of occurrences [(integer, number of occurrences), ...]
         """
@@ -474,17 +414,12 @@ class Vectorization:
 
     def vectorized_flatten(self, data):
         """Display occurrences of positive numbers using vectorization.
-
          Flattens down data into a 1d array, then creates a dictionary of how
          often a positive number appears in the data and displays that value.
-
          ie, [(1203,3)] = integer 1203 appeared 3 times in data.
-
-         Bonnie time to beat: 15 seconds
-
+         Gradescope time to beat: 15 seconds
          Args:
             data: data to be added to array.
-
         Returns:
             List of occurrences [(integer, number of occurrences), ...]
         """
