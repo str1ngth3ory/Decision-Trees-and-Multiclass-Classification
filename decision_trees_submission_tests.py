@@ -1,7 +1,7 @@
 from __future__ import division
 
 import unittest
-import decision_trees_submission as dt
+import submission as dt
 import numpy as np
 
 import platform

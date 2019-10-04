@@ -7,7 +7,7 @@ Clone this repository:
 
 `git clone https://github.gatech.edu/omscs6601/assignment_4.git`
 
-The submission scripts depend on the presence of 4 python packages - `requests`, `future`, `numpy` and `nelson`. Install them using the command below:
+For this assignment, you will need Numpy, No other external libraries are allowed.
 
 `pip install -r requirements.txt`
 
@@ -24,9 +24,9 @@ Machine learning offers a number of methods for classifying data into discrete c
 
 ## Submission and Due Date
 
-The deliverable for the assignment is a **_decision_trees_submission.py_** upload to Gradescope.
+The deliverable for the assignment is a **submission.py_** upload to Gradescope.
 
-* All functions to be completed in **_decision_trees_submission.py_**
+* All functions to be completed in **submission.py_**
 
 **Important**:
 Submissions to Gradescope are rate limited for this assignment. **You can submit two submissions every 30 minutes during the duration of the assignment**.
@@ -35,8 +35,8 @@ In your Gradescope submission history, you can mark a certain submission as 'Act
 
 ### The Files
 
-You will only have to edit and submit **_decision_trees_submission.py_**, but there are a number of notable other files:
-1. **_decision_trees_submission.py_**: Where you will build your decision tree, confusion matrix, performance metrics, forests, and do the vectorization warm up.
+You will only have to edit and submit **submission.py_**, but there are a number of notable other files:
+1. **submission.py_**: Where you will build your decision tree, confusion matrix, performance metrics, forests, and do the vectorization warm up.
 2. **_decision_trees_submission_tests.py_**: Sample tests to validate your trees, learning, and vectorization locally.
 3. **_unit_testing.ipynb_**: Helper Notebook to run through tests sequentially along with the readme
 
@@ -49,7 +49,7 @@ Udacity Videos:
 2. **_challenge_train.csv_**:  30 features, 6636 datapoints, binary classification (first column)
 3. **_challenge_test.csv_**: (will not be provided, but will be similarly structured as challenge_train with 40% of the datapoints)
 
-Assignment 5 warmup
+#### Assignment 5 warmup
 4. **_vectorize.csv_**: data used during the vectorization warmup for Assignment 5
 
 
