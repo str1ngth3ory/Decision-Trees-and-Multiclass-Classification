@@ -24,9 +24,9 @@ Machine learning offers a number of methods for classifying data into discrete c
 
 ## Submission and Due Date
 
-The deliverable for the assignment is a **submission.py_** upload to Gradescope.
+The deliverable for the assignment is a **_submission.py_** upload to Gradescope.
 
-* All functions to be completed in **submission.py_**
+* All functions to be completed in **_submission.py_**
 
 **Important**:
 Submissions to Gradescope are rate limited for this assignment. **You can submit two submissions every 30 minutes during the duration of the assignment**.
@@ -35,8 +35,8 @@ In your Gradescope submission history, you can mark a certain submission as 'Act
 
 ### The Files
 
-You will only have to edit and submit **submission.py_**, but there are a number of notable other files:
-1. **submission.py_**: Where you will build your decision tree, confusion matrix, performance metrics, forests, and do the vectorization warm up.
+You will only have to edit and submit **_submission.py_**, but there are a number of notable other files:
+1. **_submission.py_**: Where you will build your decision tree, confusion matrix, performance metrics, forests, and do the vectorization warm up.
 2. **_decision_trees_submission_tests.py_**: Sample tests to validate your trees, learning, and vectorization locally.
 3. **_unit_testing.ipynb_**: Helper Notebook to run through tests sequentially along with the readme
 
@@ -44,12 +44,12 @@ You will only have to edit and submit **submission.py_**, but there are a number
 Udacity Videos:
 [Lecture 7 on Machine Learning](https://classroom.udacity.com/courses/ud954/lessons/6808838653/concepts/67917548570923)  
 
-### The Datasets
+### Decision Tree Datasets
 1. **_part23_data.csv_**: 4 features, 1372 data points, binary classification (last column)
 2. **_challenge_train.csv_**:  30 features, 6636 datapoints, binary classification (first column)
 3. **_challenge_test.csv_**: (will not be provided, but will be similarly structured as challenge_train with 40% of the datapoints)
 
-#### Assignment 5 warmup
+#### Assignment 5 warmup Data
 4. **_vectorize.csv_**: data used during the vectorization warmup for Assignment 5
 
 
@@ -109,7 +109,7 @@ You would write your code like this:
 
     return decision_tree_root
 
-#### Functions to complete in the `decision_trees_submission` module:
+#### Functions to complete in the `submission` module:
 1. `build_decision_tree()`
 
 ---
@@ -130,7 +130,7 @@ If you want to calculate the example set above by hand, run the following code.
 
     print p1_confusion_matrix, p1_accuracy, p1_precision, p1_recall
 
-#### Functions to complete in the `decision_trees_submission` module:
+#### Functions to complete in the `submission` module:
 1. `confusion_matrix()`
 2. `precision()`
 3. `recall()`
@@ -145,7 +145,7 @@ The first step in order to learn how best to create a decision tree, we need to 
 
 <p>
 
-#### Functions to complete in the `decision_trees_submission` module:
+#### Functions to complete in the `submission` module:
 1. `gini_impurity()`
 2. `gini_gain()`
 
@@ -199,7 +199,7 @@ In `generate_k_folds()`, we'll split the dataset at random into k equal subsecti
 How grading works:
 1. The same as 2b however, we use your `generate_k_folds()` instead of ours.
 
-#### Functions to complete in the `decision_trees_submission` module:
+#### Functions to complete in the `submission` module:
 1. `generate_k_folds()`
 
 ---
