@@ -44,6 +44,4 @@ Finally, commit the new updates to your branch and continue developing:
 `git commit -am "<funny message vilifying TAs for the update>"`
 
 # Submit your code
-A friendly reminder: please ensure that your submission is in `decision_trees_submission.py`. The script described in the following section automatically sends that file to the servers for processing.
-
-To submit your code and have it evaluated for a grade, use `python submit.py`.  Please check [Bonnie](https://bonnie.udacity.com/student) for the current submission limitations.
+A friendly reminder: please ensure that your submission is in `submission.py`.
