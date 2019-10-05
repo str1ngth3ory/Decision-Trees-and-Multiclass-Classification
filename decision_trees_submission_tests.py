@@ -1,5 +1,3 @@
-from __future__ import division
-
 import unittest
 import submission as dt
 import numpy as np

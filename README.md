@@ -7,9 +7,19 @@ Clone this repository:
 
 `git clone https://github.gatech.edu/omscs6601/assignment_4.git`
 
-For this assignment, you will need Numpy, No other external libraries are allowed.
+For this assignment, you will need Numpy, No other external libraries are allowed for solving this problem.
 
-`pip install -r requirements.txt`
+Please use the same environment from previous assignments by running
+
+```
+conda activate ai_env
+```
+
+And then you can isntall numpy if you do not already have it by:
+
+```
+pip install -r requirements.txt
+```
 
 Python 3.7 is recommended and has been tested.
 
@@ -54,7 +64,7 @@ Udacity Videos:
 
 
 ### Imports
-**NOTE:** We are only allowing four imports: __ future__.division, numpy, collections.Counter and time. We will be checking to see if any other libraries are used. You are not allowed to use any outside libraries especially for part 4 (challenge). Please remember that you should not change any function headers.
+**NOTE:** We are only allowing three imports: numpy, collections.Counter and time. We will be checking to see if any other libraries are used. You are not allowed to use any outside libraries especially for part 4 (challenge). Please remember that you should not change any function headers.
 
 ## The Assignment
 Classification is used widely in machine learning to figure out how to sort new data that comes through.  You will build, train and test decision tree models to perform basic classification tasks. Students should understand how decision trees and random forests work. This will help you develop an intuition for how and why accuracy differs for training and testing data based on different parameters.
