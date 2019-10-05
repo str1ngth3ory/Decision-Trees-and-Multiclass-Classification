@@ -15,12 +15,17 @@ Please use the same environment from previous assignments by running
 conda activate ai_env
 ```
 
-And then you can isntall numpy if you do not already have it by:
+And then you can install missing packages with :
 
 ```
 pip install -r requirements.txt
 ```
 
+If you wish to run the supplementary testing notebook, you will need jupyter installed and can call the following command from your downloaded repository and select unit_testing:
+
+```
+jupyter notebook
+```
 Python 3.7 is recommended and has been tested.
 
 Read [setup.md](./setup.md) for more information on how to effectively manage your git repository and troubleshooting information.
