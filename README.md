@@ -210,7 +210,7 @@ First, in the `DecisionTree.__build_tree__()` method implement the above algorit
 Next, in `DecisionTree.classify()`, write a function to produce classifications for a list of features once your decision tree has been built.
 
 Some other helpful notes:
-1. Your features and classify should be in numpy arrays where if the dataset is (_m_ x _n_) then the features is (_m_ x _n-1_) and classify is (_m_ x _1_)
+1. Your features and classify should be in numpy arrays where if the dataset is (_m_ x _n_) then the features is (_m_ x _n_-1) and classify is (_m_ x _1_)
 2. These features are continuous features and you will need to split based on a threshold. Consider different options for what this threshold might be.
 
 How grading works:
@@ -260,7 +260,7 @@ Classification for a random forest is then done by taking a majority vote of the
 
 Fill in `RandomForest.fit()` to fit the decision tree as we describe above, and fill in `RandomForest.classify()` to classify a given list of examples.
 
-Your features and classify should be in numpy arrays where if the dataset is (_m_ x _n_) then the features is (_m_ x _n-1_) and classify is (_n_ x _1_).
+Your features and classify should be in numpy arrays where if the dataset is (_m_ x _n_) then the features is (_m_ x _n_-1) and classify is (_n_ x _1_).
 
 To test, we will be using a forest with 5 trees, with a depth limit of 5, example subsample rate of 0.5 and attribute subsample rate of 0.5
 
@@ -277,13 +277,13 @@ How grading works:
 _[10 pts]_
 
 * File to use: **_challenge_train.csv_**
-* Grading: average training accuracy over 10 runs should be >= 80% and average testing accuracy over 10 runs should be >= 70%
+* Grading: average training accuracy over 10 runs should be >= 85% and average testing accuracy over 10 runs should be >= 80%
 
 The Challenge Classifier should be implemented using some sort of a **tree structure**.  Students in the past have been able to call their `RandomForest` with different parameters. We also encourage things like boosting.
 
 You've been provided with a sample of data from a research dataset in **_challenge_train.csv_** while we have reserved a part of the dataset for testing called **_challenge_test.csv_** (which you do not have access to).
 
-To get full points for this part of the assignment, you'll need to get at least an average accuracy of 80% on the training data you have (**_challenge_train.csv_**), and at least an average accuracy of 70% on the holdout/test set (**_challenge_test.csv_**).
+To get full points for this part of the assignment, you'll need to get at least an average accuracy of 85% on the training data you have (**_challenge_train.csv_**), and at least an average accuracy of 80% on the holdout/test set (**_challenge_test.csv_**).
 
 #### Functions to complete in the `ChallengeClassifier` class:
 1. `__init__()`
