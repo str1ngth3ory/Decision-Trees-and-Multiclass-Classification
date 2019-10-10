@@ -1,11 +1,7 @@
 import unittest
 import submission as dt
 import numpy as np
-
-import platform
-if platform.system() != 'Windows':
-    import resource
-
+import time
 
 class DecisionTreePart1Tests(unittest.TestCase):
     """Test tree example, confusion matrix, precision, recall, and accuracy.
@@ -316,44 +312,41 @@ class VectorizationWarmUpTests(unittest.TestCase):
 
         assert np.array_equal(answer_unique, my_unique)
 
-    @unittest.skipUnless(platform.system() != 'Windows', "Requires Unix")
     def test_vectorized_loops_time(self):
         """Test if vectorized arithmetic speed.
 
         Asserts:
-            vectorized arithmetic is faster than expected Bonnie time.
+            vectorized arithmetic is faster than expected gradescope time.
         """
 
-        start_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
+        start_time = time.time() * 1000
         self.vector.vectorized_loops(self.data)
-        end_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
+        end_time = time.time() * 1000
 
         assert (end_time - start_time) <= 0.09
 
-    @unittest.skipUnless(platform.system() != 'Windows', "Requires Unix")
     def test_vectorized_slice_time(self):
         """Test if vectorized slicing speed.
 
         Asserts:
-            vectorized slicing is faster than expected Bonnie time.
+            vectorized slicing is faster than expected gradescope time.
         """
 
-        start_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
+        start_time = time.time() * 1000
         self.vector.vectorized_slice(self.data)
-        end_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
+        end_time = time.time() * 1000
 
         assert (end_time - start_time) <= 0.07
 
-    @unittest.skipUnless(platform.system() != 'Windows', "Requires Unix")
     def test_vectorized_flatten_time(self):
         """Test if vectorized flatten speed.
 
         Asserts:
-            vectorized flatten is faster than expected Bonnie time.
+            vectorized flatten is faster than expected gradescope time.
         """
-        start_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
+        start_time = time.time() * 1000
         self.vector.vectorized_flatten(self.data)
-        end_time = resource.getrusage(resource.RUSAGE_SELF).ru_utime * 1000
+        end_time = time.time()  * 1000
 
         assert (end_time - start_time) <= 15.0
 
