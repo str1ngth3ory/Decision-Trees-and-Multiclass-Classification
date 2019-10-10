@@ -1,5 +1,5 @@
 import unittest
-import submission as dt
+import submission_ref as dt
 import numpy as np
 
 import platform
@@ -311,8 +311,8 @@ class VectorizationWarmUpTests(unittest.TestCase):
             vectorized flattening matches looped version.
         """
 
-        answer_unique = self.vector.non_vectorized_flatten(self.data)
-        my_unique = self.vector.vectorized_flatten(self.data)
+        answer_unique = sorted(self.vector.non_vectorized_flatten(self.data))
+        my_unique = sorted(self.vector.vectorized_flatten(self.data))
 
         assert np.array_equal(answer_unique, my_unique)
 
@@ -368,7 +368,7 @@ class NameTests(unittest.TestCase):
         """Test if vectorized arithmetic.
 
         Asserts:
-            vectorized arithmetic matches looped version.
+            Non Matching Name
         """
 
         self.name = dt.return_your_name()

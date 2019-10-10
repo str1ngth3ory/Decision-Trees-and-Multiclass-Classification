@@ -189,7 +189,7 @@ class DecisionTree:
     def fit(self, features, classes):
         """Build the tree from root using __build_tree__().
         Args:
-            features (m x n): Array of features.
+            features (m x n): m examples with n features.
             classes (m x 1): Array of Classes.
         """
 
@@ -198,9 +198,9 @@ class DecisionTree:
     def __build_tree__(self, features, classes, depth=0):
         """Build tree that automatically finds the decision functions.
         Args:
-            features (m x n): Array of features.
+            features (m x n): m examples with n features.
             classes (m x 1): Array of Classes.
-            depth (int): max depth of tree.  Default is 0.
+            depth (int): depth to build tree to.
         Returns:
             Root node of decision tree.
         """
@@ -211,7 +211,7 @@ class DecisionTree:
     def classify(self, features):
         """Use the fitted tree to classify a list of example features.
         Args:
-            features (m x n): Array of features.
+            features (m x n): m examples with n features.
         Return:
             A list of class labels.
         """
@@ -227,12 +227,14 @@ def generate_k_folds(dataset, k):
     """Split dataset into folds.
     Randomly split data into k equal subsets.
     Fold is a tuple (training_set, test_set).
-    Set is a tuple (examples, classes).
+    Set is a tuple (features, classes).
     Args:
         dataset: dataset to be split.
         k (int): number of subsections to create.
     Returns:
         List of folds.
+        => Each fold is a tuple of sets.
+        => Each Set is a tuple of numpy arrays.
     """
 
     # TODO: finish this.
@@ -260,7 +262,7 @@ class RandomForest:
 
     def fit(self, features, classes):
         """Build a random forest of decision trees using Bootstrap Aggregation.
-            features (m x n): Array of features.
+            features (m x n): m examples with n features.
             classes (m x 1): Array of Classes.
         """
 
@@ -270,7 +272,7 @@ class RandomForest:
     def classify(self, features):
         """Classify a list of features based on the trained random forest.
         Args:
-            features (m x n): Array of features.
+            features (m x n): m examples with n features.
         """
 
         # TODO: finish this.
@@ -294,7 +296,7 @@ class ChallengeClassifier:
         """Build the underlying tree(s).
             Fit your model to the provided features.
         Args:
-            features (m x n): Array of features.
+            features (m x n): m examples with n features.
             classes (m x 1): Array of Classes.
         """
 
@@ -305,7 +307,7 @@ class ChallengeClassifier:
         """Classify a list of features.
         Classify each feature in features as either 0 or 1.
         Args:
-            features (m x n): Array of features.
+            features (m x n): m examples with n features.
         Returns:
             A list of class labels.
         """
@@ -341,7 +343,6 @@ class Vectorization:
         """Element wise array arithmetic using vectorization.
         This function takes one matrix, multiplies by itself and then adds to
         itself.
-        Gradescope time to beat: 0.09 seconds.
         Args:
             data: data to be sliced and summed.
         Returns:
@@ -378,7 +379,6 @@ class Vectorization:
         """Find row with max sum using vectorization.
         This function searches through the first 100 rows, looking for the row
         with the max sum. (ie, add all the values in that row together).
-        Gradescope time to beat: 0.07 seconds
         Args:
             data: data to be sliced and summed.
         Returns:
@@ -415,7 +415,6 @@ class Vectorization:
          Flattens down data into a 1d array, then creates a dictionary of how
          often a positive number appears in the data and displays that value.
          ie, [(1203,3)] = integer 1203 appeared 3 times in data.
-         Gradescope time to beat: 15 seconds
          Args:
             data: data to be added to array.
         Returns:

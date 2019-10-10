@@ -28,8 +28,6 @@ jupyter notebook
 ```
 Python 3.7 is recommended and has been tested.
 
-Read [setup.md](./setup.md) for more information on how to effectively manage your git repository and troubleshooting information.
-
 ## Overview
 Machine learning offers a number of methods for classifying data into discrete categories, such as k-means clustering. Decision trees provide a structure for such categorization, based on a series of decisions that led to separate distinct outcomes. In this assignment, you will work with decision trees to perform binary classification according to some decision boundary. Your challenge is to build and to train decision trees capable of solving useful classification problems. You will learn first how to build decision trees, then how to effectively train them and finally how to test their performance.
 
@@ -64,7 +62,7 @@ Udacity Videos:
 2. **_challenge_train.csv_**:  30 features, 6636 datapoints, binary classification (first column)
 3. **_challenge_test.csv_**: (will not be provided, but will be similarly structured as challenge_train with 40% of the datapoints)
 
-#### Assignment 5 warmup Data
+#### Warmup Data
 4. **_vectorize.csv_**: data used during the vectorization warmup for Assignment 5
 
 
@@ -74,7 +72,30 @@ Udacity Videos:
 ## The Assignment
 Classification is used widely in machine learning to figure out how to sort new data that comes through.  You will build, train and test decision tree models to perform basic classification tasks. Students should understand how decision trees and random forests work. This will help you develop an intuition for how and why accuracy differs for training and testing data based on different parameters.
 
-### Introduction
+---
+
+### Part 0: Vectorization!
+_[6 pts]_
+
+* File to use: **_vectorize.csv_**
+
+Vectorization is a process that provides enormous performance increases when processing large amounts of data. Whether one is training a deep neural network on millions of images, building random forests over a large dataset, or utilizing other algorithms, machine learning makes _extensive_ use of vectorization. In python, the **numpy** package provides a programmer with the ability to use python-wrapped, low-level optimizations written in C, however, the technique may feel strange at first and requires some practice to use comfortably.
+
+The data management in Assignment 4 can benefit from familiarity with these techniques. Additionally, Assignment 5 has a vectorization requirement so that it can run within a reasonable time limit. This small section will hopefully introduce you to vectorization and some of the cool tricks you can use in python. We encourage you to use any numpy function out there (on good faith) to do the functions in the warmup section.
+
+For the three functions that we have, we are testing your code based on how fast it runs. It will need to beat the non-vectorized code to get full points.
+
+As a reminder, please don't ask the TA's for help regarding this section, we will not be able to assist you in any way. This section was created to help get you ready for the assignment; feel free to ask other students on Piazza or use the Internet.
+
+How grading works:
+1. We run the non-vectorized code and your vectorized code 500 times, as long as the average time of your vectorized code is less than the average time of the non-vectorized code, you will get the points (given that your answer is correct).
+
+#### Functions to complete in the `Vectorization` class:
+1. `vectorized_loops()`
+2. `vectorized_slice()`
+3. `vectorized_flatten()`
+
+### Assignment Introduction
 For this assignment we're going to need an explicit way to make structured decisions. The `DecisionNode` class will be used to represent a decision node as some atomic choice in a binary decision graph. We would only use this implementation of the Decision Tree for this assignment and any other implementations will be checked against and denied credit.
 
 An object from the 'DecisionNode' can represent a class label (i.e. a final decision) or a binary decision to guide us through a flow-chart to arrive at a decision. Note that in this representation 'True' values for a decision take us to the left. This choice is arbitrary, but this is used in the hint below.
@@ -230,7 +251,7 @@ The decision boundaries drawn by decision trees are very sharp, and fitting a de
 A Random Forest is a collection of decision trees, built as follows:
 1. For every tree we're going to build:
    1. Subsample the examples provided us (with replacement) in accordance with a provided example subsampling rate.
-   2. From the sample in the first step, choose attributes at random to learn on (in accordance with a provided attribute subsampling rate).
+   2. From the sample in the first step, choose attributes at random to learn on (in accordance with a provided attribute subsampling rate). (Without replacement)
    3. Fit a decision tree to the subsample of data we've chosen (to a certain depth).
 
 Classification for a random forest is then done by taking a majority vote of the classifications yielded by each tree in the forest after it classifies an example.
@@ -268,30 +289,7 @@ To get full points for this part of the assignment, you'll need to get at least 
 3. `classify()`
 
 ---
-
-### Part 5: Vectorization!
-_[6 pts]_
-
-* File to use: **_vectorize.csv_**
-
-Vectorization is a process that provides enormous performance increases when processing large amounts of data. Whether one is training a deep neural network on millions of images, building random forests over a large dataset, or utilizing other algorithms, machine learning makes _extensive_ use of vectorization. In python, the **numpy** package provides a programmer with the ability to use python-wrapped, low-level optimizations written in C, however, the technique may feel strange at first and requires some practice to use comfortably.
-
-Assignment 5 has a vectorization requirement so that it can run within a reasonable time limit. This small section will hopefully introduce you to vectorization and some of the cool tricks you can use in python. We encourage you to use any numpy function out there (on good faith) to do the following functions.
-
-For the three functions that we have, we are testing your code based on how fast it runs. It will need to beat the non-vectorized code to get full points.
-
-As a reminder, please don't ask the TA's for help regarding this section, we will not be able to assist you in any way. This section was created to help get you ready for assignment_5; feel free to ask other students on Piazza or use the Internet.
-
-How grading works:
-1. We run the non-vectorized code and your vectorized code 500 times, as long as the average time of your vectorized code is less than the average time of the non-vectorized code, you will get the points (given that your answer is correct).
-
-#### Functions to complete in the `Vectorization` class:
-1. `vectorized_loops()`
-2. `vectorized_slice()`
-3. `vectorized_flatten()`
-
----
-### Part 6: Return Your name!
+### Part 5: Return Your name!
 _[1 pts]_
 Return your name from the function `return_your_name()`
 
