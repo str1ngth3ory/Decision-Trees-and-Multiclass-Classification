@@ -7,13 +7,26 @@ Clone this repository:
 
 `git clone https://github.gatech.edu/omscs6601/assignment_4.git`
 
-The submission scripts depend on the presence of 4 python packages - `requests`, `future`, `numpy` and `nelson`. Install them using the command below:
+For this assignment, you will need Numpy, No other external libraries are allowed for solving this problem.
 
-`pip install -r requirements.txt`
+Please use the same environment from previous assignments by running
 
+```
+conda activate ai_env
+```
+
+And then you can install missing packages with :
+
+```
+pip install -r requirements.txt
+```
+
+If you wish to run the supplementary testing notebook, you will need jupyter installed and can call the following command from your downloaded repository and select unit_testing:
+
+```
+jupyter notebook
+```
 Python 3.7 is recommended and has been tested.
-
-Read [setup.md](./setup.md) for more information on how to effectively manage your git repository and troubleshooting information.
 
 ## Overview
 Machine learning offers a number of methods for classifying data into discrete categories, such as k-means clustering. Decision trees provide a structure for such categorization, based on a series of decisions that led to separate distinct outcomes. In this assignment, you will work with decision trees to perform binary classification according to some decision boundary. Your challenge is to build and to train decision trees capable of solving useful classification problems. You will learn first how to build decision trees, then how to effectively train them and finally how to test their performance.
@@ -24,48 +37,67 @@ Machine learning offers a number of methods for classifying data into discrete c
 
 ## Submission and Due Date
 
-All submissions will be via Bonnie. Please also submit your **_decision_trees_submission.py_** to Canvas.
-**The Last Submission will be used for the Assignment grade.**
+The deliverable for the assignment is a **_submission.py_** upload to Gradescope.
 
-You can enter `python submit.py` on your console to send your submission file. It is recommended to run this command from a shell/command prompt as issues have been known while running inside select IDEs.
+* All functions to be completed in **_submission.py_**
 
 **Important**:
-Submissions to Bonnie are rate limited for this assignment. **You can submit to Bonnie for evaluation once every 60 minutes during the duration of the assignment**. Please use your submissions wisely and submit after you have tested your code locally. As per every assignment, you can find the output of all of your submissions on bonnie.udacity.com.
+Submissions to Gradescope are rate limited for this assignment. **You can submit two submissions every 60 minutes during the duration of the assignment**.
 
-We are not responsible for a final submission that gets a lower score than a previous submission. We will only use your LAST submission before the deadline for grading.
-
-**This assignment is due on both Bonnie and Canvas by March 17th, 2019 11:59PM UTC-12 (Anywhere on Earth).** The submission on Canvas is a backup just in case, and the submission to Bonnie will be officially used for grading. The deliverables for the assignment are:
-
-* All functions completed in **_decision_trees_submission.py_**
+In your Gradescope submission history, you can mark a certain submission as 'Active'. Please ensure this is your best submission.
 
 ### The Files
 
-You will only have to edit and submit **_decision_trees_submission.py_**, but there are a number of notable other files:
-1. **_decision_trees_submission.py_**: Where you will build your decision tree, confusion matrix, performance metrics, forests, and do the vectorization warm up.
+You will only have to edit and submit **_submission.py_**, but there are a number of notable other files:
+1. **_submission.py_**: Where you will build your decision tree, confusion matrix, performance metrics, forests, and do the vectorization warm up.
 2. **_decision_trees_submission_tests.py_**: Sample tests to validate your trees, learning, and vectorization locally.
+3. **_unit_testing.ipynb_**: Helper Notebook to run through tests sequentially along with the readme
 
 ### Resources
-
 Udacity Videos:
 [Lecture 7 on Machine Learning](https://classroom.udacity.com/courses/ud954/lessons/6808838653/concepts/67917548570923)  
 
-### The Datasets
+### Decision Tree Datasets
 1. **_part23_data.csv_**: 4 features, 1372 data points, binary classification (last column)
-
 2. **_challenge_train.csv_**:  30 features, 6636 datapoints, binary classification (first column)
 3. **_challenge_test.csv_**: (will not be provided, but will be similarly structured as challenge_train with 40% of the datapoints)
 
-Assignment 5 warmup
+#### Warmup Data
 4. **_vectorize.csv_**: data used during the vectorization warmup for Assignment 5
 
-
 ### Imports
-**NOTE:** We are only allowing four imports: __ future__.division, numpy, collections.Counter and time. We will be checking to see if any other libraries are used. You are not allowed to use any outside libraries especially for part 4 (challenge). Please remember that you should not change any function headers.
+**NOTE:** We are only allowing three imports: numpy, collections.Counter and time. We will be checking to see if any other libraries are used. You are not allowed to use any outside libraries especially for part 4 (challenge). Please remember that you should not change any function headers.
+
+---
+
+### Part 0: Vectorization!
+_[6 pts]_
+
+* File to use: **_vectorize.csv_**
+
+Vectorization is a process that provides enormous performance increases when processing large amounts of data. Whether one is training a deep neural network on millions of images, building random forests over a large dataset, or utilizing other algorithms, machine learning makes _extensive_ use of vectorization. In python, the **numpy** package provides a programmer with the ability to use python-wrapped, low-level optimizations written in C, however, the technique may feel strange at first and requires some practice to use comfortably.
+
+The data management in Assignment 4 can benefit from familiarity with these techniques. Additionally, Assignment 5 has a vectorization requirement so that it can run within a reasonable time limit. This small section will hopefully introduce you to vectorization and some of the cool tricks you can use in python. We encourage you to use any numpy function out there (on good faith) to do the functions in the warmup section.
+
+For the three functions that we have, we are testing your code based on how fast it runs. It will need to beat the non-vectorized code to get full points.
+
+As a reminder, please don't ask the TA's for help regarding this section, we will not be able to assist you in any way. This section was created to help get you ready for the assignment; feel free to ask other students on Piazza or use the Internet.
+
+How grading works:
+1. We run the non-vectorized code and your vectorized code 500 times, as long as the average time of your vectorized code is less than the average time of the non-vectorized code, you will get the points (given that your answer is correct).
+
+#### Functions to complete in the `Vectorization` class:
+1. `vectorized_loops()`
+2. `vectorized_slice()`
+3. `vectorized_flatten()`
+
+
+---
 
 ## The Assignment
 Classification is used widely in machine learning to figure out how to sort new data that comes through.  You will build, train and test decision tree models to perform basic classification tasks. Students should understand how decision trees and random forests work. This will help you develop an intuition for how and why accuracy differs for training and testing data based on different parameters.
 
-### Introduction
+### Assignment Introduction
 For this assignment we're going to need an explicit way to make structured decisions. The `DecisionNode` class will be used to represent a decision node as some atomic choice in a binary decision graph. We would only use this implementation of the Decision Tree for this assignment and any other implementations will be checked against and denied credit.
 
 An object from the 'DecisionNode' can represent a class label (i.e. a final decision) or a binary decision to guide us through a flow-chart to arrive at a decision. Note that in this representation 'True' values for a decision take us to the left. This choice is arbitrary, but this is used in the hint below.
@@ -115,7 +147,7 @@ You would write your code like this:
 
     return decision_tree_root
 
-#### Functions to complete in the `decision_trees_submission` module:
+#### Functions to complete in the `submission` module:
 1. `build_decision_tree()`
 
 ---
@@ -136,7 +168,7 @@ If you want to calculate the example set above by hand, run the following code.
 
     print p1_confusion_matrix, p1_accuracy, p1_precision, p1_recall
 
-#### Functions to complete in the `decision_trees_submission` module:
+#### Functions to complete in the `submission` module:
 1. `confusion_matrix()`
 2. `precision()`
 3. `recall()`
@@ -147,11 +179,11 @@ If you want to calculate the example set above by hand, run the following code.
 ### Part 2a: Decision Tree Learning
 _[6 pts]_
 
-The first step in order to learn how best to create a decision tree, we need to know how well we are splitting the data. This is usually done by measuring the entropy of each split and using it to calculate information gain, but we'd like you to use GINI impurity instead of entropy for this assignment. We can do this by calculating the  `gini_impurity` and `gini_gain()` on the various splits (hints: [gini impurity](https://en.wikipedia.org/wiki/Decision_tree_learning#Gini_impurity) and [information gain](https://en.wikipedia.org/wiki/Information_gain_in_decision_trees)).
+The first step in order to learn how best to create a decision tree, we need to know how well we are splitting the data. This is usually done by measuring the entropy of each split and using it to calculate information gain, but we'd like you to use GINI impurity instead of entropy for this assignment. We can do this by calculating the  `gini_impurity` and `gini_gain()` on the various splits (hints: [gini impurity](https://en.wikipedia.org/wiki/Decision_tree_learning#Gini_impurity) and [information gain](https://en.wikipedia.org/wiki/Information_gain_in_decision_trees)). The Gini Gain follows a similar approach to information gain, replacing entropy with Gini Impurity.
 
 <p>
 
-#### Functions to complete in the `decision_trees_submission` module:
+#### Functions to complete in the `submission` module:
 1. `gini_impurity()`
 2. `gini_gain()`
 
@@ -178,13 +210,13 @@ First, in the `DecisionTree.__build_tree__()` method implement the above algorit
 Next, in `DecisionTree.classify()`, write a function to produce classifications for a list of features once your decision tree has been built.
 
 Some other helpful notes:
-1. Your features and classify should be in numpy arrays where if the dataset is (_m_ x _n_) then the features is (_m_ x _n-1_) and classify is (_m_ x _1_)
-2. These features are continuous features and you will need to split based on a threshold.
+1. Your features and classify should be in numpy arrays where if the dataset is (_m_ x _n_) then the features is (_m_ x _n_-1) and classify is (_m_ x _1_)
+2. These features are continuous features and you will need to split based on a threshold. Consider different options for what this threshold might be.
 
 How grading works:
 1. We load **_part23_data.csv_** and create our cross-validation training and test set with a `k=10` folds.  We use our own `generate_k_folds()` method.
-2. We classify the training data onto the three then fit the testing data onto the tree.
-3. We check the accuracy of your results versus the true results and we return the average of this over 10 iterations.
+2. We fit the (folded) training data onto the tree then classify the (folded) testing data with the tree.
+3. We check the accuracy of your results versus the true results and we return the average of this over k=10 iterations.
 
 #### Functions to complete in the `DecisionTree` class:
 1. `__build_tree__()`
@@ -205,7 +237,7 @@ In `generate_k_folds()`, we'll split the dataset at random into k equal subsecti
 How grading works:
 1. The same as 2b however, we use your `generate_k_folds()` instead of ours.
 
-#### Functions to complete in the `decision_trees_submission` module:
+#### Functions to complete in the `submission` module:
 1. `generate_k_folds()`
 
 ---
@@ -221,14 +253,14 @@ The decision boundaries drawn by decision trees are very sharp, and fitting a de
 A Random Forest is a collection of decision trees, built as follows:
 1. For every tree we're going to build:
    1. Subsample the examples provided us (with replacement) in accordance with a provided example subsampling rate.
-   2. From the sample in the first step, choose attributes at random to learn on (in accordance with a provided attribute subsampling rate).
+   2. From the sample in the first step, choose attributes at random to learn on (in accordance with a provided attribute subsampling rate). (Without replacement)
    3. Fit a decision tree to the subsample of data we've chosen (to a certain depth).
 
 Classification for a random forest is then done by taking a majority vote of the classifications yielded by each tree in the forest after it classifies an example.
 
 Fill in `RandomForest.fit()` to fit the decision tree as we describe above, and fill in `RandomForest.classify()` to classify a given list of examples.
 
-Your features and classify should be in numpy arrays where if the dataset is (_m_ x _n_) then the features is (_m_ x _n-1_) and classify is (_n_ x _1_).
+Your features and classify should be in numpy arrays where if the dataset is (_m_ x _n_) then the features is (_m_ x _n_-1) and classify is (_n_ x _1_).
 
 To test, we will be using a forest with 5 trees, with a depth limit of 5, example subsample rate of 0.5 and attribute subsample rate of 0.5
 
@@ -245,13 +277,13 @@ How grading works:
 _[10 pts]_
 
 * File to use: **_challenge_train.csv_**
-* Grading: average training accuracy over 10 runs should be >= 80% and average testing accuracy over 10 runs should be >= 70%
+* Grading: average training accuracy over 10 runs should be >= 85% and average testing accuracy over 10 runs should be >= 80%
 
 The Challenge Classifier should be implemented using some sort of a **tree structure**.  Students in the past have been able to call their `RandomForest` with different parameters. We also encourage things like boosting.
 
 You've been provided with a sample of data from a research dataset in **_challenge_train.csv_** while we have reserved a part of the dataset for testing called **_challenge_test.csv_** (which you do not have access to).
 
-To get full points for this part of the assignment, you'll need to get at least an average accuracy of 80% on the training data you have (**_challenge_train.csv_**), and at least an average accuracy of 70% on the holdout/test set (**_challenge_test.csv_**). We do provide how long it takes for your training and testing to run.
+To get full points for this part of the assignment, you'll need to get at least an average accuracy of 85% on the training data you have (**_challenge_train.csv_**), and at least an average accuracy of 80% on the holdout/test set (**_challenge_test.csv_**).
 
 #### Functions to complete in the `ChallengeClassifier` class:
 1. `__init__()`
@@ -259,30 +291,7 @@ To get full points for this part of the assignment, you'll need to get at least 
 3. `classify()`
 
 ---
-
-### Part 5: Vectorization!
-_[6 pts]_
-
-* File to use: **_vectorize.csv_**
-
-Vectorization is a process that provides enormous performance increases when processing large amounts of data. Whether one is training a deep neural network on millions of images, building random forests over a large dataset, or utilizing other algorithms, machine learning makes _extensive_ use of vectorization. In python, the **numpy** package provides a programmer with the ability to use python-wrapped, low-level optimizations written in C, however, the technique may feel strange at first and requires some practice to use comfortably.
-
-Assignment 5 has a vectorization requirement so that it can run within a reasonable time limit. This small section will hopefully introduce you to vectorization and some of the cool tricks you can use in python. We encourage you to use any numpy function out there (on good faith) to do the following functions.
-
-For the three functions that we have, we are testing your code based on how fast it runs. It will need to beat the non-vectorized code to get full points.
-
-As a reminder, please don't ask the TA's for help regarding this section, we will not be able to assist you in any way. This section was created to help get you ready for assignment_5; feel free to ask other students on Piazza or use the Internet.
-
-How grading works:
-1. We run the non-vectorized code and your vectorized code 500 times, as long as the average time of your vectorized code is less than the average time of the non-vectorized code, you will get the points (given that your answer is correct).
-
-#### Functions to complete in the `Vectorization` class:
-1. `vectorized_loops()`
-2. `vectorized_slice()`
-3. `vectorized_flatten()`
-
----
-### Part 6: Return Your name!
+### Part 5: Return Your name!
 _[1 pts]_
 Return your name from the function `return_your_name()`
 
@@ -291,9 +300,9 @@ Return your name from the function `return_your_name()`
 
 **Note:** This part will be ever changing. Official announcements for this bonus will be made through Piazza.
 
-We will be having a competition using your challenge classifier and a dataset of our choice. We will provide you with a portion of the dataset as well as the testing data (but without the labels) and you will upload your solution as a csv to Kaggle. Kaggle will evaluate your scores and the classifier with the highest accuracy will win the competiton. Any ties will be broken by the submission time.
+We will be having a competition using your challenge classifier and a dataset of our choice. We will provide you with a portion of the dataset as well as the testing data (but without the labels) and you will upload your solution as a csv to Kaggle. Kaggle will evaluate your scores and the classifier with the highest accuracy will win the competition. Any ties will be broken by the submission time.
 
-We are still figuring out all the details for this bonus so hopefully it will be out by the time the midterm period is over. We will keep the competition available for at least a few weeks.
+We are still figuring out all the details for this bonus. Expect the competition to be open for at least a week after the assignment ends.
 
 ##### Bonus Points Metric
 All bonus points will be added to your assignment 4 grades.
