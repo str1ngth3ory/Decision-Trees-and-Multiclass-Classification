@@ -42,7 +42,7 @@ The deliverable for the assignment is a **_submission.py_** upload to Gradescope
 * All functions to be completed in **_submission.py_**
 
 **Important**:
-Submissions to Gradescope are rate limited for this assignment. **You can submit two submissions every 30 minutes during the duration of the assignment**.
+Submissions to Gradescope are rate limited for this assignment. **You can submit two submissions every 60 minutes during the duration of the assignment**.
 
 In your Gradescope submission history, you can mark a certain submission as 'Active'. Please ensure this is your best submission.
 
@@ -65,12 +65,8 @@ Udacity Videos:
 #### Warmup Data
 4. **_vectorize.csv_**: data used during the vectorization warmup for Assignment 5
 
-
 ### Imports
 **NOTE:** We are only allowing three imports: numpy, collections.Counter and time. We will be checking to see if any other libraries are used. You are not allowed to use any outside libraries especially for part 4 (challenge). Please remember that you should not change any function headers.
-
-## The Assignment
-Classification is used widely in machine learning to figure out how to sort new data that comes through.  You will build, train and test decision tree models to perform basic classification tasks. Students should understand how decision trees and random forests work. This will help you develop an intuition for how and why accuracy differs for training and testing data based on different parameters.
 
 ---
 
@@ -94,6 +90,12 @@ How grading works:
 1. `vectorized_loops()`
 2. `vectorized_slice()`
 3. `vectorized_flatten()`
+
+
+---
+
+## The Assignment
+Classification is used widely in machine learning to figure out how to sort new data that comes through.  You will build, train and test decision tree models to perform basic classification tasks. Students should understand how decision trees and random forests work. This will help you develop an intuition for how and why accuracy differs for training and testing data based on different parameters.
 
 ### Assignment Introduction
 For this assignment we're going to need an explicit way to make structured decisions. The `DecisionNode` class will be used to represent a decision node as some atomic choice in a binary decision graph. We would only use this implementation of the Decision Tree for this assignment and any other implementations will be checked against and denied credit.
