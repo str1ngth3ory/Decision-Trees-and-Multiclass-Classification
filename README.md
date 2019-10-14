@@ -13,18 +13,11 @@ Please use the same environment from previous assignments by running
 conda activate ai_env
 ```
 
-And then you can install missing packages with :
-
-```
-pip install -r requirements.txt
-```
-
 If you wish to run the supplementary testing notebook, you will need jupyter installed and can call the following command from your downloaded repository and select unit_testing:
 
 ```
 jupyter notebook
 ```
-Python 3.7 is recommended and has been tested.
 
 ## Overview
 Machine learning offers a number of methods for classifying data into discrete categories, such as k-means clustering. Decision trees provide a structure for such categorization, based on a series of decisions that led to separate distinct outcomes. In this assignment, you will work with decision trees to perform binary classification according to some decision boundary. Your challenge is to build and to train decision trees capable of solving useful classification problems. You will learn first how to build decision trees, then how to effectively train them and finally how to test their performance.
