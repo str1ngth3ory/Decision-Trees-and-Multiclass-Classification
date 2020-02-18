@@ -19,6 +19,18 @@ If you wish to run the supplementary testing notebook, you will need jupyter ins
 jupyter notebook
 ```
 
+If you wish to run the supplementary Helper notebook to visualize Decision tree, you will need to install graphviz library. Call the following command after your activate your conda environment:
+
+```
+pip install graphviz==0.13.0
+```
+
+Alternatively, you can simply run the below from your downloaded repository:
+
+```
+pip install -r requirements.txt
+```
+
 ## Overview
 Machine learning offers a number of methods for classifying data into discrete categories, such as k-means clustering. Decision trees provide a structure for such categorization, based on a series of decisions that led to separate distinct outcomes. In this assignment, you will work with decision trees to perform binary classification according to some decision boundary. Your challenge is to build and to train decision trees capable of solving useful classification problems. You will learn first how to build decision trees, then how to effectively train them and finally how to test their performance.
 
@@ -84,6 +96,7 @@ How grading works:
 
 
 ---
+
 
 ## The Assignment
 Classification is used widely in machine learning to figure out how to sort new data that comes through.  You will build, train and test decision tree models to perform basic classification tasks. Students should understand how decision trees and random forests work. This will help you develop an intuition for how and why accuracy differs for training and testing data based on different parameters.
@@ -287,6 +300,18 @@ _[1 pts]_
 Return your name from the function `return_your_name()`
 
 ---
+
+### Helper Notebook
+
+#### Note: You do not need to implement anything in this notebook. This part is not graded, so you can skip this part if you wish to. This notebook is just for your understanding purpose. It will help you visualize Decision trees on the dataset provided to you.
+The notebook Visualize_tree.iypnb can be use to visualize tree on the datasets. You can play with this playbook. Things you can Observe:
+1. How the values are splitted?
+2. What is the ginni value at leaf nodes?
+3. What does internal nodes represents in this DT?
+4. Why all leaf nodes are not at same depth?
+
+Feel free to change and experiment with this notebook. you can look and use Information gain as well instead of ginni to see how the DT built based on that.
+
 ### Bonus
 
 **Note:** This part will be ever changing. Official announcements for this bonus will be made through Piazza.
