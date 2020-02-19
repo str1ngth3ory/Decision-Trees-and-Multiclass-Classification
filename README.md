@@ -145,7 +145,7 @@ For example, a tree looks like this:
 
 You would write your code like this:
 
-    decision_tree_root = DecisionNode(None, None, lambda a1: a1 == 0)
+    decision_tree_root = DecisionNode(None, None, lambda a: a[1] == 0)
     decision_tree_root.left = DecisionNode(None, None, None, 1)
     decision_tree_root.right = DecisionNode(None, None, None, 0)
 
@@ -237,6 +237,7 @@ _[10 pts]_
 In general, reserving part of your data as a test set can lead to unpredictable performance. A serendipitous choice of your training or test split could give you a very inaccurate idea of how your classifier performs. We can overcome this limitation by using k-fold cross validation.
 
 In `generate_k_folds()`, we'll split the dataset at random into k equal subsections. Then iterating on each of our k samples, we'll reserve that sample for testing and use the other k-1 for training. Averaging the results of each fold should give us a more consistent idea of how the classifier is doing across the data as a whole.
+For those who are not familiar with k folds cross-validation, please refer the tutorial here: [A Gentle Introduction to k-fold Cross-Validation](https://machinelearningmastery.com/k-fold-cross-validation/).
 
 How grading works:
 1. The same as 2b however, we use your `generate_k_folds()` instead of ours.
