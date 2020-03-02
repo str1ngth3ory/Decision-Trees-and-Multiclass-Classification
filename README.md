@@ -282,7 +282,7 @@ How grading works:
 _[10 pts]_
 
 * File to use: **_challenge_train.csv_**
-* Grading: average training accuracy over 10 runs should be >= 85% and average testing accuracy over 10 runs should be >= 80%
+* Grading: average training accuracy over 10 runs should be >= 80% and average testing accuracy over 10 runs should be >= 70%
 
 The Challenge Classifier should be implemented using some sort of a **tree structure**.  Students in the past have been able to call their `RandomForest` with different parameters. We also encourage things like boosting.
 
