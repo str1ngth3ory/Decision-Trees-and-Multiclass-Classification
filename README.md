@@ -66,7 +66,7 @@ Udacity Videos:
 3. **_challenge_test.csv_**: (will not be provided, but will be similarly structured as challenge_train with 40% of the datapoints)
 
 #### Warmup Data
-4. **_vectorize.csv_**: data used during the vectorization warmup for Assignment 5
+4. **_vectorize.csv_**: data used during the vectorization warmup for Assignment 4
 
 ### Imports
 **NOTE:** We are only allowing three imports: numpy, collections.Counter and time. We will be checking to see if any other libraries are used. You are not allowed to use any outside libraries especially for part 4 (challenge). Please remember that you should not change any function headers.
@@ -80,7 +80,7 @@ _[6 pts]_
 
 Vectorization is a process that provides enormous performance increases when processing large amounts of data. Whether one is training a deep neural network on millions of images, building random forests over a large dataset, or utilizing other algorithms, machine learning makes _extensive_ use of vectorization. In python, the **numpy** package provides a programmer with the ability to use python-wrapped, low-level optimizations written in C, however, the technique may feel strange at first and requires some practice to use comfortably.
 
-The data management in Assignment 4 can benefit from familiarity with these techniques. Additionally, Assignment 5 has a vectorization requirement so that it can run within a reasonable time limit. This small section will hopefully introduce you to vectorization and some of the cool tricks you can use in python. We encourage you to use any numpy function out there (on good faith) to do the functions in the warmup section.
+The data management in Assignment 4 can benefit from familiarity with these techniques. Additionally, Assignment 4 has a vectorization requirement so that it can run within a reasonable time limit. This small section will hopefully introduce you to vectorization and some of the cool tricks you can use in python. We encourage you to use any numpy function out there (on good faith) to do the functions in the warmup section.
 
 For the three functions that we have, we are testing your code based on how fast it runs. It will need to beat the non-vectorized code to get full points.
 
