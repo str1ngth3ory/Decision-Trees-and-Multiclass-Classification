@@ -57,8 +57,8 @@ You will only have to edit and submit **_submission.py_**, but there are a numbe
 3. **_unit_testing.ipynb_**: Helper Notebook to run through tests sequentially along with the readme
 
 ### Resources
-Udacity Videos:
-[Lecture 7 on Machine Learning](https://classroom.udacity.com/courses/ud954/lessons/6808838653/concepts/67917548570923)  
+Canvas:
+[7.Machine Learning](https://gatech.instructure.com/courses/151546/pages/7-machine-learning?module_item_id=807060)  
 
 ### Decision Tree Datasets
 1. **_part23_data.csv_**: 4 features, 1372 data points, binary classification (last column)
