@@ -318,7 +318,7 @@ Feel free to change and experiment with this notebook. you can look and use Info
 
 **Note:** This part will be ever changing. Official announcements for this bonus will be made through Piazza.
 
-We will be having a competition using your challenge classifier and a dataset of our choice. We will provide you with a portion of the dataset as well as the testing data (but without the labels) and you will upload your solution as a csv to Kaggle. Kaggle will evaluate your scores and the classifier with the highest accuracy will win the competition. Any ties will be broken by the submission time.
+We will be having a competition using your challenge classifier and a dataset of our choice. We will provide you with a portion of the dataset as well as the testing data (but without the labels) and you will upload your solution as a csv to Kaggle. Kaggle will evaluate your scores and the classifier with the highest score will win the competition. Any ties will be broken by the submission time.
 
 We are still figuring out all the details for this bonus. Expect the competition to be open for at least a week after the assignment ends.
 
