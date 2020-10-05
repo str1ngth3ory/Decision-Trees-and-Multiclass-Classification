@@ -59,6 +59,7 @@ You will only have to edit and submit **_submission.py_**, but there are a numbe
 3. **_unit_testing.ipynb_**: Helper Notebook to run through tests sequentially along with the readme
 
 ### Resources
+* Udacity Videos: [Lesson 7, Machine Learning](https://gatech.instructure.com/courses/134646/modules)
 * Canvas: [7. Machine Learning](https://gatech.instructure.com/courses/151546/pages/7-machine-learning?module_item_id=807060)  
 * [Cross-validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics))
 * [K-Fold Cross-validation](http://statweb.stanford.edu/~tibs/sta306bfiles/cvwrong.pdf)
