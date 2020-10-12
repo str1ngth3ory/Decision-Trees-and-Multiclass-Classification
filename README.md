@@ -58,7 +58,7 @@ You will only have to edit and submit **_submission.py_**, but there are a numbe
 
 ### Resources
 * Udacity Videos: [Lesson 7, Machine Learning](https://gatech.instructure.com/courses/134646/modules)
-* Canvas(Needed to be updated!): [7. Machine Learning](https://gatech.instructure.com/courses/134646/files/folder/lecture%20notes?preview=16572959)
+* Canvas: [7. Machine Learning](https://gatech.instructure.com/courses/134646/files/folder/lecture%20notes?preview=16572959)
 * [Cross-validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics))
 * [K-Fold Cross-validation](http://statweb.stanford.edu/~tibs/sta306bfiles/cvwrong.pdf)
 
