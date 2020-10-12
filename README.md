@@ -1,5 +1,3 @@
-**The assignment is not yet released for the Fall 2020 and might be subject to change.**
-
 # CS 6601: Artificial Intelligence - Assignment 4 - Decision Trees and Forests
 
 ## Setup
@@ -60,7 +58,7 @@ You will only have to edit and submit **_submission.py_**, but there are a numbe
 
 ### Resources
 * Udacity Videos: [Lesson 7, Machine Learning](https://gatech.instructure.com/courses/134646/modules)
-* Canvas(Needed to be updated!): [7. Machine Learning](https://gatech.instructure.com/courses/151546/pages/7-machine-learning?module_item_id=807060)  
+* Canvas(Needed to be updated!): [7. Machine Learning](https://gatech.instructure.com/courses/134646/files/folder/lecture%20notes?preview=16572959)
 * [Cross-validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics))
 * [K-Fold Cross-validation](http://statweb.stanford.edu/~tibs/sta306bfiles/cvwrong.pdf)
 
