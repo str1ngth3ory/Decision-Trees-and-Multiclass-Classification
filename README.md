@@ -292,7 +292,7 @@ The Challenge Classifier should be implemented using some sort of a **tree struc
 
 You've been provided with a sample of data from a research dataset in **_challenge_train.csv_** while we have reserved a part of the dataset for testing called **_challenge_test.csv_** (which you do not have access to).
 
-To get full points for this part of the assignment, you'll need to get at least an average accuracy of 85% on the training data you have (**_challenge_train.csv_**), and at least an average accuracy of 80% on the holdout/test set (**_challenge_test.csv_**).
+To get full points for this part of the assignment, you'll need to get at least an average accuracy of 80% on the training data you have (**_challenge_train.csv_**), and at least an average accuracy of 70% on the holdout/test set (**_challenge_test.csv_**).
 
 #### Functions to complete in the `ChallengeClassifier` class:
 1. `__init__()`
