@@ -332,13 +332,13 @@ We need to add a class with member functions to manage this, it is too much! To 
 For starters, consider these helpful hints for the construction of a decision tree from a given set of examples:
 1. Watch your base cases:
    1. If all input vectors have the same class, return a leaf node with the appropriate class label.
-   2. If a specified depth limit is reached, return a leaf labeled with the most frequent class.
+   2. If a specified depth limit is reached, return a leaf labeled with the most frequent class (For multi-classification, if ties happen in the number of classes, select the smaller label number. For example, select label 1 if the number of instances for label 1 and 2 are the same). 
    3. Splits producing 0, 1 length vectors
    4. Splits producing less or equivalent information
    5. Division by zero
 2. Use the DecisionNode class
-3. For each attribute alpha: evaluate the information gained by splitting on the attribute `alpha`.
-4. Let `alpha_best` be the attribute value with the highest information gain.
+3. For each attribute alpha: evaluate the gini gain by splitting on the attribute `alpha`.
+4. Let `alpha_best` be the attribute value with the highest gini gain.
 5. As you progress in this assignment this is going to be tested against larger and more complex datasets, think about how it will affect your identification and selection of values to test.
 6. Create a decision node that splits on `alpha_best` and split the data and classes by this value.
 7. When splitting a dataset and classes, they must stay synchronized, do not orphan or shift the indexes independently
