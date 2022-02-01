@@ -4,7 +4,7 @@ import time
 
 
 class DecisionNode:
-    """Class to represent a single node in a decision tree."""
+    """Class to represent a nodes or leaves in a decision tree."""
 
     def __init__(self, left, right, decision_function, class_label=None):
         """Create a decision function to select between left and right nodes.
@@ -23,9 +23,10 @@ class DecisionNode:
         self.class_label = class_label
 
     def decide(self, feature):
-        """Get a child node based on the decision function.
+        """Determine recursivey the class of an input array by testing a value
+           against its attributes values based on the decision function.
         Args:
-            feature (list(int)): vector for feature.
+            feature (list(int)): input vector for sample.
         Return:
             Class label if a leaf node, otherwise a child node.
         """
@@ -86,9 +87,23 @@ def build_decision_tree():
 
 def confusion_matrix(classifier_output, true_labels):
     """Create a confusion matrix to measure classifier performance.
-    Output will in the format:
-        [[true_positive, false_negative],
-         [false_positive, true_negative]]
+    Output will sum multiclass performance in the format:
+    Classifier output vs true labels
+    Pred /  Actual Values
+    From cls1 perspective only
+    Predict cls 1
+    |A|
+    |c|        |Predicted|
+    |t|       cls1, cls2, cls3
+    |u|cls1 [[ TP,  FP,   FP],
+    |a|cls2  [ FN,  FN,   FP],
+    |l|cls3  [ FN,  FP,   FN]]
+    
+    From cls2 perspective only
+           cls1, cls2, cls3
+    cls1 [[ TP,  FP,   FP],
+    cls2  [ FP,  TP,   FP],
+    cls3  [ FP,  FP,   TP]]
     Args:
         classifier_output (list(int)): output from classifier.
         true_labels: (list(int): correct classified labels.
