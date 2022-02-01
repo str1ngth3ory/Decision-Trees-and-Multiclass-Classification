@@ -266,7 +266,10 @@ in terms of true positives, false positives, true negatives, and false negatives
 
 Fill out the methods to compute the confusion matrix, accuracy, precision and recall for your classifier output. 
 `classifier_output` will be the labels that your classifier predicts, while the `true_labels` will be the true test labels. 
-You can refer to [Wikipedia](https://en.wikipedia.org/wiki/Confusion_matrix) for help.
+Helpful references:
+[Wikipedia](https://en.wikipedia.org/wiki/Confusion_matrix)
+[Metrics for Multi-Class Classification](https://arxiv.org/pdf/2008.05756)
+[Performance Metrics for Activity Recognition Sec 5.](https://www.nist.gov/system/files/documents/el/isd/ks/Final_PerMIS_2006_Proceedings.pdf#page=143)
 
 If you want to calculate the example set above by hand, run the following code.
 
@@ -294,7 +297,7 @@ Purity, we strive for purity, alike Sir Galahad the Pure...
 As I am sure you have noticed, splitting at a decision node is all about purity. You are trying to improve information
 gain which means you are trying to gain purer divisions of the data. Through purer divisions of the data it is more 
 ordered, which relates to entropy in physics. Ordered motion produces more energy. Through ordered data you gain more 
-information on the defining characteristics (attributes) of ßsomething observed.
+information on the defining characteristics (attributes) of something observed.
 
 We will use GINI impurity and Impurity Index to calculate the  `gini_impurity` and `gini_gain()` on the splits to 
 calculate Information Gain. The challenge will be to choose the best attribute at each decision with the lowest 
@@ -346,7 +349,6 @@ For starters, consider these helpful hints for the construction of a decision tr
 First, in the `DecisionTree.__build_tree__()` method implement the above algorithm.
 Next, in `DecisionTree.classify()`, write a function to produce classifications for a list of features once your decision tree has been built.
 
-
 How grading works:
 1. We load **_mod_complex_multi.csv_** and create our cross-validation training and test set with a `k=10` folds.  We use our own `generate_k_folds()` method.
 2. We fit the (folded) training data onto the tree then classify the (folded) testing data with the tree.
@@ -391,9 +393,9 @@ _[20 pts]_
 * Allowed to write additional functions to improve your score
 * Allowed to switch to Entropy and splitting entropy
 * Grading: 
-  * 10 pts: average test accuracy over 10 rounds should be >= 85%
-  * 15 pts: average test accuracy over 10 rounds should be >= 90%
-  * 10 pts: average test accuracy over 10 rounds should be >= 95%
+  * 10 pts: average test accuracy over 10 rounds should be >= 80%
+  * 15 pts: average test accuracy over 10 rounds should be >= 85%
+  * 20 pts: average test accuracy over 10 rounds should be >= 90%
 
 Decision boundaries drawn by decision trees are very sharp, and fitting a decision tree of unbounded depth to a set of
 training examples almost inevitably leads to overfitting. In an attempt to decrease the variance of your classifier 
