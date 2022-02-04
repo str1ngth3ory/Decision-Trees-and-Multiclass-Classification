@@ -123,7 +123,8 @@ def precision(classifier_output, true_labels):
         classifier_output (list(int)): output from classifier.
         true_labels: (list(int): correct classified labels.
     Returns:
-        The precision of the classifier output.
+        The list of precision of each classifier output (0,1,2,...).
+        So the output should be in the below format: [precision for label 0, precision for label 1, precision for label 2, ...].
     """
 
     # TODO: finish this.
@@ -138,7 +139,8 @@ def recall(classifier_output, true_labels):
         classifier_output (list(int)): output from classifier.
         true_labels: (list(int): correct classified labels.
     Returns:
-        The recall of the classifier output.
+        The list of recall of each classifier output (0,1,2,...).
+        So the output should be in the below format: [recall for label 0, recall for label 1, recall for label 2, ...].
     """
 
     # TODO: finish this.
@@ -169,7 +171,7 @@ def gini_impurity(class_vector):
     It reaches its minimum at zero when all elements of class_vector
     belong to the same class.
     Args:
-        class_vector (list(int)): Vector of classes given as 0 or 1.
+        class_vector (list(int)): Vector of classes given as 0, 1, 2, ...
     Returns:
         Floating point number representing the gini impurity.
     """
@@ -179,9 +181,9 @@ def gini_impurity(class_vector):
 def gini_gain(previous_classes, current_classes):
     """Compute the gini impurity gain between the previous and current classes.
     Args:
-        previous_classes (list(int)): Vector of classes given as 0 or 1.
+        previous_classes (list(int)): Vector of classes given as 0, 1, 2....
         current_classes (list(list(int): A list of lists where each list has
-            0 and 1 values).
+            0, 1, 2, ... values).
     Returns:
         Floating point number representing the information gain.
     """
