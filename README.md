@@ -260,16 +260,27 @@ _[10 pts]_
 To build the next generation of Starner Zapper, we will need to keep the high levels of Precision, Recall, and Accuracy
 inculcated in the legacy products. So you must find a new way. In binary or boolean classification we find these metrics
 in terms of true positives, false positives, true negatives, and false negatives. So it should be simple right?
-* Precision: Of the examples my clf predicted belonged to the class, what was the ratio of good predictions? TP/(TP + FP)
-* Recall: Of all the examples that belonged to a class, what was the percentage my clf predicted? TP/(TP + FN)
-* Accuracy: Of all the examples, what percentage did my clf predict correctly? (TP + TN)/(TP + TN + FP + FN)
-
+</p>
+Your confusion matrix should be K x K, K = number of classes. Actual labels (true labels) of the dataset will be
+represented by the rows, and the predicted labels form the columns. Notice that the correct classifier 
+predictions form the diagonal of the matrix. True positives are samples where the prediction matches the true
+label, false positives are samples that were predicted positive, but are actually negative. False negatives are 
+samples that were predicted negative, but were actually positive, whereas true negatives were predicted 
+negative and are negative. It will be very helpful to use the numpy diag (or diagonal) function in this 
+part of the assignment. You will have to consider carefully by class what the diagonal value tells you, 
+what its row tells you, what its column tells you, and what is left?
+* Either of 2 accuracy calculations: Of all the examples, what percentage did my clf predict correctly?
+  * Balanced Accuracy
+  * Balanced Weighted Accuracy (recommended for challenge participants)
+* Precision: How often is my classifier right when it makes a positive prediction?
+* Recall: How often does my classifier recognize positive examples?
 Fill out the methods to compute the confusion matrix, accuracy, precision and recall for your classifier output. 
 `classifier_output` will be the labels that your classifier predicts, while the `true_labels` will be the true test labels. 
 Helpful references:
-[Wikipedia](https://en.wikipedia.org/wiki/Confusion_matrix)
-[Metrics for Multi-Class Classification](https://arxiv.org/pdf/2008.05756)
-[Performance Metrics for Activity Recognition Sec 5.](https://www.nist.gov/system/files/documents/el/isd/ks/Final_PerMIS_2006_Proceedings.pdf#page=143)
+
+[Wikipedia](https://en.wikipedia.org/wiki/Confusion_matrix) </br>
+[Metrics for Multi-Class Classification](https://arxiv.org/pdf/2008.05756) </br>
+[Performance Metrics for Activity Recognition Sec 5.](https://www.nist.gov/system/files/documents/el/isd/ks/Final_PerMIS_2006_Proceedings.pdf#page=143) </br>
 
 If you want to calculate the example set above by hand, run the following code.
 
@@ -294,16 +305,16 @@ If you want to calculate the example set above by hand, run the following code.
 _[15 pts]_
 
 Purity, we strive for purity, alike Sir Galahad the Pure... 
-As I am sure you have noticed, splitting at a decision node is all about purity. You are trying to improve information
-gain which means you are trying to gain purer divisions of the data. Through purer divisions of the data it is more 
-ordered, which relates to entropy in physics. Ordered motion produces more energy. Through ordered data you gain more 
-information on the defining characteristics (attributes) of something observed.
+Splitting at a decision is all about purity. You are trying to improve information gain which means,
+you are trying to gain purer divisions of the data. Through purer divisions of the data it is more 
+ordered. This relates to entropy in physics, where ordered motion produces more energy. Through ordered 
+data you gain more information on the defining characteristics (attributes) of something observed.
 
-We will use GINI impurity and Impurity Index to calculate the  `gini_impurity` and `gini_gain()` on the splits to 
-calculate Information Gain. The challenge will be to choose the best attribute at each decision with the lowest 
-impurity and the highest index. At each attribute we search for the best value to split on, the hypotheses are compared
-against what we currently know, because would we want to split if we learn nothing?
-Hints: 
+We will use GINI impurity and the GINI Impurity Index to calculate the  `gini_impurity` and `gini_gain()` on 
+the splits to calculate Information Gain. The challenge will be to choose the best attribute at each decision
+with the lowest impurity and the highest index. At each attribute we search for the best value to split on, 
+the hypotheses are compared against what we currently know, because would we want to split if we learn nothing?
+Hints:
 * [gini impurity](https://en.wikipedia.org/wiki/Decision_tree_learning#Gini_impurity)
 * [information gain](https://en.wikipedia.org/wiki/Information_gain_in_decision_trees) 
 * The Gini Gain follows a similar approach to information gain, replacing entropy with Gini Impurity.
@@ -332,19 +343,19 @@ We need to add a class with member functions to manage this, it is too much! To 
 For starters, consider these helpful hints for the construction of a decision tree from a given set of examples:
 1. Watch your base cases:
    1. If all input vectors have the same class, return a leaf node with the appropriate class label.
-   2. If a specified depth limit is reached, return a leaf labeled with the most frequent class (For multi-classification, if ties happen in the number of classes, select the smaller label number. For example, select label 1 if the number of instances for label 1 and 2 are the same). 
+   2. If a specified depth limit is reached, return a leaf labeled with the most frequent class.
    3. Splits producing 0, 1 length vectors
    4. Splits producing less or equivalent information
    5. Division by zero
 2. Use the DecisionNode class
-3. For each attribute alpha: evaluate the gini gain by splitting on the attribute `alpha`.
-4. Let `alpha_best` be the attribute value with the highest gini gain.
+3. For each attribute alpha: evaluate the information gained by splitting on the attribute `alpha`.
+4. Let `alpha_best` be the attribute value with the highest information gain.
 5. As you progress in this assignment this is going to be tested against larger and more complex datasets, think about how it will affect your identification and selection of values to test.
 6. Create a decision node that splits on `alpha_best` and split the data and classes by this value.
 7. When splitting a dataset and classes, they must stay synchronized, do not orphan or shift the indexes independently
 8. Use recursion to build your tree, by using the split lists, remember true goes left using decide
 9. Your features and classify should be in numpy arrays where for dataset of size (_m_ x _n_) the features would be (_m_ x _n_-1) and classify would be (_m_ x _1_)
-10. The features are real numbers, you will need to split based on a threshold. Consider different approaches for what this threshold might be. 
+10. The features are real numbers, you will need to split based on a threshold. Consider different approaches for what this threshold might be.
 
 First, in the `DecisionTree.__build_tree__()` method implement the above algorithm.
 Next, in `DecisionTree.classify()`, write a function to produce classifications for a list of features once your decision tree has been built.
@@ -356,8 +367,8 @@ How grading works:
 
 #### Functions to complete in the `DecisionTree` class:
 1. `__build_tree__()`
-2. `classify()`
-
+2. `fit()`
+3. `classify()`
 ---
 
 ### Part 2c: Validation
@@ -401,7 +412,7 @@ Decision boundaries drawn by decision trees are very sharp, and fitting a decisi
 training examples almost inevitably leads to overfitting. In an attempt to decrease the variance of your classifier 
 you are going to use a technique called 'Bootstrap Aggregating' (often abbreviated as 'bagging').
 Decision stumps are very short decision trees used in Ensemble classification such as Random Forests
-* They are usually very short (depth limited)
+* They are usually short (depth limited)
 * They use smaller (but more of them) random datasets for training
 * They use a subset of attributes drawn randomly from the training set
 * They fit the tree to the sampled dataset and are considered specialized to the set
@@ -433,6 +444,60 @@ How grading works:
 2. `classify()`
 
 ---
+#### Part 4 (Optional) Boosting Competition Challenge (Extra Credit)
+#### Let the games begin! --- 让游戏开始 --- ας ξεκινήσει το παιχνίδι
+* Files to use: **_complex_binary.csv, complex_multi.csv_**
+* Allowed use of numpy, collections.Counter, and math.log
+* Allowed to write additional functions to improve your score
+* Allowed to switch to Entropy and splitting entropy
+* Extra Credit Points:
+    * 12 pts: 1<sup>st</sup> place algorithm test accuracy over 10 rounds for primary group of 3 students
+    *  8 pts: 2<sup>nd</sup> place algorithm test accuracy over 10 rounds for secondary group of 5 students
+    *  4 pts: 3<sup>rd</sup> place algorithm test accuracy over 10 rounds for tertiary group of 10 students
+
+Decision boundaries drawn by decision trees are very sharp, and fitting a decision tree of unbounded depth to a set of
+training examples almost inevitably leads to overfitting. In an attempt to decrease the variance of your classifier
+you are going to use a technique called 'Boosting' such as, Ada-, Gradiant- and XG-, boost.
+Similar to RF, the Decision stumps are short decision trees used in these Ensemble classification methods
+* They are usually short (depth limited)
+* They use smaller (but more of them) random datasets for training with sampling bias
+* They use a subset of attributes sampled from the training set
+* They fit the tree to the sampled dataset and are considered specialized to the set
+* They use weighting of their sampling and classifiers to reflect the balance or unbalance of the data
+* They use majority voting (every tree in the forest votes) to classify a sample
+
+Ada-boost Algorithm [Zhu, et al.]:
+<ul>N Samples, M classifiers, W weights, C classifications, K classes, Pi product</ul>
+<ol><li>Initialize the observation weights wi = 1/n, i = 1, 2, . . . , n.</li>
+<li>For m = 1 to M:</li><ol>
+<li>Fit a classifier T(m)(x) to the training data using weights wi.</li>
+<li>Compute err(m) = Sum(i=1..n)wi Pi(ci != T(m)(xi)) / Sum(i=1..n) wi</li>
+<li>Compute α(m) = log (1−err(m)/err(m)) + log(K − 1).</li>
+<li>Set wi ← wi · exp (α(m) Pi(ci != T(m)(xi)), i = 1, . . . , n.</li>
+<li>Re-normalize wi.</li></ol>
+<li>Output C(x) = argmax(k) sum(m=1..M) α(m) · I(T(m)(x) = k).</li>
+</ol>
+
+[Multi-class AdaBoost](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.158.4221&rep=rep1&type=pdf)
+Zhu, Ji & Rosset, Saharon & Zou, Hui & Hastie, Trevor. (2006). Multi-class AdaBoost. Statistics and its interface. 2. 10.4310/SII.2009.v2.n3.a8.
+
+When sampling attributes you choose from the entire set of attributes without replacement based 
+on the weighted distribution. Notice that you favor or bias towards misclassified samples, which
+improves your overall accuracy. Visualize how the short trees balance classification bias.
+
+Complete `Boost.fit()` to fit the decision tree as we describe above, fill in `Boost.boost()` to run boosting, 
+and fill in `Boost.classify()` to classify examples. Use your decision tree implementation or create another.
+
+Your features and classify should use numpy arrays datasets of (_m_ x _n_) features of (_m_ x _n_-1) and classify of (_n_ x _1_).
+
+How grading works:
+To test, we will be running 10 rounds, using your boosting with 300 trees, with a depth limit of 4, 
+example subsample rate of 0.1 and attribute subsample rate of 0.2
+
+#### Functions to complete in the `Boost` class:
+1. `fit()`
+2. 'boost()'
+3. `classify()`
 
 ---
 ### Part 5: Return Your name!
