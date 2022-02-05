@@ -87,23 +87,27 @@ def build_decision_tree():
 
 def confusion_matrix(classifier_output, true_labels):
     """Create a confusion matrix to measure classifier performance.
-    Output will sum multiclass performance in the format:
-    Classifier output vs true labels
-    Pred /  Actual Values
-    From cls1 perspective only
-    Predict cls 1
-    |A|
-    |c|        |Predicted|
-    |t|       cls1, cls2, cls3
-    |u|cls1 [[ TP,  FP,   FP],
-    |a|cls2  [ FN,  FN,   FP],
-    |l|cls3  [ FN,  FP,   FN]]
+   
+    Classifier output vs true labels, which is equal to:
+    Predicted  vs  Actual Values.
     
-    From cls2 perspective only
-           cls1, cls2, cls3
-    cls1 [[ TP,  FP,   FP],
-    cls2  [ FP,  TP,   FP],
-    cls3  [ FP,  FP,   TP]]
+    Output will sum multiclass performance in the example format:
+    (Assume the labels are 0,1,2,...n)
+
+                                     |Predicted|
+                     
+    |A|            0,            1,           2,       .....,      n
+    |c|   0:  [[count(0,0),  count(0,1),  count(0,2),  .....,  count(0,n)],
+    |t|   1:   [count(1,0),  count(1,1),  count(1,2),  .....,  count(1,n)],
+    |u|   2:   [count(2,0),  count(2,1),  count(2,2),  .....,  count(2,n)],'
+    |a|   .............,
+    |l|   n:   [count(n,0),  count(n,1),  count(n,2),  .....,  count(n,n)]]
+    
+    'count' function is expressed as 'count(actual label, predicted label)'.
+    
+    For example, count (0,1) represents the total number of actual label 0 and the predicted label 1;
+                 count (3,2) represents the total number of actual label 3 and the predicted label 2.           
+    
     Args:
         classifier_output (list(int)): output from classifier.
         true_labels: (list(int): correct classified labels.
@@ -117,14 +121,16 @@ def confusion_matrix(classifier_output, true_labels):
 
 def precision(classifier_output, true_labels):
     """Get the precision of a classifier compared to the correct values.
-    Precision is measured as:
-        true_positive/ (true_positive + false_positive)
+    In this assignment, precision for label n can be calculated by the formula:
+        precision (n) = number of correctly classified label n / number of all predicted label n 
+                      = count (n,n) / (count(0, n) + count(1,n) + .... + count (n,n))
     Args:
         classifier_output (list(int)): output from classifier.
         true_labels: (list(int): correct classified labels.
     Returns:
-        The list of precision of each classifier output (0,1,2,...).
-        So the output should be in the below format: [precision for label 0, precision for label 1, precision for label 2, ...].
+        The list of precision of each classifier output. 
+        So if the classifier is (0,1,2,...,n), the output should be in the below format: 
+        [precision (0), precision(1), precision(2), ... precision(n)].
     """
 
     # TODO: finish this.
@@ -133,14 +139,16 @@ def precision(classifier_output, true_labels):
 
 def recall(classifier_output, true_labels):
     """Get the recall of a classifier compared to the correct values.
-    Recall is measured as:
-        true_positive/ (true_positive + false_negative)
+    In this assignment, recall for label n can be calculated by the formula:
+        recall (n) = number of correctly classified label n / number of all true label n 
+                   = count (n,n) / (count(n, 0) + count(n,1) + .... + count (n,n))
     Args:
         classifier_output (list(int)): output from classifier.
         true_labels: (list(int): correct classified labels.
     Returns:
-        The list of recall of each classifier output (0,1,2,...).
-        So the output should be in the below format: [recall for label 0, recall for label 1, recall for label 2, ...].
+        The list of recall of each classifier output..
+        So if the classifier is (0,1,2,...,n), the output should be in the below format: 
+        [recall (0), recall (1), recall (2), ... recall (n)].
     """
 
     # TODO: finish this.
