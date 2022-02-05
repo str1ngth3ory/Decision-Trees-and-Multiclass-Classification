@@ -44,13 +44,21 @@ class DecisionTreePart1Tests(unittest.TestCase):
         Asserts:
             confusion matrix is correct.
         """
-
-        answer = [1, 0, 0, 1, 0, 0, 0]
         true_label = [1, 1, 1, 0, 0, 0, 0]
-        test_matrix = [[1, 2], [1, 3]]
+        answer     = [1, 0, 0, 1, 0, 0, 0]
+        
+        test_matrix = [[3, 1], [2, 1]]
 
         assert np.array_equal(test_matrix, dt.confusion_matrix(answer,
                                                                true_label))
+        
+        true_label =    [6, 1, 3, 6, 0, 4, 4, 5, 1, 0, 1, 0, 6, 6, 1, 5, 5, 6, 3, 6, 0, 4, 3, 3, 5, 2, 3, 1, 3, 2]
+        output_answer = [6, 5, 4, 5, 2, 0, 4, 2, 3, 1, 5, 6, 3, 3, 4, 6, 5, 4, 5, 5, 3, 1, 5, 6, 5, 3, 3, 5, 6, 3]
+    
+        test_matrix = [[0, 1, 1, 1, 0, 0, 1], [0, 0, 0, 1, 1, 3, 0], [0, 0, 0, 2, 0, 0, 0], [0, 0, 0, 1, 1, 2, 2],
+                   [1, 1, 0, 0, 1, 0, 0], [0, 0, 1, 0, 0, 2, 1], [0, 0, 0, 2, 1, 2, 1]]
+
+        assert np.array_equal(test_matrix, dt.confusion_matrix(output_answer, true_label))
 
     def test_precision_calculation(self):
         """Test precision calculation.
@@ -58,15 +66,22 @@ class DecisionTreePart1Tests(unittest.TestCase):
         Asserts:
             Precision matches for all true labels.
         """
+        
+        true_label =    [ 3, 0, 4, 4, 1, 0, 1, 0, 4, 2, 3, 2]
+        output_answer = [ 4, 2, 0, 4, 3, 1, 4, 3, 1, 3, 3, 3]
+    
+        test_matrix = [[0, 1, 1, 1, 0], 
+                       [0, 0, 0, 1, 1], 
+                       [0, 0, 0, 2, 0], 
+                       [0, 0, 0, 1, 1],
+                       [1, 1, 0, 0, 1]]
 
-        answer = [0, 0, 0, 0, 0]
-        true_label = [1, 0, 0, 0, 0]
+        test_list = [0.000, 0.000, 0.000, 0.200, 0.333]
+        
+        calculated_list = dt.precision(output_answer, true_label)
 
-        for index in range(0, len(answer)):
-            answer[index] = 1
-            precision = 1 / (1 + index)
+        assert np.array_equal(test_list, [round(elem, 3) for elem in calculated_list])
 
-            assert dt.precision(answer, true_label) == precision
 
     def test_recall_calculation(self):
         """Test recall calculation.
@@ -74,16 +89,22 @@ class DecisionTreePart1Tests(unittest.TestCase):
         Asserts:
             Recall matches for all true labels.
         """
+        
+        true_label =    [ 3, 0, 4, 4, 1, 0, 1, 0, 4, 2, 3, 2]
+        output_answer = [ 4, 2, 0, 4, 3, 1, 4, 3, 1, 3, 3, 3]
 
-        answer = [0, 0, 0, 0, 0]
-        true_label = [1, 1, 1, 1, 1]
-        total_count = len(answer)
+        test_matrix = [[0, 1, 1, 1, 0], 
+                       [0, 0, 0, 1, 1], 
+                       [0, 0, 0, 2, 0], 
+                       [0, 0, 0, 1, 1],
+                       [1, 1, 0, 0, 1]]
 
-        for index in range(0, len(answer)):
-            answer[index] = 1
-            recall = (index + 1) / ((index + 1) + (total_count - (index + 1)))
+        test_list = [0.000, 0.000, 0.000, 0.500, 0.333]
 
-            assert dt.recall(answer, true_label) == recall
+        calculated_list = dt.recall(output_answer, true_label)
+
+        assert np.array_equal(test_list, [round(elem, 3) for elem in calculated_list])
+
 
     def test_accuracy_calculation(self):
         """Test accuracy calculation.
@@ -101,6 +122,11 @@ class DecisionTreePart1Tests(unittest.TestCase):
             accuracy = dt.accuracy(answer, true_label)
 
             assert accuracy == ((index + 1) / total_count)
+            
+        output_answer = [3, 5, 3, 5, 2, 0, 4, 2, 1, 1, 5, 6, 3, 3, 4, 6, 5, 4, 5, 5]
+        true_label =    [6, 1, 3, 6, 0, 4, 4, 5, 1, 0, 1, 6, 6, 6, 1, 5, 5, 6, 3, 6]
+
+        assert 0.25 == dt.accuracy(output_answer, true_label)
 
 
 class DecisionTreePart2Tests(unittest.TestCase):
@@ -161,6 +187,10 @@ class DecisionTreePart2Tests(unittest.TestCase):
         gini_impurity = dt.gini_impurity([1, 1, 0, 0, 0, 0])
 
         assert round(4. / 9., 3) == round(gini_impurity, 3)
+        
+        labels = [0, 1, 2, 1, 0, 2, 2, 2]
+        
+        assert round(dt.gini_impurity(labels), 3) == 0.625
 
     def test_gini_gain_max(self):
         """Test maximum gini gain.
@@ -185,6 +215,10 @@ class DecisionTreePart2Tests(unittest.TestCase):
                                  [[1, 1, 0], [1, 0, 0]])
 
         assert 0.056 == round(gini_gain, 3)
+        
+        labels = ([0, 0, 1, 1, 2, 2, 2, 2], [[0, 0, 1, 2], [1, 2, 2, 2]])
+        
+        assert round(dt.gini_gain(labels), 3) == 0.125
 
     def test_gini_gain_restaurant_patrons(self):
         """Test gini gain using restaurant patrons.
