@@ -147,6 +147,7 @@ pioneer of Starner Eradicatus Mosquitoes. For centuries the mosquito has imparte
 in transmission of malaria, dengue, Zika, chikungunya, CoVid, and countless other diseases impact millions of people 
 and animals every year. The Starner Eradicatus, *Anopheles Stephensi* laser zapper has obtained the highest level of 
 precision, recall, and accuracy in the industry!
+<a href="https://drive.google.com/file/d/1SbQxIALFAzwPB2B9vvw9LF-DolcSjqf2/view?usp=sharing" title="The Legend"><img src="https://drive.google.com/file/d/1OZcKIQH-KCRB4CBdFAM6G6xOeIBFsVni/view?usp=sharing" alt="The early days..." /></a>
 
 The secret is the classification engine which has compiled an unmatched library of classification data collected from 
 153 countries. Flying insects from the tiny Dicopomorpha echmepterygis (Parasitic Wasp) to the giant titanus giganteus 
@@ -485,18 +486,20 @@ When sampling attributes you choose from the entire set of attributes without re
 on the weighted distribution. Notice that you favor or bias towards misclassified samples, which
 improves your overall accuracy. Visualize how the short trees balance classification bias.
 
-Complete `Boost.fit()` to fit the decision tree as we describe above, fill in `Boost.boost()` to run boosting, 
-and fill in `Boost.classify()` to classify examples. Use your decision tree implementation or create another.
+Complete `ChallengeClassifier.fit()` to fit the decision tree as we describe above, fill in 
+`ChallengeClassifier.boost()` to run boosting, and fill in `ChallengeClassifier.classify()` to 
+classify examples. Use your decision tree implementation as your classifier or create another.
 
-Your features and classify should use numpy arrays datasets of (_m_ x _n_) features of (_m_ x _n_-1) and classify of (_n_ x _1_).
+Your features and classify should use numpy arrays datasets of (_m_ x _n_) features of (_m_ x _n_-1) and 
+classes of (_m_ x _1_).
 
 How grading works:
 To test, we will be running 10 rounds, using your boosting with 300 trees, with a depth limit of 4, 
 example subsample rate of 0.1 and attribute subsample rate of 0.2
 
-#### Functions to complete in the `Boost` class:
+#### Functions to complete in the `ChallengeClassifier` class:
 1. `fit()`
-2. 'boost()'
+2. `boost()`
 3. `classify()`
 
 ---
@@ -510,7 +513,7 @@ Return your name from the function `return_your_name()`
 
 #### Note: You do not need to implement anything in this notebook. This part is not graded, so you can skip this part if you wish to. This notebook is just for your understanding purpose. It will help you visualize Decision trees on the dataset provided to you.
 The notebook Visualize_tree.iypnb can be use to visualize tree on the datasets. Things you can Observe:
-1. How the values are splitted?
+1. How the values are split?
 2. What is the gini value at leaf nodes?
 3. What does internal nodes represents in this DT?
 4. Why all leaf nodes are not at same depth?
