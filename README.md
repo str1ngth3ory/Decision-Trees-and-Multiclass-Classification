@@ -142,26 +142,28 @@ How grading works:
 
 ---
 ## The Assignment
-E. Thadeus Starner<sup>5<sup>th</sup></sup> is the 5<sup>th</sup> incarnation of the great innovator and legendary 
+<a href="https://gatech.instructure.com/files/29574631/download?download_frd=1" title="The Legend"><img src="https://gatech.instructure.com/files/29574619/download?download_frd=1" alt="The early days..." /></a>
+</br>E. Thadeus Starner<sup>5<sup>th</sup></sup> is the 5<sup>th</sup> incarnation of the great innovator and legendary 
 pioneer of Starner Eradicatus Mosquitoes. For centuries the mosquito has imparted only harm on human health, aiding 
 in transmission of malaria, dengue, Zika, chikungunya, CoVid, and countless other diseases impact millions of people 
 and animals every year. The Starner Eradicatus, *Anopheles Stephensi* laser zapper has obtained the highest level of 
 precision, recall, and accuracy in the industry!
-<a href="https://gatech.instructure.com/files/29574631/download?download_frd=1" title="The Legend"><img src="https://gatech.instructure.com/files/29574619/download?download_frd=1" alt="The early days..." /></a>
-
-The secret is the classification engine which has compiled an unmatched library of classification data collected from 
+<a href="https://gatech.instructure.com/files/29574637/download?download_frd=1" title="The History"><img src="https://gatech.instructure.com/files/29574617/download?download_frd=1" alt="The skeeters..." /></a>
+</br>The secret is the classification engine which has compiled an unmatched library of classification data collected from 
 153 countries. Flying insects from the tiny Dicopomorpha echmepterygis (Parasitic Wasp) to the giant titanus giganteus 
 (Titan Beetle) are carefully catalogued in a comprehensive digital record and indexed to support fast and correct 
 classification. This painstaking attention to detail was ordered by A. Thadeus<sup>1<sup>st</sup></sup> to address 
 a tumultuous backlash from the International Pollinators Association to a high mortality among beneficial pollinators.
-
-E. Thadeus' close friend Skeeter Norvig, a former CMAO (Chief Mosquito Algorithm Officer) and pollinator advocate has 
+<a href="https://gatech.instructure.com/files/29574635/download?download_frd=1" title="The bug problem"><img src="https://gatech.instructure.com/files/29574615/download?download_frd=1" alt="Pests everywhere..." /></a>
+</br>
+<a href="https://gatech.instructure.com/files/29574633/download?download_frd=1" title="Skeeter and E.T."><img src="https://gatech.instructure.com/files/29574613/download?download_frd=1" alt="Skeeter and E.T...." /></a>
+</br>E. Thadeus' close friend Skeeter Norvig, a former CMAO (Chief Mosquito Algorithm Officer) and pollinator advocate has 
 approached E.T. with an idea. The agriculture industry has been experiencing terrible losses worldwide due to the 
 diaphorina citri (Asian Citrus Psyllid), drosophila suzuki (spotted wing Drosophila), and the bactrocera tyron 
 (Queensland fruit fly). Wonderful! E.T. exclaims, and becomes wildly excited at the opportunity to bring such an 
 important benefit to the World.
-
-The wheels of invention lit up the research Scrum that morning as E.T. and Skeeter storyboard the solution. People are
+<a href="https://gatech.instructure.com/files/29574645/download?download_frd=1" title="Skeeter and E.T. pitch to the team"><img src="https://gatech.instructure.com/files/29574609/download?download_frd=1" alt="Pitching to the team..." /></a>
+</br>The wheels of invention lit up the research Scrum that morning as E.T. and Skeeter storyboard the solution. People are
 calling out all the adjustments, wing acoustics, laser power and duration, going through xyz positioning, angular 
 velocity and acceleration calculations, speed, occlusion noise and tracking errors. You as the lead DT software 
 engineer are taking it all in, when you realize and speak up..., sir... Sir... <em>SIR...</em> and a hush falls. Sir, we are 
