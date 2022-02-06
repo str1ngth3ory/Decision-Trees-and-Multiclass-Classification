@@ -147,7 +147,7 @@ pioneer of Starner Eradicatus Mosquitoes. For centuries the mosquito has imparte
 in transmission of malaria, dengue, Zika, chikungunya, CoVid, and countless other diseases impact millions of people 
 and animals every year. The Starner Eradicatus, *Anopheles Stephensi* laser zapper has obtained the highest level of 
 precision, recall, and accuracy in the industry!
-<a href="./files/Assign4-1.mp4" title="The Legend"><img src="./files/assign4-1.png" alt="The early days..." /></a>
+<a href="https://gatech.instructure.com/courses/225196/files/folder/Assignment%20files/A4/Assign4-1.mp4" title="The Legend"><img src="https://gatech.instructure.com/courses/225196/files/folder/Assignment%20files/A4/Assign4-1.png" alt="The early days..." /></a>
 
 The secret is the classification engine which has compiled an unmatched library of classification data collected from 
 153 countries. Flying insects from the tiny Dicopomorpha echmepterygis (Parasitic Wasp) to the giant titanus giganteus 
