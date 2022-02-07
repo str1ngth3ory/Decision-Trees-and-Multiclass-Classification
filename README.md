@@ -275,6 +275,7 @@ samples that were predicted negative, but were actually positive, whereas true n
 negative and are negative. It will be very helpful to use the numpy diag (or diagonal) function in this 
 part of the assignment. You will have to consider carefully by class what the diagonal value tells you, 
 what its row tells you, what its column tells you, and what is left?
+
 * Either of 2 accuracy calculations: Of all the examples, what percentage did my clf predict correctly?
   * Balanced Accuracy
   * Balanced Weighted Accuracy (recommended for challenge participants)
