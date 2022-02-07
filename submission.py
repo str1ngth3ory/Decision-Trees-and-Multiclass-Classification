@@ -7,27 +7,29 @@ class DecisionNode:
     """Class to represent a nodes or leaves in a decision tree."""
 
     def __init__(self, left, right, decision_function, class_label=None):
-        """Create a decision function to select between left and right nodes.
-        Note: In this representation 'True' values for a decision take us to
-        the left. This is arbitrary but is important for this assignment.
-        Args:
-            left (DecisionNode): left child node.
-            right (DecisionNode): right child node.
-            decision_function (func): function to decide left or right node.
-            class_label (int): label for leaf node. Default is None.
         """
-
+        Create a decision node with eval function to select between left and right node
+        NOTE In this representation 'True' values for a decision take us to the left.
+        This is arbitrary, but testing relies on this implementation.
+        Args:
+            left (DecisionNode): left child node
+            right (DecisionNode): right child node
+            decision_function (func): evaluation function to decide left or right
+            class_label (value): label for leaf node
+        """
         self.left = left
         self.right = right
         self.decision_function = decision_function
         self.class_label = class_label
 
     def decide(self, feature):
-        """Determine recursivey the class of an input array by testing a value
-           against its attributes values based on the decision function.
+        """Determine recursively the class of an input array by testing a value
+           against a feature's attributes values based on the decision function.
+
         Args:
-            feature (list(int)): input vector for sample.
-        Return:
+            feature: (numpy array(value)): input vector for sample.
+
+        Returns:
             Class label if a leaf node, otherwise a child node.
         """
 
@@ -45,7 +47,7 @@ def load_csv(data_file_path, class_index=-1):
     """Load csv data in a numpy array.
     Args:
         data_file_path (str): path to data file.
-        class_index (int): slice output by index.
+        class_index (int): slice index for data labels.
     Returns:
         features, classes as numpy arrays if class_index is specified,
             otherwise all as nump array.
@@ -71,8 +73,9 @@ def load_csv(data_file_path, class_index=-1):
 
 
 def build_decision_tree():
-    """Create a decision tree capable of handling the sample data.
-    Tree is built fully starting from the root.
+    """Create a decision tree capable of handling the sample data contained in the ReadMe.
+    It must be built fully starting from the root.
+    
     Returns:
         The root node of the decision tree.
     """
@@ -93,7 +96,6 @@ def confusion_matrix(classifier_output, true_labels):
     
     Output will sum multiclass performance in the example format:
     (Assume the labels are 0,1,2,...n)
-
                                      |Predicted|
                      
     |A|            0,            1,           2,       .....,      n
@@ -183,6 +185,7 @@ def gini_impurity(class_vector):
     Returns:
         Floating point number representing the gini impurity.
     """
+    # TODO: finish this.
     raise NotImplemented()
 
 
@@ -193,8 +196,9 @@ def gini_gain(previous_classes, current_classes):
         current_classes (list(list(int): A list of lists where each list has
             0, 1, 2, ... values).
     Returns:
-        Floating point number representing the information gain.
+        Floating point number representing the gini gain.
     """
+    # TODO: finish this.
     raise NotImplemented()
 
 
@@ -261,9 +265,10 @@ def generate_k_folds(dataset, k):
         => Each fold is a tuple of sets.
         => Each Set is a tuple of numpy arrays.
     """
-
+    folds = []
     # TODO: finish this.
     raise NotImplemented()
+    return folds
 
 
 class RandomForest:
@@ -298,27 +303,50 @@ class RandomForest:
         """Classify a list of features based on the trained random forest.
         Args:
             features (m x n): m examples with n features.
+        Returns:
+            votes (list(int)): m votes for each element
         """
-
+        votes = []
         # TODO: finish this.
         raise NotImplemented()
-
+        return votes
 
 class ChallengeClassifier:
     """Challenge Classifier used on Challenge Training Data."""
 
-    def __init__(self):
-        """Create challenge classifier.
-        Initialize whatever parameters you may need here.
-        This method will be called without parameters, therefore provide
-        defaults.
+    def __init__(self, num_clf, depth_limit, example_subsample_rate,
+                 attr_subsample_rate):
+        """Create a boosting class which uses decision trees.
+        Initialize and/or add whatever parameters you may need here.
+        Args:
+             num_clf (int): fixed number of classifiers.
+             depth_limit (int): max depth limit of tree.
+             example_subsample_rate (float): percentage of example samples.
+             attr_subsample_rate (float): percentage of attribute samples.
         """
+
+        self.clf = []
+        self.num_clf = num_clf
+        self.depth_limit = depth_limit
+        self.example_subsample_rate = example_subsample_rate
+        self.attr_subsample_rate = attr_subsample_rate
 
         # TODO: finish this.
         raise NotImplemented()
 
     def fit(self, features, classes):
-        """Build the underlying tree(s).
+        """Build the boosting functions classifiers.
+            Fit your model to the provided features.
+        Args:
+            features (m x n): m examples with n features.
+            classes (m x 1): Array of Classes.
+        """
+
+        # TODO: finish this.
+        raise NotImplemented()
+
+    def boost(self, features, classes):
+        """Run the boosting function on your classifiers.
             Fit your model to the provided features.
         Args:
             features (m x n): m examples with n features.
@@ -330,7 +358,7 @@ class ChallengeClassifier:
 
     def classify(self, features):
         """Classify a list of features.
-        Classify each feature in features as either 0 or 1.
+        Predict the labels for each feature in features to its corresponding class
         Args:
             features (m x n): m examples with n features.
         Returns:
@@ -448,6 +476,85 @@ class Vectorization:
 
         # TODO: finish this.
         raise NotImplemented()
+
+    def non_vectorized_glue(self, data, vector, dimension='c'):
+        """Element wise array arithmetic with loops.
+        This function takes a multi-dimensional array and a vector, and then combines
+        both of them into a new multi-dimensional array. It must be capable of handling
+        both column and row-wise additions.
+        Args:
+            data: multi-dimensional array.
+            vector: either column or row vector
+            dimension: either c for column or r for row
+        Returns:
+            Numpy array of data.
+        """
+        if dimension == 'c' and len(vector) == data.shape[1]:
+            non_vectorized = np.ones((data.shape[0],data.shape[1]+1), dtype=float)
+            non_vectorized[:, -1] *= vector
+        elif dimension == 'r' and len(vector) == data.shape[0]:
+            non_vectorized = np.ones((data.shape[0]+1,data.shape[1]), dtype=float)
+            non_vectorized[-1, :] *= vector
+        else:
+            raise AttributeError
+        for row in range(data.shape[0]):
+            for col in range(data.shape[1]):
+                non_vectorized[row, col] = data[row, col]
+        return non_vectorized
+
+    def vectorized_glue(self, data, vector, dimension='c'):
+        """Array arithmetic without loops.
+        This function takes a multi-dimensional array and a vector, and then combines
+        both of them into a new multi-dimensional array. It must be capable of handling
+        both column and row-wise additions.
+        Args:
+            data: multi-dimensional array.
+            vector: either column or row vector
+            dimension: either c for column or r for row
+        Returns:
+            Numpy array of data.
+        """
+        vectorized = None
+        raise NotImplemented()
+        return vectorized
+
+    def non_vectorized_mask(self, data, threshold):
+        """Element wise array evaluation with loops.
+        This function takes a multi-dimensional array and then populates a new
+        multi-dimensional array. If the value in data is below threshold it
+        will be squared.
+        Args:
+            data: multi-dimensional array.
+            threshold: evaluation value for the array if a value is below it, it is squared
+        Returns:
+            Numpy array of data.
+        """
+        non_vectorized = np.zeros_like(data, dtype=float)
+        for row in range(data.shape[0]):
+            for col in range(data.shape[1]):
+                val = data[row, col]
+                if val >= threshold:
+                    non_vectorized[row, col] = val
+                    continue
+                non_vectorized[row, col] = val**2
+
+        return non_vectorized
+
+    def vectorized_mask(self, data, threshold):
+        """Array evaluation without loops.
+        This function takes a multi-dimensional array and then populates a new
+        multi-dimensional array. If the value in data is below threshold it
+        will be squared. You are required to use a binary mask for this problem
+        Args:
+            data: multi-dimensional array.
+            threshold: evaluation value for the array if a value is below it, it is squared
+        Returns:
+            Numpy array of data.
+        """
+        vectorized = None
+        raise NotImplemented()
+        return vectorized
+
 
 def return_your_name():
     # return your name
