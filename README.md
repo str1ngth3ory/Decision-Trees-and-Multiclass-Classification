@@ -142,28 +142,27 @@ How grading works:
 
 ---
 ## The Assignment
-<a href="https://gatech.instructure.com/files/29574631/download?download_frd=1" title="The Legend"><img src="https://gatech.instructure.com/files/29574619/download?download_frd=1" alt="The early days..." /></a>
-</br>E. Thadeus Starner<sup>5<sup>th</sup></sup> is the 5<sup>th</sup> incarnation of the great innovator and legendary 
+<img src="./files/Assign4-1.gif" alt="The early days..." /></br>
+E. Thadeus Starner<sup>5<sup>th</sup></sup> is the 5<sup>th</sup> incarnation of the great innovator and legendary 
 pioneer of Starner Eradicatus Mosquitoes. For centuries the mosquito has imparted only harm on human health, aiding 
 in transmission of malaria, dengue, Zika, chikungunya, CoVid, and countless other diseases impact millions of people 
 and animals every year. The Starner Eradicatus, *Anopheles Stephensi* laser zapper has obtained the highest level of 
 precision, recall, and accuracy in the industry!</br>
-<a href="https://gatech.instructure.com/files/29574637/download?download_frd=1" title="The History"><img src="https://gatech.instructure.com/files/29574617/download?download_frd=1" alt="The skeeters..." /></a>
-</br>The secret is the classification engine which has compiled an unmatched library of classification data collected from 
+<img src="./files/Assign4-2.gif" alt="The Starner Eradicatus Mosquitoes legacy..." /></br>
+The secret is the classification engine which has compiled an unmatched library of classification data collected from 
 153 countries. Flying insects from the tiny Dicopomorpha echmepterygis (Parasitic Wasp) to the giant titanus giganteus 
 (Titan Beetle) are carefully catalogued in a comprehensive digital record and indexed to support fast and correct 
 classification. This painstaking attention to detail was ordered by A. Thadeus<sup>1<sup>st</sup></sup> to address 
 a tumultuous backlash from the International Pollinators Association to a high mortality among beneficial pollinators.</br>
-<a href="https://gatech.instructure.com/files/29574635/download?download_frd=1" title="The bug problem"><img src="https://gatech.instructure.com/files/29574615/download?download_frd=1" alt="Pests everywhere..." /></a>
-</br>
-<a href="https://gatech.instructure.com/files/29574633/download?download_frd=1" title="Skeeter and E.T."><img src="https://gatech.instructure.com/files/29574613/download?download_frd=1" alt="Skeeter and E.T...." /></a>
-</br>E. Thadeus' close friend Skeeter Norvig, a former CMAO (Chief Mosquito Algorithm Officer) and pollinator advocate has 
+<img src="./files/Assign4-3.gif" alt="Call to action, save the farms..." /></br>
+<img src="./files/Assign4-4.gif" alt="Skeeter asks for help from E.T...." /></br>
+E. Thadeus' close friend Skeeter Norvig, a former CMAO (Chief Mosquito Algorithm Officer) and pollinator advocate has 
 approached E.T. with an idea. The agriculture industry has been experiencing terrible losses worldwide due to the 
 diaphorina citri (Asian Citrus Psyllid), drosophila suzuki (spotted wing Drosophila), and the bactrocera tyron 
 (Queensland fruit fly). Wonderful! E.T. exclaims, and becomes wildly excited at the opportunity to bring such an 
 important benefit to the World.</br>
-<a href="https://gatech.instructure.com/files/29574645/download?download_frd=1" title="Skeeter and E.T. pitch to the team"><img src="https://gatech.instructure.com/files/29574609/download?download_frd=1" alt="Pitching to the team..." /></a>
-</br>The wheels of invention lit up the research Scrum that morning as E.T. and Skeeter storyboard the solution. People are
+<img src="./files/Assign4-5.gif" alt="E.T. and Skeeter tell the story to the team..." /></br>
+The wheels of invention lit up the research Scrum that morning as E.T. and Skeeter storyboard the solution. People are
 calling out all the adjustments, wing acoustics, laser power and duration, going through xyz positioning, angular 
 velocity and acceleration calculations, speed, occlusion noise and tracking errors. You as the lead DT software 
 engineer are taking it all in, when you realize and speak up..., sir... Sir... <em>SIR...</em> and a hush falls. Sir, we are 
@@ -460,7 +459,8 @@ How grading works:
 
 Decision boundaries drawn by decision trees are very sharp, and fitting a decision tree of unbounded depth to a set of
 training examples almost inevitably leads to overfitting. In an attempt to decrease the variance of your classifier
-you are going to use a technique called 'Boosting' such as, Ada-, Gradiant- and XG-, boost.
+you are going to use a technique called 'Boosting' implementing one of the boosting algorithms such as, 
+Ada-, Gradient- and XG-, boost or your personal favorite.
 Similar to RF, the Decision stumps are short decision trees used in these Ensemble classification methods
 * They are usually short (depth limited)
 * They use smaller (but more of them) random datasets for training with sampling bias
@@ -469,7 +469,7 @@ Similar to RF, the Decision stumps are short decision trees used in these Ensemb
 * They use weighting of their sampling and classifiers to reflect the balance or unbalance of the data
 * They use majority voting (every tree in the forest votes) to classify a sample
 
-Ada-boost Algorithm [Zhu, et al.]:
+Ada-boost Algorithm example [Zhu, et al.]:
 <ul>N Samples, M classifiers, W weights, C classifications, K classes, Pi product</ul>
 <ol><li>Initialize the observation weights wi = 1/n, i = 1, 2, . . . , n.</li>
 <li>For m = 1 to M:</li><ol>
@@ -497,7 +497,7 @@ classes of (_m_ x _1_).
 
 How grading works:
 To test, we will be running 10 rounds, using your boosting with 300 trees, with a depth limit of 4, 
-example subsample rate of 0.1 and attribute subsample rate of 0.2
+example subsample rate of 0.1 and attribute subsample rate of 0.2. You will have a time limit.
 
 #### Functions to complete in the `ChallengeClassifier` class:
 1. `fit()`
