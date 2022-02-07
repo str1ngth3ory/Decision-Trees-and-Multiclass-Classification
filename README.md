@@ -102,7 +102,9 @@ You are only required to edit and submit **_submission.py_**, but there are a nu
 4. **_vectorize.csv_**: data used during the vectorization warmup for Assignment 4
 
 ### Imports
-**NOTE:** We are only allowing four imports: numpy, math, collections.Counter and time. We will be checking to see if any other libraries are used. You are not allowed to use any outside libraries especially for part 4 (challenge). Please remember that you should not change any function headers.
+**NOTE:** We are only allowing four imports: numpy, math, collections.Counter and time. We will be checking to see 
+if any other libraries are used. You are not allowed to use any outside libraries especially for part 4 (challenge). 
+Please remember that you should not change any function headers other than in part 4.
 
 ---
 
@@ -472,13 +474,13 @@ Similar to RF, the Decision stumps are short decision trees used in these Ensemb
 * They use majority voting (every tree in the forest votes) to classify a sample
 
 Ada-boost Algorithm example [Zhu, et al.]:
-<ul>N Samples, M classifiers, W weights, C classifications, K classes, Pi product</ul>
+<ul>N Samples, M classifiers, W weights, C classifications, K classes, I indicator</ul>
 <ol><li>Initialize the observation weights wi = 1/n, i = 1, 2, . . . , n.</li>
 <li>For m = 1 to M:</li><ol>
 <li>Fit a classifier T(m)(x) to the training data using weights wi.</li>
-<li>Compute err(m) = Sum(i=1..n)wi Pi(ci != T(m)(xi)) / Sum(i=1..n) wi</li>
+<li>Compute err(m) = Sum(i=1..n)wi I(ci != T(m)(xi)) / Sum(i=1..n) wi</li>
 <li>Compute α(m) = log (1−err(m)/err(m)) + log(K − 1).</li>
-<li>Set wi ← wi · exp (α(m) Pi(ci != T(m)(xi)), i = 1, . . . , n.</li>
+<li>Set wi ← wi · exp (α(m) I(ci != T(m)(xi)), i = 1, . . . , n.</li>
 <li>Re-normalize wi.</li></ol>
 <li>Output C(x) = argmax(k) sum(m=1..M) α(m) · I(T(m)(x) = k).</li>
 </ol>
