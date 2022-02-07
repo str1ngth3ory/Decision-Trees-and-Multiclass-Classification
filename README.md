@@ -155,12 +155,14 @@ The secret is the classification engine which has compiled an unmatched library 
 classification. This painstaking attention to detail was ordered by A. Thadeus<sup>1<sup>st</sup></sup> to address 
 a tumultuous backlash from the International Pollinators Association to a high mortality among beneficial pollinators.</br>
 <img src="./files/Assign4-3.gif" alt="Call to action, save the farms..." /></br>
-<img src="./files/Assign4-4.gif" alt="Skeeter asks for help from E.T...." /></br>
 E. Thadeus' close friend Skeeter Norvig, a former CMAO (Chief Mosquito Algorithm Officer) and pollinator advocate has 
 approached E.T. with an idea. The agriculture industry has been experiencing terrible losses worldwide due to the 
 diaphorina citri (Asian Citrus Psyllid), drosophila suzuki (spotted wing Drosophila), and the bactrocera tyron 
-(Queensland fruit fly). Wonderful! E.T. exclaims, and becomes wildly excited at the opportunity to bring such an 
-important benefit to the World.</br>
+(Queensland fruit fly). </br>
+<img src="./files/Assign4-4.gif" alt="Skeeter asks for help from E.T...." /></br>
+Skeeter explains his idea to E.T. to generalize the Starner Eradicatus zapper to handle a variety of these pests. 
+Wonderful! E.T. exclaims, and becomes wildly excited at the opportunity to bring such an important benefit to 
+the World.</br>
 <img src="./files/Assign4-5.gif" alt="E.T. and Skeeter tell the story to the team..." /></br>
 The wheels of invention lit up the research Scrum that morning as E.T. and Skeeter storyboard the solution. People are
 calling out all the adjustments, wing acoustics, laser power and duration, going through xyz positioning, angular 
