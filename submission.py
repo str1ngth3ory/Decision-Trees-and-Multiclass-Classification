@@ -393,7 +393,7 @@ class Vectorization:
         return non_vectorized
 
     def vectorized_loops(self, data):
-        """Element wise array arithmetic using vectorization.
+        """Array arithmetic using vectorization.
         This function takes one matrix, multiplies by itself and then adds to
         itself.
         Args:
@@ -404,6 +404,7 @@ class Vectorization:
 
         # TODO: finish this.
         raise NotImplemented()
+        return vectorized
 
     def non_vectorized_slice(self, data):
         """Find row with max sum using loops.
@@ -414,7 +415,6 @@ class Vectorization:
         Returns:
             Tuple (Max row sum, index of row with max sum)
         """
-
         max_sum = 0
         max_sum_index = 0
         for row in range(100):
@@ -426,7 +426,7 @@ class Vectorization:
                 max_sum = temp_sum
                 max_sum_index = row
 
-        return max_sum, max_sum_index
+        return (max_sum, max_sum_index)
 
     def vectorized_slice(self, data):
         """Find row with max sum using vectorization.
@@ -449,17 +449,16 @@ class Vectorization:
          Args:
             data: data to be added to array.
         Returns:
-            List of occurrences [(integer, number of occurrences), ...]
+            Dictionary [(integer, number of occurrences), ...]
         """
-
         unique_dict = {}
-        flattened = np.hstack(data)
-        for item in range(len(flattened)):
-            if flattened[item] > 0:
-                if flattened[item] in unique_dict:
-                    unique_dict[flattened[item]] += 1
+        flattened = data.flatten()
+        for item in flattened:
+            if item > 0:
+                if item in unique_dict:
+                    unique_dict[item] += 1
                 else:
-                    unique_dict[flattened[item]] = 1
+                    unique_dict[item] = 1
 
         return unique_dict.items()
 
@@ -471,9 +470,8 @@ class Vectorization:
          Args:
             data: data to be added to array.
         Returns:
-            List of occurrences [(integer, number of occurrences), ...]
+            Dictionary [(integer, number of occurrences), ...]
         """
-
         # TODO: finish this.
         raise NotImplemented()
 
@@ -496,7 +494,7 @@ class Vectorization:
             non_vectorized = np.ones((data.shape[0]+1,data.shape[1]), dtype=float)
             non_vectorized[-1, :] *= vector
         else:
-            raise AttributeError
+            raise ValueError('This parameter must be either c for column or r for row')
         for row in range(data.shape[0]):
             for col in range(data.shape[1]):
                 non_vectorized[row, col] = data[row, col]
@@ -560,3 +558,4 @@ def return_your_name():
     # return your name
     # TODO: finish this
     raise NotImplemented()
+    return ''
