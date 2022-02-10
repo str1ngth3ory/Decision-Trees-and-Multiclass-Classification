@@ -31,7 +31,7 @@ requires the graphviz library. From your ai_env Terminal:
 ```
 pip install graphviz==0.17.0
 or alternatively
-pip install -r requirements
+pip install -r requirements.txt
 ```
 If you have difficulty or errors on graphviz0.17 
 From your ai_env Terminal:
