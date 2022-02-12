@@ -115,13 +115,8 @@ class DecisionTreePart1Tests(unittest.TestCase):
 
         answer = [0, 0, 0, 0, 0]
         true_label = [1, 1, 1, 1, 1]
-        total_count = len(answer)
 
-        for index in range(0, len(answer)):
-            answer[index] = 1
-            accuracy = dt.accuracy(answer, true_label)
-
-            assert accuracy == ((index + 1) / total_count)
+        assert 0.00 == dt.accuracy(answer, true_label)
             
         output_answer = [3, 5, 3, 5, 2, 0, 4, 2, 1, 1, 5, 6, 3, 3, 4, 6, 5, 4, 5, 5]
         true_label =    [6, 1, 3, 6, 0, 4, 4, 5, 1, 0, 1, 6, 6, 6, 1, 5, 5, 6, 3, 6]
@@ -216,9 +211,10 @@ class DecisionTreePart2Tests(unittest.TestCase):
 
         assert 0.056 == round(gini_gain, 3)
         
-        labels = ([0, 0, 1, 1, 2, 2, 2, 2], [[0, 0, 1, 2], [1, 2, 2, 2]])
+        previous_labels = [0, 0, 1, 1, 2, 2, 2, 2]
+        current_labels = [[0, 0, 1, 2], [1, 2, 2, 2]]
         
-        assert round(dt.gini_gain(labels), 3) == 0.125
+        assert round(dt.gini_gain(previous_labels, current_labels), 3) == 0.125
 
     def test_gini_gain_restaurant_patrons(self):
         """Test gini gain using restaurant patrons.
@@ -274,7 +270,7 @@ class DecisionTreePart2Tests(unittest.TestCase):
         for fold in ten_folds:
             training_set, test_set = fold
 
-            assert len(test_set[0]) == test_set_count
+        assert len(test_set[0]) == test_set_count
 
     def test_k_folds_training_set_count(self):
         """Test k folds returns the correct training set size.
@@ -291,7 +287,7 @@ class DecisionTreePart2Tests(unittest.TestCase):
         for fold in ten_folds:
             training_set, test_set = fold
 
-            assert len(training_set[0]) == training_set_count
+        assert len(training_set[0]) == training_set_count
 
 
 class VectorizationWarmUpTests(unittest.TestCase):
