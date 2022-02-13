@@ -267,20 +267,6 @@ To build the next generation of Starner Zapper, we will need to keep the high le
 inculcated in the legacy products. So you must find a new way. In binary or boolean classification we find these metrics
 in terms of true positives, false positives, true negatives, and false negatives. So it should be simple right?
 </p>
-
-#### Equations you will need:
-*Accuracy:* </br>
-` $$\texttt{accuracy}(y, \hat{y}) = \frac{1}{n_\text{samples}} \sum_{i=0}^{n_\text{samples}-1} 1(\hat{y}_i = y_i$$` 
-</br>
-*or Balanced Accuracy:* </br>
-$$\texttt{balanced-accuracy}(y, \hat{y}, w) = \frac{1}{\sum{\hat{w}_i}} \sum_i 1(\hat{y}_i = y_i) \hat{w}_i$$
-</br>
-Weighted Precision: </br>
-$$\frac{1}{\sum_{l \in L} \left|\hat{y}_l\right|} \sum_{l \in L} \left|\hat{y}_l\right| P(y_l, \hat{y}_l)$$
-
-Weighted Recall:
-$$\frac{1}{\sum_{l \in L} \left|\hat{y}_l\right|} \sum_{l \in L} \left|\hat{y}_l\right| R(y_l, \hat{y}_l)$$
-
 Your confusion matrix should be K x K, K = number of classes. Actual labels (true labels) of the dataset will be
 represented by the rows, and the predicted labels form the columns. Notice that the correct classifier 
 predictions form the diagonal of the matrix. True positives are samples where the prediction matches the true
