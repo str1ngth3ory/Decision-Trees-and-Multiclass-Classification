@@ -144,28 +144,28 @@ How grading works:
 
 ---
 ## The Assignment
-<img src="./files/Assign4-1.gif" alt="The early days..." /></br>
+<img src="./files/Assign4-1.gif" alt="The early days..." />Creative Commons sources below</br>
 E. Thadeus Starner<sup>5<sup>th</sup></sup> is the 5<sup>th</sup> incarnation of the great innovator and legendary 
 pioneer of Starner Eradicatus Mosquitoes. For centuries the mosquito has imparted only harm on human health, aiding 
 in transmission of malaria, dengue, Zika, chikungunya, CoVid, and countless other diseases impact millions of people 
 and animals every year. The Starner Eradicatus, *Anopheles Stephensi* laser zapper has obtained the highest level of 
 precision, recall, and accuracy in the industry!</br>
-<img src="./files/Assign4-2.gif" alt="The Starner Eradicatus Mosquitoes legacy..." /></br>
+<img src="./files/Assign4-2.gif" alt="The Starner Eradicatus Mosquitoes legacy..." />Creative Commons sources below</br>
 The secret is the classification engine which has compiled an unmatched library of classification data collected from 
 153 countries. Flying insects from the tiny Dicopomorpha echmepterygis (Parasitic Wasp) to the giant titanus giganteus 
 (Titan Beetle) are carefully catalogued in a comprehensive digital record and indexed to support fast and correct 
 classification. This painstaking attention to detail was ordered by A. Thadeus<sup>1<sup>st</sup></sup> to address 
 a tumultuous backlash from the International Pollinators Association to a high mortality among beneficial pollinators.</br>
-<img src="./files/Assign4-3.gif" alt="Call to action, save the farms..." /></br>
+<img src="./files/Assign4-3.gif" alt="Call to action, save the farms..." />Creative Commons sources below</br>
 E. Thadeus' close friend Skeeter Norvig, a former CMAO (Chief Mosquito Algorithm Officer) and pollinator advocate has 
 approached E.T. with an idea. The agriculture industry has been experiencing terrible losses worldwide due to the 
 diaphorina citri (Asian Citrus Psyllid), drosophila suzuki (spotted wing Drosophila), and the bactrocera tyron 
 (Queensland fruit fly). </br>
-<img src="./files/Assign4-4.gif" alt="Skeeter asks for help from E.T...." /></br>
+<img src="./files/Assign4-4.gif" alt="Skeeter asks for help from E.T...." />Creative Commons sources below</br>
 Skeeter explains his idea to E.T. to generalize the Starner Eradicatus zapper to handle a variety of these pests. 
 Wonderful! E.T. exclaims, and becomes wildly excited at the opportunity to bring such an important benefit to 
 the World.</br>
-<img src="./files/Assign4-5.gif" alt="E.T. and Skeeter tell the story to the team..." /></br>
+<img src="./files/Assign4-5.gif" alt="E.T. and Skeeter tell the story to the team..." />Creative Commons sources below</br>
 The wheels of invention lit up the research Scrum that morning as E.T. and Skeeter storyboard the solution. People are
 calling out all the adjustments, wing acoustics, laser power and duration, going through xyz positioning, angular 
 velocity and acceleration calculations, speed, occlusion noise and tracking errors. You as the lead DT software 
@@ -544,3 +544,44 @@ The notebook Visualize_tree.iypnb can be use to visualize tree on the datasets. 
 
 Feel free to change and experiment with this notebook. you can look and use Information gain as well instead of gini to 
 see how the DT built based on that.
+
+### Video and picture sourcing
+All GT OMSCS materials are copyrighted and retain rights
+</br>Creative Commons sources share and share alike were used for the videos:</br>
+[[File:Lucanus Cervus fighting.webm|Lucanus_Cervus_fighting]] Nicolai Urbaniak, CC0, via Wikimedia Commons
+https://commons.wikimedia.org/wiki/File:2013-06-07_13-41-29-insecta-anim.ogv
+Thomas Bresson, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons
+https://commons.wikimedia.org/wiki/File:Traumatic-insemination-and-female-counter-adaptation-in-Strepsiptera-(Insecta)-srep25052-s2.ogv
+Peinert M, Wipfler B, Jetschke G, Kleinteich T, Gorb S, Beutel R, Pohl H, CC BY 4.0 <https://creativecommons.org/licenses/by/4.0>, via Wikimedia Commons
+https://commons.wikimedia.org/wiki/File:Broscus_cephalotes.webm
+О.Н.П., CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons
+https://commons.wikimedia.org/wiki/File:Termites_walking_on_the_floor_of_Eastern_Himalyan_rainforest.webm
+Jenis Patel, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons
+https://commons.wikimedia.org/wiki/File:The_carrot_caterpillar_-.webm
+Contributor NamesPathé frères (France)Pathé Frères (U.S.)AFI/Nichol (Donald) Collection (Library of Congress)Created / PublishedUnited States : Pathé Frères, 1911., Public domain, via Wikimedia Commons
+https://commons.wikimedia.org/wiki/File:Gaeana_calling.webm
+Shyamal, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons
+https://commons.wikimedia.org/wiki/File:Kluse_-_Tenebrio_molitor_larvae_eating_iceberg_lettuce_leaf_v_02_ies.webm
+Frank Vincentz, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons
+https://commons.wikimedia.org/wiki/File:Lispe_tentaculata_male_-_2012-05-31.ogv
+Pristurus, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons
+https://commons.wikimedia.org/wiki/File:Xylotrupes_socrates_(Siamese_rhinoceros_beetle)_behavior.webm
+Basile Morin, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons
+laser
+https://commons.wikimedia.org/wiki/File:Mosquito_dosing_by_laser_2.webm
+https://commons.wikimedia.org/wiki/File:Mosquito_dosing_by_laser_3.webm
+https://commons.wikimedia.org/wiki/File:Mosquito_dosing_by_laser_4.webm
+Matthew D. Keller et al., CC BY 4.0 <https://creativecommons.org/licenses/by/4.0>, via Wikimedia Commons
+https://commons.wikimedia.org/wiki/File:Laser-induced-mortality-of-Anopheles-stephensi-mosquitoes-srep20936-s5.ogv
+Keller M, Leahy D, Norton B, Johanson T, Mullen E, Marvit M, Makagon A, CC BY 4.0 <https://creativecommons.org/licenses/by/4.0>, via Wikimedia Commons
+https://commons.wikimedia.org/wiki/File:Predicting-Ancestral-Segmentation-Phenotypes-from-Drosophila-to-Anopheles-Using-In-Silico-Evolution-pgen.1006052.s001.ogv
+Rothschild J, Tsimiklis P, Siggia E, François P, CC BY 4.0 <https://creativecommons.org/licenses/by/4.0>, via Wikimedia Commons
+https://commons.wikimedia.org/wiki/File:Focused_Laguerre-Gaussian_beam.webm
+Jack Kingsley-Smith, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons
+https://commons.wikimedia.org/wiki/File:President_Reagan%27s_Remarks_at_Bowling_Green_State_University,_September_26,_1984.webm
+Reagan Library, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons
+https://commons.wikimedia.org/wiki/File:NID_Participants_Preparing_Their_Project_-_Workshop_On_Design_And_Development_Of_Digital_Experiencing_Exhibits_-_NCSM_-_Kolkata_2018-08-09_3141.ogv
+Biswarup Ganguly, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons
+https://commons.wikimedia.org/wiki/File:Davos_2017_-_An_Insight,_An_Idea_with_Sergey_Brin.webm
+World Economic Forum, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons
+Creative Commons Attribution-Share Alike 4.0
