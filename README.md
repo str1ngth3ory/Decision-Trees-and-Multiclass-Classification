@@ -89,22 +89,22 @@ You are only required to edit and submit **_submission.py_**, but there are a nu
 2. **_hand_multi.csv_**: 4 features, 12 examples, 3 classes, multi-class classification (last column)
 3. **_simple_binary.csv_**: 5 features, 100 examples, binary classification (last column)
 4. **_simple_multi.csv_**: 6 features, 100 examples, 3 classes, multi-class classification (last column)
-5. **_mod_complex_binary.csv_**: 7 features, 1400 examples, binary classification (last column)
-6. **_mod_complex_multi.csv_**: 10 features, 1800 examples, 5 classes, multi-class classification (last column)
-7. **_complex_binary.csv_**: 10 features, 5400 examples, binary classification (last column)
-8. **_complex_multi.csv_**: 16 features, 10800 examples, 9 classes, multi-class classification (last column)
+5. **_mod_complex_binary.csv_**: 7 features, 1600 examples, binary classification (last column)
+6. **_mod_complex_multi.csv_**: 10 features, 2400 examples, 5 classes, multi-class classification (last column)
+7. **_complex_binary.csv_**: 10 features, 2800 examples, binary classification (last column)
+8. **_complex_multi.csv_**: 16 features, 4800 examples, 9 classes, multi-class classification (last column)
 * Not provided, but will have less class separation and more centroids per class. Complex sets given for development
   * **_challenge_binary.csv_**: 10 features, 5400 examples, binary classification (last column) 
   * **_challenge_multi.csv_**: 16 features, 10800 examples, 9 classes, multi-class classification (last column)
 #### NOTE: path to the datasets! './data/your_file_name.csv'
 
 #### Warmup Data
-4. **_vectorize.csv_**: data used during the vectorization warmup for Assignment 4
+**_vectorize.csv_**: data used during the vectorization warmup for Assignment 4
 
 ### Imports
 **NOTE:** We are only allowing four imports: numpy, math, collections.Counter and time. We will be checking to see 
 if any other libraries are used. You are not allowed to use any outside libraries especially for part 4 (challenge). 
-Please remember that you should not change any function headers other than in part 4.
+Please remember that you should not change add or change any input parameters other than in part 4.
 
 ---
 
@@ -128,7 +128,7 @@ You will not meet the time limits on this assignment without vectorization. This
 vectorization and one of the high-demand technologies in python. We encourage you to use any numpy function to do the 
 functions in the warmup section. You will need to beat the non-vectorized code to get full points.
 
-TAs will not help on this section. This section was created to help get you ready for this and other assignments; 
+TAs will offer little help on this section. This section was created to help get you ready for this and other assignments; 
 feel free to ask other students on Ed Discussion or use some training resources. (e.g. https://numpy.org/learn/)
 
 How grading works:
@@ -196,8 +196,8 @@ An object of type 'DecisionNode' can represent a
 * Note that in this representation 'True' values for a decision take us to the left.
 
 ---
-
-### Part 1a: Building a Binary Tree by Hand
+### Part 1: Building a Binary Tree by Hand
+#### Part 1a: Build a Tree
 _[10 Pts]_
 
 In `build_decision_tree()`, construct a decision tree capable of predicting the class (col y) of each example. 
@@ -260,31 +260,41 @@ You would write your code like this:
 
 ---
 
-### Part 1b: Precision, Recall, Accuracy and Confusion Matrix
-_[10 pts]_
+##### Part 1b: Precision, Recall, Accuracy and Confusion Matrix
+_[12 pts]_
 
-To build the next generation of Starner Zapper, we will need to keep the high levels of Precision, Recall, and Accuracy
-inculcated in the legacy products. So you must find a new way. In binary or boolean classification we find these metrics
-in terms of true positives, false positives, true negatives, and false negatives. So it should be simple right?
+To build the Starner Zapper next-gen, we will need to keep the high levels of Precision, Recall, and Accuracy
+inculcated in the legacy products. In binary/boolean classification we find these metrics in terms of true positives, 
+false positives, true negatives, and false negatives. So it should be simple right?
 </p>
-Your confusion matrix should be K x K, K = number of classes. Actual labels (true labels) of the dataset will be
-represented by the rows, and the predicted labels form the columns. Notice that the correct classifier 
-predictions form the diagonal of the matrix. True positives are samples where the prediction matches the true
-label, false positives are samples that were predicted positive, but are actually negative. False negatives are 
-samples that were predicted negative, but were actually positive, whereas true negatives were predicted 
-negative and are negative. It will be very helpful to use the numpy diag (or diagonal) function in this 
-part of the assignment. You will have to consider carefully by class what the diagonal value tells you, 
-what its row tells you, what its column tells you, and what is left?
 
-* Either of 2 accuracy calculations: Of all the examples, what percentage did my clf predict correctly?
-  * Balanced Accuracy
-  * Balanced Weighted Accuracy (recommended for challenge participants)
+#### Equations you will need:
+**Balanced Accuracy Weighted:**
+- *Accuracy* Sum of the diagonal values divided by the sum of the matrix. **USE THIS** 
+  - ***Will tell you overall accuracy but not bias, why?***</br>
+- *Balanced Accuracy:* Sum of the ratios (accurate divided by sum of its row) divided by number of classes. 
+  - ***Will show bias but introduce overemphasis, why?***</br>
+- *Balanced Accuracy Weighted:* Balanced Accuracy with weighting added in the numerator and denominator. 
+  - ***Why is this good for this problem?*** **USE THIS**
+
+**Precision:** Predictions which were accurate divided by the number of predictions (column sum)</br>
+**Recall:** Predictions which were accurate divided by the number of predictions (row sum)</br>
+
+Your confusion matrix should be K x K, K = number of classes. Actual values (true labels) of the dataset will be
+labeled by row, and the predicted values will be labeled by column. Notice that the correct classifier 
+predictions form the diagonal of the matrix. It will be very helpful to learn numpy functions such as, diag, 
+diagonal, sum(by axis), and using weighting for this part of the assignment. You will have to consider carefully 
+by class what the diagonal value tells you, what its row tells you, what its column tells you, and what is left?
+
+To-do
+* Confusion Matrix is a actual vs. predicted matrix
+* Balanced Accuracy Weighted (function name=accuracy) How good is my classifiers at predicting a wide range of classes?
 * Precision: How often is my classifier right when it makes a positive prediction?
 * Recall: How often does my classifier recognize positive examples?
 Fill out the methods to compute the confusion matrix, accuracy, precision and recall for your classifier output. 
 `classifier_output` will be the labels that your classifier predicts, while the `true_labels` will be the true test labels. 
-Helpful references:
 
+>Helpful references: </br>
 [Wikipedia](https://en.wikipedia.org/wiki/Confusion_matrix) </br>
 [Metrics for Multi-Class Classification](https://arxiv.org/pdf/2008.05756) </br>
 [Performance Metrics for Activity Recognition Sec 5.](https://www.nist.gov/system/files/documents/el/isd/ks/Final_PerMIS_2006_Proceedings.pdf#page=143) </br>
@@ -308,8 +318,9 @@ If you want to calculate the example set above by hand, run the following code.
 
 ---
 
-### Part 2a: Decision Tree Learning
-_[15 pts]_
+### Part 2: Decision Tree Learning
+#### Part 2a: Gini
+_[10 pts]_
 
 Purity, we strive for purity, alike Sir Galahad the Pure... 
 Splitting at a decision is all about purity. You are trying to improve information gain which means,
@@ -326,7 +337,6 @@ Hints:
 * [information gain](https://en.wikipedia.org/wiki/Information_gain_in_decision_trees) 
 * The Gini Gain follows a similar approach to information gain, replacing entropy with Gini Impurity.
 * Numpy helpful capabilities such as binary masks, filtering arrays with masks, slicing, stacking and concatenating
-
 <p>
 
 #### Functions to complete in the `submission` module:
@@ -335,13 +345,20 @@ Hints:
 
 ---
 
-### Part 2b: Decision Tree Learning
-_[30 pts]_
+#### Part 2b: Decision Tree Learning
+_[25 pts]_
 * Data to train and test with: **_simple_binary.csv, simple_multi.csv, mod_complex_binary.csv, mod_complex_multi.csv_**
-* Grading: average test accuracy over 10 rounds should be >= 70%
-Meanwhile in the lab...
+
+* Grading:
+    * 15 pts: average test accuracy over 10 rounds should be >= 50%
+    * 20 pts: average test accuracy over 10 rounds should be >= 60%
+    * 25 pts: average test accuracy over 10 rounds should be >= 75%
+</br>
+
+Meanwhile back in the lab...
 As the size of our flying training set grows, it rapidly becomes impractical to build multiclass trees by hand. 
-We need to add a class with member functions to manage this, it is too much! To do list:
+We need to add a class with member functions to manage this, it is too much! 
+</br>To do list:
 * Initialize the class with useful variables and assignments
 * Fill out the member function that will fit the data to the tree, using build
 * Fill out the build function
@@ -378,10 +395,10 @@ How grading works:
 3. `classify()`
 ---
 
-### Part 2c: Validation
-_[5 pts]_
+#### Part 2c: Validation
+_[7 pts]_
 
-* File to use: **_mod_complex_multi.csv_**
+* File to use: **_part23_data.csv_**
 * Allowed use of numpy, collections.Counter, and math.log
 * Grading: average test accuracy over 10 rounds should be >= 80%
 
@@ -404,16 +421,16 @@ How grading works:
 ---
 
 ### Part 3: Random Forests
-_[20 pts]_
+_[25 pts]_
 
-* File to use: **_complex_binary.csv, complex_multi.csv_**
+* File to use: **_mod_complex_binary.csv, mod_complex_multi.csv_**
 * Allowed use of numpy, collections.Counter, and math.log
 * Allowed to write additional functions to improve your score
 * Allowed to switch to Entropy and splitting entropy
 * Grading: 
-  * 10 pts: average test accuracy over 10 rounds should be >= 80%
-  * 15 pts: average test accuracy over 10 rounds should be >= 85%
-  * 20 pts: average test accuracy over 10 rounds should be >= 90%
+  * 15 pts: average test accuracy over 10 rounds should be >= 50%
+  * 20 pts: average test accuracy over 10 rounds should be >= 70%
+  * 25 pts: average test accuracy over 10 rounds should be >= 80%
 
 Decision boundaries drawn by decision trees are very sharp, and fitting a decision tree of unbounded depth to a set of
 training examples almost inevitably leads to overfitting. In an attempt to decrease the variance of your classifier 
@@ -505,8 +522,8 @@ To test, we will be running 10 rounds, using your boosting with 300 trees, with 
 example subsample rate of 0.1 and attribute subsample rate of 0.2. You will have a time limit.
 
 #### Functions to complete in the `ChallengeClassifier` class:
-1. `fit()`
-2. `boost()`
+1. `init()`
+2. `fit()`
 3. `classify()`
 
 ---

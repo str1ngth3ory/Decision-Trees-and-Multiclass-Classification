@@ -1,4 +1,5 @@
 import numpy as np
+import math
 from collections import Counter
 import time
 
@@ -79,16 +80,13 @@ def build_decision_tree():
     Returns:
         The root node of the decision tree.
     """
-
-    decision_tree_root = None
-
+    dt_root = None
     # TODO: finish this.
     raise NotImplemented()
+    return dt_root
 
-    return decision_tree_root
 
-
-def confusion_matrix(classifier_output, true_labels):
+def confusion_matrix(true_labels, classifier_output, n_classes=2):
     """Create a confusion matrix to measure classifier performance.
    
     Classifier output vs true labels, which is equal to:
@@ -113,61 +111,70 @@ def confusion_matrix(classifier_output, true_labels):
     Args:
         classifier_output (list(int)): output from classifier.
         true_labels: (list(int): correct classified labels.
+        n_classes: int: number of classes needed due to possible multiple runs with incomplete class sets
     Returns:
         A two dimensional array representing the confusion matrix.
     """
-
+    c_matrix = None
     # TODO: finish this.
     raise NotImplemented()
+    return c_matrix
 
 
-def precision(classifier_output, true_labels):
-    """Get the precision of a classifier compared to the correct values.
+def precision(true_labels, classifier_output, n_classes=2, pe_matrix=None):
+    """
+    Get the precision of a classifier compared to the correct values.
     In this assignment, precision for label n can be calculated by the formula:
         precision (n) = number of correctly classified label n / number of all predicted label n 
                       = count (n,n) / (count(0, n) + count(1,n) + .... + count (n,n))
     Args:
         classifier_output (list(int)): output from classifier.
         true_labels: (list(int): correct classified labels.
+        n_classes: int: number of classes needed due to possible multiple runs with incomplete class sets
+        pe_matrix: pre-existing numpy confusion matrix
     Returns:
         The list of precision of each classifier output. 
         So if the classifier is (0,1,2,...,n), the output should be in the below format: 
         [precision (0), precision(1), precision(2), ... precision(n)].
     """
-
     # TODO: finish this.
     raise NotImplemented()
 
 
-def recall(classifier_output, true_labels):
-    """Get the recall of a classifier compared to the correct values.
+def recall(true_labels, classifier_output, n_classes=2, pe_matrix=None):
+    """
+    Get the recall of a classifier compared to the correct values.
     In this assignment, recall for label n can be calculated by the formula:
         recall (n) = number of correctly classified label n / number of all true label n 
                    = count (n,n) / (count(n, 0) + count(n,1) + .... + count (n,n))
     Args:
         classifier_output (list(int)): output from classifier.
         true_labels: (list(int): correct classified labels.
+        n_classes: int: number of classes needed due to possible multiple runs with incomplete class sets
+        pe_matrix: pre-existing numpy confusion matrix
     Returns:
         The list of recall of each classifier output..
         So if the classifier is (0,1,2,...,n), the output should be in the below format: 
         [recall (0), recall (1), recall (2), ... recall (n)].
     """
-
     # TODO: finish this.
     raise NotImplemented()
 
 
-def accuracy(classifier_output, true_labels):
+def accuracy(true_labels, classifier_output, n_classes=2, pe_matrix=None):
     """Get the accuracy of a classifier compared to the correct values.
-    Accuracy is measured as:
-        correct_classifications / total_number_examples
+    Balanced Accuracy Weighted:
+    -Balanced Accuracy: Sum of the ratios (accurate divided by sum of its row) divided by number of classes.
+    -Balanced Accuracy Weighted: Balanced Accuracy with weighting added in the numerator and denominator.
+
     Args:
         classifier_output (list(int)): output from classifier.
         true_labels: (list(int): correct classified labels.
+        n_classes: int: number of classes needed due to possible multiple runs with incomplete class sets
+        pe_matrix: pre-existing numpy confusion matrix
     Returns:
         The accuracy of the classifier output.
     """
-
     # TODO: finish this.
     raise NotImplemented()
 
@@ -205,7 +212,7 @@ def gini_gain(previous_classes, current_classes):
 class DecisionTree:
     """Class for automatic tree-building and classification."""
 
-    def __init__(self, depth_limit=float('inf')):
+    def __init__(self, depth_limit=22):
         """Create a decision tree with a set depth limit.
         Starts with an empty root.
         Args:
@@ -233,7 +240,6 @@ class DecisionTree:
         Returns:
             Root node of decision tree.
         """
-
         # TODO: finish this.
         raise NotImplemented()
 
@@ -244,9 +250,7 @@ class DecisionTree:
         Return:
             A list of class labels.
         """
-
         class_labels = []
-
         # TODO: finish this.
         raise NotImplemented()
         return class_labels
@@ -274,8 +278,8 @@ def generate_k_folds(dataset, k):
 class RandomForest:
     """Random forest classification."""
 
-    def __init__(self, num_trees, depth_limit, example_subsample_rate,
-                 attr_subsample_rate):
+    def __init__(self, num_trees=200, depth_limit=5, example_subsample_rate=.1,
+                 attr_subsample_rate=.3):
         """Create a random forest.
          Args:
              num_trees (int): fixed number of trees.
@@ -283,7 +287,6 @@ class RandomForest:
              example_subsample_rate (float): percentage of example samples.
              attr_subsample_rate (float): percentage of attribute samples.
         """
-
         self.trees = []
         self.num_trees = num_trees
         self.depth_limit = depth_limit
@@ -295,42 +298,40 @@ class RandomForest:
             features (m x n): m examples with n features.
             classes (m x 1): Array of Classes.
         """
-
         # TODO: finish this.
         raise NotImplemented()
 
     def classify(self, features):
-        """Classify a list of features based on the trained random forest.
-        Args:
-            features (m x n): m examples with n features.
-        Returns:
-            votes (list(int)): m votes for each element
-        """
-        votes = []
-        # TODO: finish this.
-        raise NotImplemented()
-        return votes
+            """Classify a list of features based on the trained random forest.
+            Args:
+                features (m x n): m examples with n features.
+            Returns:
+                votes (list(int)): m votes for each element
+            """
+            votes = []
+            # TODO: finish this.
+            raise NotImplemented()
+            return votes
+
 
 class ChallengeClassifier:
     """Challenge Classifier used on Challenge Training Data."""
 
-    def __init__(self, num_clf, depth_limit, example_subsample_rate,
-                 attr_subsample_rate):
+    def __init__(self, n_clf=0, depth_limit=0, example_subsample_rt=0.0, \
+                 attr_subsample_rt=0.0, max_boost_cycles=0):
         """Create a boosting class which uses decision trees.
         Initialize and/or add whatever parameters you may need here.
         Args:
              num_clf (int): fixed number of classifiers.
              depth_limit (int): max depth limit of tree.
-             example_subsample_rate (float): percentage of example samples.
              attr_subsample_rate (float): percentage of attribute samples.
+             example_subsample_rate (float): percentage of example samples.
         """
-
-        self.clf = []
-        self.num_clf = num_clf
+        self.num_clf = n_clf
         self.depth_limit = depth_limit
-        self.example_subsample_rate = example_subsample_rate
-        self.attr_subsample_rate = attr_subsample_rate
-
+        self.example_subsample_rt = example_subsample_rt
+        self.attr_subsample_rt=attr_subsample_rt
+        self.max_boost_cycles = max_boost_cycles
         # TODO: finish this.
         raise NotImplemented()
 
@@ -341,18 +342,6 @@ class ChallengeClassifier:
             features (m x n): m examples with n features.
             classes (m x 1): Array of Classes.
         """
-
-        # TODO: finish this.
-        raise NotImplemented()
-
-    def boost(self, features, classes):
-        """Run the boosting function on your classifiers.
-            Fit your model to the provided features.
-        Args:
-            features (m x n): m examples with n features.
-            classes (m x 1): Array of Classes.
-        """
-
         # TODO: finish this.
         raise NotImplemented()
 
@@ -364,7 +353,6 @@ class ChallengeClassifier:
         Returns:
             A list of class labels.
         """
-
         # TODO: finish this.
         raise NotImplemented()
 
@@ -401,7 +389,6 @@ class Vectorization:
         Returns:
             Numpy array of data.
         """
-
         # TODO: finish this.
         raise NotImplemented()
         return vectorized
@@ -437,7 +424,6 @@ class Vectorization:
         Returns:
             Tuple (Max row sum, index of row with max sum)
         """
-
         # TODO: finish this.
         raise NotImplemented()
 
@@ -487,10 +473,10 @@ class Vectorization:
         Returns:
             Numpy array of data.
         """
-        if dimension == 'c' and len(vector) == data.shape[1]:
+        if dimension == 'c' and len(vector) == data.shape[0]:
             non_vectorized = np.ones((data.shape[0],data.shape[1]+1), dtype=float)
             non_vectorized[:, -1] *= vector
-        elif dimension == 'r' and len(vector) == data.shape[0]:
+        elif dimension == 'r' and len(vector) == data.shape[1]:
             non_vectorized = np.ones((data.shape[0]+1,data.shape[1]), dtype=float)
             non_vectorized[-1, :] *= vector
         else:
