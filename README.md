@@ -119,7 +119,7 @@ Out[4]: 0.123457
 ---
 
 ### Part 0: Vectorization!
-_[9 pts]_
+_[10 pts]_
 
 * File to use to benchmark tests: **_vectorize.csv_**
 
