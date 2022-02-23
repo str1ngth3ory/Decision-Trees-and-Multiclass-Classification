@@ -93,6 +93,7 @@ You are only required to edit and submit **_submission.py_**, but there are a nu
 6. **_mod_complex_multi.csv_**: 10 features, 2400 examples, 5 classes, multi-class classification (last column)
 7. **_complex_binary.csv_**: 10 features, 2800 examples, binary classification (last column)
 8. **_complex_multi.csv_**: 16 features, 4800 examples, 9 classes, multi-class classification (last column)
+9. **_part23_data.csv_**: 4 features, 1372 example, binary classification (last column)
 * Not provided, but will have less class separation and more centroids per class. Complex sets given for development
   * **_challenge_binary.csv_**: 10 features, 5400 examples, binary classification (last column) 
   * **_challenge_multi.csv_**: 16 features, 10800 examples, 9 classes, multi-class classification (last column)
