@@ -5,7 +5,7 @@ import numpy as np
 import time
 
 
-class DecisionTreePart1LocalTests(unittest.TestCase):
+class DecisionTreePart1Tests(unittest.TestCase):
     """Test tree example, confusion matrix, precision, recall, and accuracy.
 
     Attributes:
@@ -38,7 +38,7 @@ class DecisionTreePart1LocalTests(unittest.TestCase):
             decide return matches true class for all classes.
         """
         for index in range(0, len(self.ht_examples)):
-            print(self.ht_examples[index])
+            # print(self.ht_examples[index])
             decision = self.hand_tree.decide(self.ht_examples[index])
 
             assert decision == self.ht_classes[index]
