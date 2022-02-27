@@ -77,8 +77,8 @@ class DecisionTreePart1Tests(unittest.TestCase):
         
         true_label =    [ 3, 0, 4, 4, 1, 0, 1, 0, 4, 2, 3, 2]
         output_answer = [ 4, 2, 0, 4, 3, 1, 4, 3, 1, 3, 3, 3]
-        test_list = [0.000, 0.000, 0.000, 0.500, 0.333]
-        calculated_list = dt.precision(output_answer, true_label, 5)
+        test_list = [0.000, 0.000, 0.000, 0.200, 0.333]
+        calculated_list = dt.precision(true_label, output_answer, n_classes = 5)
         assert np.array_equal(test_list, [round(elem, 3) for elem in calculated_list])
 
     def test_precision_calculation_multiclass(self):
