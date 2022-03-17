@@ -76,38 +76,47 @@ def load_csv(data_file_path, class_index=-1):
 def build_decision_tree():
     """Create a decision tree capable of handling the sample data contained in the ReadMe.
     It must be built fully starting from the root.
-    
+
     Returns:
         The root node of the decision tree.
     """
-    dt_root = None
-    # TODO: finish this.
-    raise NotImplemented()
+    dt_root = DecisionNode(None, None, lambda feature : feature[2] <= -0.700, None)
+    dt_a0 = DecisionNode(None, None, lambda feather : feather[0] <= 0.100, None)
+    dt_a1 = DecisionNode(None, None, lambda feather : feather[1] <= -0.300, None)
+    dt_a3 = DecisionNode(None, None, lambda feather : feather[3] <= 1.000, None)
+    dt_root.left = dt_a3
+    dt_root.right = dt_a0
+    dt_a0.left = DecisionNode(None, None, None, 0)
+    dt_a0.right = dt_a1
+    dt_a1.left = DecisionNode(None, None, None, 0)
+    dt_a1.right = DecisionNode(None, None, None, 1)
+    dt_a3.left = DecisionNode(None, None, None, 2)
+    dt_a3.right = DecisionNode(None, None, None, 0)
     return dt_root
 
 
 def confusion_matrix(true_labels, classifier_output, n_classes=2):
     """Create a confusion matrix to measure classifier performance.
-   
+
     Classifier output vs true labels, which is equal to:
     Predicted  vs  Actual Values.
-    
+
     Output will sum multiclass performance in the example format:
     (Assume the labels are 0,1,2,...n)
                                      |Predicted|
-                     
+
     |A|            0,            1,           2,       .....,      n
     |c|   0:  [[count(0,0),  count(0,1),  count(0,2),  .....,  count(0,n)],
     |t|   1:   [count(1,0),  count(1,1),  count(1,2),  .....,  count(1,n)],
     |u|   2:   [count(2,0),  count(2,1),  count(2,2),  .....,  count(2,n)],'
     |a|   .............,
     |l|   n:   [count(n,0),  count(n,1),  count(n,2),  .....,  count(n,n)]]
-    
+
     'count' function is expressed as 'count(actual label, predicted label)'.
-    
+
     For example, count (0,1) represents the total number of actual label 0 and the predicted label 1;
-                 count (3,2) represents the total number of actual label 3 and the predicted label 2.           
-    
+                 count (3,2) represents the total number of actual label 3 and the predicted label 2.
+
     Args:
         classifier_output (list(int)): output from classifier.
         true_labels: (list(int): correct classified labels.
@@ -115,9 +124,9 @@ def confusion_matrix(true_labels, classifier_output, n_classes=2):
     Returns:
         A two dimensional array representing the confusion matrix.
     """
-    c_matrix = None
-    # TODO: finish this.
-    raise NotImplemented()
+    c_matrix = np.zeros((n_classes,n_classes))
+    for i in range(len(true_labels)):
+        c_matrix[true_labels[i]][classifier_output[i]] += 1
     return c_matrix
 
 
@@ -125,7 +134,7 @@ def precision(true_labels, classifier_output, n_classes=2, pe_matrix=None):
     """
     Get the precision of a classifier compared to the correct values.
     In this assignment, precision for label n can be calculated by the formula:
-        precision (n) = number of correctly classified label n / number of all predicted label n 
+        precision (n) = number of correctly classified label n / number of all predicted label n
                       = count (n,n) / (count(0, n) + count(1,n) + .... + count (n,n))
     Args:
         classifier_output (list(int)): output from classifier.
@@ -133,19 +142,25 @@ def precision(true_labels, classifier_output, n_classes=2, pe_matrix=None):
         n_classes: int: number of classes needed due to possible multiple runs with incomplete class sets
         pe_matrix: pre-existing numpy confusion matrix
     Returns:
-        The list of precision of each classifier output. 
-        So if the classifier is (0,1,2,...,n), the output should be in the below format: 
+        The list of precision of each classifier output.
+        So if the classifier is (0,1,2,...,n), the output should be in the below format:
         [precision (0), precision(1), precision(2), ... precision(n)].
     """
-    # TODO: finish this.
-    raise NotImplemented()
+    if pe_matrix is None:
+        pe_matrix = confusion_matrix(true_labels, classifier_output, n_classes)
+    precision = list()
+    for i in range(n_classes):
+        TP = pe_matrix[i][i]
+        FP = sum(pe_matrix.T[i]) - TP
+        precision.append(TP / (TP + FP))
+    return precision
 
 
 def recall(true_labels, classifier_output, n_classes=2, pe_matrix=None):
     """
     Get the recall of a classifier compared to the correct values.
     In this assignment, recall for label n can be calculated by the formula:
-        recall (n) = number of correctly classified label n / number of all true label n 
+        recall (n) = number of correctly classified label n / number of all true label n
                    = count (n,n) / (count(n, 0) + count(n,1) + .... + count (n,n))
     Args:
         classifier_output (list(int)): output from classifier.
@@ -154,11 +169,17 @@ def recall(true_labels, classifier_output, n_classes=2, pe_matrix=None):
         pe_matrix: pre-existing numpy confusion matrix
     Returns:
         The list of recall of each classifier output..
-        So if the classifier is (0,1,2,...,n), the output should be in the below format: 
+        So if the classifier is (0,1,2,...,n), the output should be in the below format:
         [recall (0), recall (1), recall (2), ... recall (n)].
     """
-    # TODO: finish this.
-    raise NotImplemented()
+    if pe_matrix is None:
+        pe_matrix = confusion_matrix(true_labels, classifier_output, n_classes)
+    recall = list()
+    for i in range(n_classes):
+        TP = pe_matrix[i][i]
+        FN = sum(pe_matrix[i]) - TP
+        recall.append(TP / (TP + FN))
+    return recall
 
 
 def accuracy(true_labels, classifier_output, n_classes=2, pe_matrix=None):
@@ -175,8 +196,12 @@ def accuracy(true_labels, classifier_output, n_classes=2, pe_matrix=None):
     Returns:
         The accuracy of the classifier output.
     """
-    # TODO: finish this.
-    raise NotImplemented()
+    if pe_matrix is None:
+        pe_matrix = confusion_matrix(true_labels, classifier_output, n_classes)
+    TP_TN = sum(pe_matrix.diagonal())
+    TP_TN_FP_FN = np.sum(pe_matrix, dtype=np.int32)
+    result = TP_TN/TP_TN_FP_FN
+    return result
 
 
 def gini_impurity(class_vector):
@@ -390,8 +415,8 @@ class Vectorization:
             Numpy array of data.
         """
         # TODO: finish this.
-        raise NotImplemented()
-        return vectorized
+        vector = np.array(data)
+        return vector**2+vector
 
     def non_vectorized_slice(self, data):
         """Find row with max sum using loops.
@@ -425,7 +450,15 @@ class Vectorization:
             Tuple (Max row sum, index of row with max sum)
         """
         # TODO: finish this.
-        raise NotImplemented()
+        vector = np.array(data)[:100,:]
+        sums = np.sum(vector, axis=1)
+        max_sum, maxsum_idx = sums[0], 0
+        for i in range(1, 100):
+            if sums[i] > max_sum:
+                max_sum = sums[i]
+                maxsum_idx = i
+        return max_sum, maxsum_idx
+
 
     def non_vectorized_flatten(self, data):
         """Display occurrences of positive numbers using loops.
@@ -459,7 +492,11 @@ class Vectorization:
             Dictionary [(integer, number of occurrences), ...]
         """
         # TODO: finish this.
-        raise NotImplemented()
+        frequency = dict()
+        vector = np.array(data).reshape(-1,)
+        vector = vector[np.where(vector>0)]
+        frequency = Counter(vector)
+        return frequency.items()
 
     def non_vectorized_glue(self, data, vector, dimension='c'):
         """Element wise array arithmetic with loops.
@@ -498,8 +535,12 @@ class Vectorization:
         Returns:
             Numpy array of data.
         """
-        vectorized = None
-        raise NotImplemented()
+        array = np.array(data)
+        vector = np.array([vector])
+        if dimension == 'c':
+            vectorized = np.concatenate((array, vector.T), axis=1)
+        elif dimension == 'r':
+            vectorized = np.concatenate((array, vector), axis=0)
         return vectorized
 
     def non_vectorized_mask(self, data, threshold):
@@ -521,7 +562,6 @@ class Vectorization:
                     non_vectorized[row, col] = val
                     continue
                 non_vectorized[row, col] = val**2
-
         return non_vectorized
 
     def vectorized_mask(self, data, threshold):
@@ -535,8 +575,8 @@ class Vectorization:
         Returns:
             Numpy array of data.
         """
-        vectorized = None
-        raise NotImplemented()
+        vectorized = np.array(data)
+        vectorized[np.where(vectorized<threshold)] = vectorized[np.where(vectorized<threshold)]**2
         return vectorized
 
 

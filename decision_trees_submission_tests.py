@@ -40,7 +40,6 @@ class DecisionTreePart1Tests(unittest.TestCase):
         for index in range(0, len(self.ht_examples)):
             # print(self.ht_examples[index])
             decision = self.hand_tree.decide(self.ht_examples[index])
-
             assert decision == self.ht_classes[index]
 
 
@@ -74,7 +73,7 @@ class DecisionTreePart1Tests(unittest.TestCase):
         Asserts:
             Precision matches for all true labels.
         """
-        
+
         true_label =    [ 3, 0, 4, 4, 1, 0, 1, 0, 4, 2, 3, 2]
         output_answer = [ 4, 2, 0, 4, 3, 1, 4, 3, 1, 3, 3, 3]
         test_list = [0.000, 0.000, 0.000, 0.200, 0.333]
@@ -198,7 +197,7 @@ class DecisionTreePart2Tests(unittest.TestCase):
 
         gini_impurity = dt.gini_impurity([1, 1, 0, 0, 0, 0])
         assert round(4. / 9., 3) == round(gini_impurity, 3)
-        
+
         labels = [0, 1, 2, 1, 0, 2, 2, 2]
         assert round(dt.gini_impurity(labels), 3) == 0.625
 
@@ -230,7 +229,7 @@ class DecisionTreePart2Tests(unittest.TestCase):
         labels = ([1, 1, 1, 0, 0, 0], [[1, 1, 0], [1, 0, 0]])
         gini_gain = dt.gini_gain(labels[0],labels[1])
         assert 0.056 == round(gini_gain, 3)
-        
+
         labels = ([0, 0, 1, 1, 2, 2, 2, 2], [[0, 0, 1, 2], [1, 2, 2, 2]])
         assert round(dt.gini_gain(labels[0],labels[1]), 3) == 0.125
 
