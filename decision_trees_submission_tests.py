@@ -161,7 +161,7 @@ class DecisionTreePart2Tests(unittest.TestCase):
                                                [0, 0, 1, 1],
                                                [0, 0, 1, 1]]}
 
-        self.dataset = dt.load_csv(data_dir + 'mod_complex_multi.csv')
+        self.dataset = dt.load_csv(data_dir + 'simple_multi.csv')
         self.train_features, self.train_classes = self.dataset
 
     def test_gini_impurity_max(self):
@@ -266,7 +266,9 @@ class DecisionTreePart2Tests(unittest.TestCase):
 
         tree = dt.DecisionTree()
         tree.fit(self.train_features, self.train_classes)
+        print('train_classes:\n',self.train_classes)
         output = tree.classify(self.train_features)
+        print('output:\n', list(map(int, output)))
         assert (output == self.train_classes).all()
 
     def test_k_folds_test_set_count(self):
@@ -301,6 +303,44 @@ class DecisionTreePart2Tests(unittest.TestCase):
             training_set, test_set = fold
             assert len(training_set[0]) == training_set_count
 
+class DecisionTreePart2bTests(unittest.TestCase):
+    """Tests for RandomForest Decision Tree Learning.
+
+    Attributes:
+        restaurant (dict): represents restaurant data set.
+        dataset (data): training data used in testing.
+        train_features: training features from dataset.
+        train_classes: training classes from dataset.
+    """
+
+    def setUp(self):
+        """Set up test data.
+        """
+        data_dir = './data/'
+        self.comp_bin_dataset = dt.load_csv(data_dir + 'mod_complex_binary.csv')
+        self.comp_multi_dataset = dt.load_csv(data_dir + 'mod_complex_multi.csv')
+        self.bin_tests = dt.generate_k_folds(self.comp_bin_dataset, 10)
+        self.multi_tests = dt.generate_k_folds(self.comp_multi_dataset, 10)
+        self.rfb = None
+        self.rfm = None
+
+    def test_binary_random_forest(self):
+        """Test random forest on binary data.
+
+        Asserts:
+            Accuracy is greater than 70%.
+        """
+        results = []
+        for train, test in self.bin_tests:
+            train_features, train_classes = train
+            test_features, test_classes = test
+            self.rfb = dt.DecisionTree()
+            self.rfb.fit(train_features, train_classes)
+            votes = self.rfb.classify(test_features)
+            results.append(float(sum([1 if vote == test_classes[i] else 0 for i,
+                                     vote in enumerate(votes)])) / float(len(test_classes)))
+        print(sum(results)/10.)
+        assert sum(results) / 10. > .75
 
 
 class DecisionTreePart3Tests(unittest.TestCase):
@@ -334,11 +374,12 @@ class DecisionTreePart3Tests(unittest.TestCase):
         for train, test in self.bin_tests:
             train_features, train_classes = train
             test_features, test_classes = test
-            self.rfb = dt.RandomForest(200, 3, .2, .3)
+            self.rfb = dt.RandomForest()
             self.rfb.fit(train_features, train_classes)
             votes = self.rfb.classify(test_features)
             results.append(float(sum([1 if vote == test_classes[i] else 0 for i,
                                      vote in enumerate(votes)])) / float(len(test_classes)))
+        print(sum(results)/10.)
         assert sum(results) / 10. > .75
 
     def test_multi_random_forest(self):
@@ -351,11 +392,12 @@ class DecisionTreePart3Tests(unittest.TestCase):
         for train, test in self.multi_tests:
             train_features, train_classes = train
             test_features, test_classes = test
-            self.rfm = dt.RandomForest(200, 8, .1, .3)
+            self.rfm = dt.RandomForest()
             self.rfm.fit(train_features, train_classes)
             votes = self.rfm.classify(test_features)
             results.append(float(sum([1 if vote == test_classes[i] else 0 for i,
                                  vote in enumerate(votes)])) / float(len(test_classes)))
+        print(sum(results)/10.)
         assert sum(results) / 10. >= .80
 
 

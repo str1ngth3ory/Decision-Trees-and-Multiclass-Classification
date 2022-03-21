@@ -126,7 +126,7 @@ def confusion_matrix(true_labels, classifier_output, n_classes=2):
     """
     c_matrix = np.zeros((n_classes,n_classes))
     for i in range(len(true_labels)):
-        c_matrix[true_labels[i]][classifier_output[i]] += 1
+        c_matrix[int(true_labels[i]), int(classifier_output[i])] += 1
     return c_matrix
 
 
@@ -217,8 +217,11 @@ def gini_impurity(class_vector):
     Returns:
         Floating point number representing the gini impurity.
     """
-    # TODO: finish this.
-    raise NotImplemented()
+    frequency = np.array(list(Counter(class_vector).items()), dtype=float)
+    total_count = np.sum(frequency, where=[False,True],axis=0)[1]
+    frequency[:,1] = (frequency[:,1] / total_count)**2
+    gini_imp = 1 - np.sum(frequency, where=[False,True],axis=0)[1]
+    return gini_imp
 
 
 def gini_gain(previous_classes, current_classes):
@@ -230,20 +233,23 @@ def gini_gain(previous_classes, current_classes):
     Returns:
         Floating point number representing the gini gain.
     """
-    # TODO: finish this.
-    raise NotImplemented()
+    H_prev = gini_impurity(previous_classes)
+    H_curr = 0
+    for i in current_classes:
+        p = len(i) / len(previous_classes)
+        H_curr += gini_impurity(i)*p
+    return H_prev - H_curr
 
 
 class DecisionTree:
     """Class for automatic tree-building and classification."""
 
-    def __init__(self, depth_limit=22):
+    def __init__(self, depth_limit=10):
         """Create a decision tree with a set depth limit.
         Starts with an empty root.
         Args:
             depth_limit (float): The maximum depth to build the tree.
         """
-
         self.root = None
         self.depth_limit = depth_limit
 
@@ -253,8 +259,7 @@ class DecisionTree:
             features (m x n): m examples with n features.
             classes (m x 1): Array of Classes.
         """
-
-        self.root = self.__build_tree__(features, classes)
+        self.root = self.__build_tree__(features, classes, self.depth_limit)
 
     def __build_tree__(self, features, classes, depth=0):
         """Build tree that automatically finds the decision functions.
@@ -265,8 +270,59 @@ class DecisionTree:
         Returns:
             Root node of decision tree.
         """
-        # TODO: finish this.
-        raise NotImplemented()
+
+        def _build_recursion(curr_data, depth):
+            curr_classes = curr_data[1:,-1].reshape(-1,)
+            class_counter = Counter(curr_classes)
+
+            if len(class_counter) == 1:
+                # print(class_counter.most_common(3))
+                return DecisionNode(None, None, None, int(class_counter.most_common(1)[0][0]))
+            elif depth > self.depth_limit:
+                # print(class_counter.most_common(3))
+                return DecisionNode(None, None, None, int(class_counter.most_common(1)[0][0]))
+
+            mean_values = np.mean(curr_data[1:,:-1],axis=0)
+            split_values = dict()
+            for j in range(len(curr_data[0])-1):
+                split_values[int(curr_data[0][j])] = mean_values[j]
+
+            info_gain = 0
+            max_info_idx = 0
+            max_info = 0
+            for idx in range(len(curr_data[0][:-1])):
+                temp_left = curr_data[1:,:][curr_data[1:,idx]<=split_values[curr_data[0,idx]]]
+                temp_right = curr_data[1:,:][curr_data[1:,idx]>split_values[curr_data[0,idx]]]
+                if len(temp_left) <= 1 or len(temp_right) <= 1:
+                    continue
+                info_gain = gini_gain(curr_data[1:,-1],[temp_left[:,-1],temp_right[:,-1]])
+
+                if info_gain > max_info:
+                    max_info = info_gain
+                    max_info_idx = idx
+
+            if max_info <= 0:
+                # print(class_counter.most_common(3))
+                return DecisionNode(None, None, None, int(class_counter.most_common(1)[0][0]))
+
+            left_data = curr_data[1:,:][curr_data[1:,max_info_idx]<=split_values[curr_data[0,max_info_idx]]]
+            left_data = np.concatenate(([curr_data[0]],left_data),axis=0)
+            # left_data = np.delete(left_data, max_info_idx, axis=1)
+            right_data = curr_data[1:,:][curr_data[1:,max_info_idx]>split_values[curr_data[0,max_info_idx]]]
+            right_data = np.concatenate(([curr_data[0]],right_data),axis=0)
+            # right_data = np.delete(right_data, max_info_idx, axis=1)
+            dt_curr = DecisionNode(None, None, lambda x : x[int(curr_data[0,max_info_idx])] <= split_values[curr_data[0,max_info_idx]], None)
+            depth += 1
+            # print(depth)
+            dt_curr.left = _build_recursion(left_data, depth)
+            dt_curr.right = _build_recursion(right_data, depth)
+            return dt_curr
+
+        dataset = np.concatenate((np.array(features), np.array([classes]).T), axis=1)
+        indices = np.arange(len(dataset[0]))
+        dataset = np.concatenate(([indices],dataset),axis=0)
+        # print(dataset)
+        return _build_recursion(dataset, 0)
 
     def classify(self, features):
         """Use the fitted tree to classify a list of example features.
@@ -276,8 +332,8 @@ class DecisionTree:
             A list of class labels.
         """
         class_labels = []
-        # TODO: finish this.
-        raise NotImplemented()
+        for feature in features:
+            class_labels.append(self.root.decide(feature))
         return class_labels
 
 
@@ -295,16 +351,23 @@ def generate_k_folds(dataset, k):
         => Each Set is a tuple of numpy arrays.
     """
     folds = []
-    # TODO: finish this.
-    raise NotImplemented()
+    dataset = np.concatenate((np.array(dataset[0]), np.array([dataset[1]]).T), axis=1)
+    np.random.shuffle(dataset)
+    dataset = np.array_split(dataset, k)
+    for i in range(k):
+        test_set = (dataset[i][:,:-1], dataset[i][:,-1].T)
+        training_set = np.delete(dataset, i, 0)
+        training_set = np.concatenate(training_set,axis=0)
+        training_set = (training_set[:,:-1], training_set[:,-1])
+        folds.append((training_set, test_set))
     return folds
 
 
 class RandomForest:
     """Random forest classification."""
 
-    def __init__(self, num_trees=200, depth_limit=5, example_subsample_rate=.1,
-                 attr_subsample_rate=.3):
+    def __init__(self, num_trees=100, depth_limit=5, example_subsample_rate=.3,
+                 attr_subsample_rate=.5):
         """Create a random forest.
          Args:
              num_trees (int): fixed number of trees.
@@ -323,8 +386,24 @@ class RandomForest:
             features (m x n): m examples with n features.
             classes (m x 1): Array of Classes.
         """
-        # TODO: finish this.
-        raise NotImplemented()
+        dataset = np.concatenate((np.array(features), np.array([classes]).T), axis=1)
+        for i in range(self.num_trees):
+            sample_size = np.size(dataset, axis=0)
+            # print('sample_size:',sample_size)
+            feature_size = np.size(features, axis=1)
+            # print('feature_size:',feature_size)
+            samples_id = np.random.choice(np.arange(sample_size), int(sample_size*self.example_subsample_rate), replace=True)
+            # print('sample_id:',samples_id)
+            features_id = np.random.choice(np.arange(feature_size),int(feature_size*self.attr_subsample_rate), replace=False)
+            # print('features_id:',features_id)
+            sub_dataset = np.take(dataset, samples_id, axis=0)
+            sub_features = np.take(sub_dataset, features_id, axis=1)
+            sub_classes = np.take(sub_dataset, -1, axis=1)
+            # print('subclasses:',sub_classes)
+            dt = DecisionTree()
+            dt.root = dt.__build_tree__(sub_features, sub_classes, self.depth_limit)
+            self.trees.append((dt, features_id))
+        return self.trees
 
     def classify(self, features):
             """Classify a list of features based on the trained random forest.
@@ -334,8 +413,15 @@ class RandomForest:
                 votes (list(int)): m votes for each element
             """
             votes = []
-            # TODO: finish this.
-            raise NotImplemented()
+            for dt, features_id in self.trees:
+                class_labels = list()
+                # print(features_id)
+                sub_features = np.take(features, features_id, axis=1)
+                for feature in sub_features:
+                    class_labels.append(dt.root.decide(feature))
+                votes.append(class_labels)
+            votes = np.array(votes).T
+            votes = [Counter(vote).most_common(1)[0][0] for vote in votes]
             return votes
 
 
@@ -582,6 +668,4 @@ class Vectorization:
 
 def return_your_name():
     # return your name
-    # TODO: finish this
-    raise NotImplemented()
-    return ''
+    return 'Zi Sang'
